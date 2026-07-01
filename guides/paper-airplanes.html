@@ -1,0 +1,539 @@
+<title>Paper aircraft — a field guide</title>
+<style>
+:root{
+ --ink:#17232F; --soft:#5A6B7A; --paper:#E7ECF1; --panel:#FAFCFE;
+ --acc:#D9701E; --line:#C7D2DC; --valley:#2E6FB7; --mount:#C0392B;
+ --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+ --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+.wrap{max-width:1120px;margin:0 auto;padding:38px 22px 90px;color:var(--ink);
+ background:var(--paper);font-family:var(--sans);line-height:1.65;font-size:16.5px;
+ -webkit-font-smoothing:antialiased}
+.wrap{background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+ background-size:26px 26px;background-position:-1px -1px;background-blend-mode:normal}
+.sheet{background:var(--panel);border:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--soft)}
+.acc{color:var(--acc)}
+a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--acc)}
+a:hover{color:var(--acc)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+/* masthead / title block */
+.title-block{display:grid;grid-template-columns:1fr auto;gap:0;border:1.5px solid var(--ink);background:var(--panel)}
+.tb-main{padding:26px 28px;border-right:1.5px solid var(--ink)}
+.tb-main h1{font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.02;margin:.35rem 0 .5rem;
+ letter-spacing:-.015em;font-weight:800;text-wrap:balance}
+.tb-main p{margin:0;max-width:60ch;color:#243240}
+.tb-meta{display:grid;grid-template-rows:repeat(3,1fr);min-width:190px}
+.tb-cell{padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.82rem}
+.tb-cell:last-child{border-bottom:none}
+.tb-cell b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--soft);font-weight:500;margin-bottom:3px}
+.tb-num{font-variant-numeric:tabular-nums}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin:22px 0 30px;
+ padding:12px 18px;background:var(--panel);border:1px solid var(--line);font-family:var(--mono);font-size:.78rem}
+.legend span{display:inline-flex;align-items:center;gap:9px}
+.swatch{width:34px;height:0;border-top-width:2.4px;border-top-style:solid;display:inline-block}
+
+/* index */
+.section-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;
+ color:var(--soft);margin:40px 0 14px;display:flex;align-items:center;gap:14px}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px}
+.chip{display:block;background:var(--panel);border:1px solid var(--line);padding:10px 10px 12px;
+ transition:transform .12s ease,border-color .12s ease}
+.chip:hover{transform:translateY(-3px);border-color:var(--acc)}
+.chip .n{font-family:var(--mono);font-size:.7rem;color:var(--acc);font-variant-numeric:tabular-nums}
+.chip .nm{font-size:.82rem;font-weight:600;line-height:1.2;margin-top:4px}
+.chip .ct{font-family:var(--mono);font-size:.64rem;color:var(--soft);margin-top:3px;line-height:1.3}
+
+/* plate */
+.plate{margin-top:30px;border:1px solid var(--line);background:var(--panel)}
+.plate-hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;padding:20px 24px 14px;border-bottom:1px solid var(--line)}
+.plate-hd .pn{font-family:var(--mono);font-size:1.05rem;color:var(--acc);font-weight:700;font-variant-numeric:tabular-nums}
+.plate-hd h2{font-size:clamp(1.35rem,2.6vw,1.75rem);margin:0;font-weight:750;letter-spacing:-.01em}
+.plate-hd .aka{font-family:var(--mono);font-size:.76rem;color:var(--soft)}
+.pill{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;
+ padding:3px 9px;border-radius:2px;border:1px solid currentColor;font-weight:600}
+.badge{font-family:var(--mono);font-size:.7rem;background:var(--acc);color:#fff;padding:4px 10px;border-radius:2px;letter-spacing:.02em}
+.plate-body{padding:20px 24px 26px}
+.lead{font-size:1.02rem;max-width:74ch;margin:0 0 20px;color:#1f2c38}
+.lead b{color:var(--acc);font-weight:600}
+
+.drawings{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px}
+.panel{background:var(--panel);border:1px solid var(--line);position:relative;
+ background-image:linear-gradient(rgba(90,107,122,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(90,107,122,.09) 1px,transparent 1px);
+ background-size:15px 15px}
+.panel svg{display:block}
+text.cap{font-family:var(--mono);font-size:9px;letter-spacing:.1em;fill:var(--soft);text-transform:uppercase}
+text.ann{font-family:var(--mono);font-size:9.5px;fill:var(--ink)}
+
+.cols{display:grid;grid-template-columns:1.15fr .85fr;gap:30px}
+.folds{margin:0;padding:0;list-style:none;counter-reset:f}
+.folds li{counter-increment:f;position:relative;padding:0 0 12px 40px;font-size:.95rem}
+.folds li::before{content:counter(f,decimal-leading-zero);position:absolute;left:0;top:1px;
+ font-family:var(--mono);font-size:.74rem;color:var(--acc);font-weight:700;
+ border:1px solid var(--line);border-radius:50%;width:26px;height:26px;display:grid;place-items:center}
+h3.sub{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;
+ color:var(--soft);margin:0 0 14px;font-weight:600}
+.spec{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.8rem}
+.spec th{text-align:left;color:var(--soft);font-weight:500;padding:5px 10px 5px 0;
+ vertical-align:top;white-space:nowrap;width:1%}
+.spec td{padding:5px 0;vertical-align:top;color:#1f2c38}
+.spec tr+tr th,.spec tr+tr td{border-top:1px dashed var(--line)}
+.feat{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0}
+.feat span{font-family:var(--mono);font-size:.7rem;background:var(--paper);border:1px solid var(--line);
+ padding:3px 8px;border-radius:2px;color:#2a3846}
+.fact{margin-top:16px;padding:12px 16px;border-left:3px solid var(--acc);background:var(--paper);font-size:.92rem}
+.fact b{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:4px}
+
+/* future + refs */
+.future{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.ghost{border:1.5px dashed var(--line);background:transparent;padding:18px 18px 20px}
+.ghost .n{font-family:var(--mono);font-size:.7rem;color:var(--soft)}
+.ghost h4{margin:6px 0 8px;font-size:1.02rem}
+.ghost p{margin:0;font-size:.88rem;color:#2a3846}
+.foot{margin-top:46px;font-size:.9rem;color:#2a3846}
+.foot h3.sub{margin-top:22px}
+.method{font-family:var(--mono);font-size:.78rem;color:var(--soft);line-height:1.6}
+@media (max-width:720px){.title-block{grid-template-columns:1fr}.tb-main{border-right:none;border-bottom:1.5px solid var(--ink)}
+ .tb-meta{grid-template-rows:none;grid-template-columns:repeat(3,1fr)}.tb-cell{border-bottom:none;border-right:1px solid var(--line)}
+ .cols{grid-template-columns:1fr;gap:22px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+<div class="title-block">
+ <div class="tb-main">
+  <div class="eyebrow">aerodynamics of folded paper · drawing set</div>
+  <h1>Paper aircraft:<br>a field guide</h1>
+  <p>Nine flyers, each the best at one thing — fastest, farthest, longest-floating, most crash-proof, and stranger still. Every plate carries a plan, a side elevation, the crease pattern, and a full fold sequence.</p>
+ </div>
+ <div class="tb-meta">
+  <div class="tb-cell"><b>designs</b><span class="tb-num">09 plates</span></div>
+  <div class="tb-cell"><b>scope</b>speed · distance · float · stunt · novelty</div>
+  <div class="tb-cell"><b>status</b>fold + fact verified</div>
+ </div>
+</div>
+<div class="legend">
+ <span><span class="swatch" style="border-top-color:#2E6FB7;border-top-style:dashed"></span>valley fold (fold toward you)</span>
+ <span><span class="swatch" style="border-top-color:#C0392B;border-top-style:dashed"></span>mountain fold (fold away)</span>
+ <span><span class="swatch" style="border-top-color:#17232F;border-top-style:solid"></span>cut / edge</span>
+ <span><span class="swatch" style="border-top-color:#9AAAB9;border-top-style:dotted"></span>centerline</span>
+ <span>⊕ = centre of gravity</span>
+</div>
+<div class="section-label">specimen index</div>
+<div class="index">
+<a class="chip" href="#p1"><div class="n">01</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 20.4 L57.7 70.6 L96.0 111.6 L58.6 111.6 L56.8 76.9 L55.0 111.6 L53.2 76.9 L51.4 111.6 L14.0 111.6 L52.3 70.6 L55.0 20.4 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Needle Dart</div><div class="ct">fastest</div></a>
+<a class="chip" href="#p2"><div class="n">02</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 19.1 L60.9 27.0 L58.9 46.5 L96.0 93.3 L70.6 95.3 L62.8 83.6 L60.9 112.9 L49.1 112.9 L47.2 83.6 L39.4 95.3 L14.0 93.3 L51.1 46.5 L49.1 27.0 L55.0 19.1 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">Suzanne</div><div class="ct">longest distance</div></a>
+<a class="chip" href="#p3"><div class="n">03</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 22.3 L58.6 24.1 L59.6 47.8 L96.0 76.9 L96.0 86.0 L59.6 75.1 L59.6 109.7 L50.4 109.7 L50.4 75.1 L14.0 86.0 L14.0 76.9 L50.4 47.8 L51.4 24.1 L55.0 22.3 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">Nakamura Lock</div><div class="ct">Best cruiser</div></a>
+<a class="chip" href="#p4"><div class="n">04</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 24.1 L58.6 49.1 L96.0 104.3 L72.8 104.3 L56.8 71.3 L56.8 107.9 L53.2 107.9 L53.2 71.3 L37.2 104.3 L14.0 104.3 L51.4 49.1 L55.0 24.1 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">Sea Glider</div><div class="ct">highest glide ratio</div></a>
+<a class="chip" href="#p5"><div class="n">05</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 21.4 L58.6 28.6 L57.7 46.9 L96.0 103.4 L62.3 97.9 L58.6 110.6 L55.0 107.9 L51.4 110.6 L47.7 97.9 L14.0 103.4 L52.3 46.9 L51.4 28.6 L55.0 21.4 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Bulldog Dart</div><div class="ct">most durable</div></a>
+<a class="chip" href="#p6"><div class="n">06</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M40.0 14.0 L70.0 14.0 L72.2 18.3 L72.2 106.2 L70.0 112.6 L63.6 116.9 L55.0 118.0 L46.4 116.9 L40.0 112.6 L37.8 106.2 L37.8 18.3 L40.0 14.0 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Ring-Wing Glider</div><div class="ct">most surprising</div></a>
+<a class="chip" href="#p7"><div class="n">07</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 20.1 L58.9 51.4 L96.0 104.1 L78.4 108.0 L59.9 94.3 L59.9 111.9 L50.1 111.9 L50.1 94.3 L31.6 108.0 L14.0 104.1 L51.1 51.4 L55.0 20.1 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Harrier</div><div class="ct">best aerobatic looper</div></a>
+<a class="chip" href="#p8"><div class="n">08</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M55.0 21.4 L58.6 41.4 L96.0 68.7 L96.0 76.0 L60.5 74.2 L60.5 110.6 L49.5 110.6 L49.5 74.2 L14.0 76.0 L14.0 68.7 L51.4 41.4 L55.0 21.4 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Returning Boomerang Glider</div><div class="ct">best returning flight</div></a>
+<a class="chip" href="#p9"><div class="n">09</div><svg viewBox="0 0 110 132" width="100%" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M17.9 58.2 L92.1 58.2 L92.1 56.2 L96.0 56.2 L96.0 75.8 L92.1 75.8 L92.1 73.8 L17.9 73.8 L17.9 75.8 L14.0 75.8 L14.0 56.2 L17.9 56.2 L17.9 58.2 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.3" stroke-linejoin="round"/></svg><div class="nm">The Tumblewing</div><div class="ct">most imaginative</div></a>
+</div>
+<section class="plate" id="p1">
+<div class="plate-hd">
+<span class="pn">01</span><h2>The Needle Dart</h2>
+<span class="aka">a.k.a. Basic Dart / Classic Dart / Suicide Dart</span>
+<span class="badge">fastest (highest airspeed, flattest straight-line trajectory)</span>
+<span class="pill" style="color:#2E7D5B">easy</span>
+</div>
+<div class="plate-body">
+<p class="lead">Speed comes from very high wing loading and a very low aspect ratio. Nearly all the paper&#x27;s mass is stacked into layered folds along the deeply swept nose and keel, so weight is high while the exposed wing planform is tiny — the plane must fly fast to generate enough lift, giving a high stall speed and a fast, flat trajectory. The sharp swept-delta leading edge keeps flow attached and drag low at the low Reynolds numbers (~30,000-50,000) of a hand-thrown plane, and the deep centerline keel acts as a fixed vertical fin plus a nose ballast that pulls the CG well forward (~45-50% of length) for strong pitch stability. Stiff, small, low-camber wings resist deforming under a hard flat throw, so it converts arm speed directly into range rather than lift-induced climb-and-stall.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Needle Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="44.4" x2="125.0" y2="255.6" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 44.4 L131.3 160.6 L220.0 255.6 L133.4 255.6 L129.2 175.3 L125.0 255.6 L120.8 175.3 L116.6 255.6 L30.0 255.6 L118.7 160.6 L125.0 44.4 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 143.7 L125.0 137.2 A6.5 6.5 0 0 1 131.5 143.7 Z" fill="#17232F"/><path d="M125.0 143.7 L125.0 150.2 A6.5 6.5 0 0 1 118.5 143.7 Z" fill="#17232F"/><circle cx="125.0" cy="143.7" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="146.7" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Needle Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 107.8 L87.0 85.1 L163.0 69.9 L220.0 60.4 L220.0 88.8 L166.8 102.2 L106.0 126.9 L52.8 149.7 L30.0 123.0 L30.0 107.8 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Needle Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="125.0" y1="55.0" x2="30.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="220.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="52.8" y2="172.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="197.2" y2="172.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="125.0" y1="131.0" x2="41.4" y2="245.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="131.0" x2="208.6" y2="245.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with the sheet in portrait orientation. Fold it in half lengthwise (long edge to long edge) to create a sharp vertical center crease, then unfold flat. This centerline is your reference for everything that follows.</li>
+<li>Fold the top-left and top-right corners inward so each top corner&#x27;s edge lies exactly along the center crease. You now have a symmetric point at the top and two diagonal edges meeting at the centerline.</li>
+<li>Fold the two new long slanted top edges into the center crease again. The nose gets narrower and sharper, and paper stacks up along the centerline — this is what adds nose weight and sweep.</li>
+<li>Optional (sharper needle): fold the slanted edges to the center a third time, or tuck the blunt nose tip down and refold, for an even finer, more swept point and more nose ballast.</li>
+<li>Fold the entire plane in half along the original center crease so the two decorated halves meet with the folded flaps tucked on the INSIDE, leaving a clean outer surface. The keel/spine is now the bottom edge.</li>
+<li>Fold down the first wing: bring the top slanted edge down to meet the bottom edge of the body (the keel), making a wing crease running from the nose back toward the tail. Keep the crease parallel to the body bottom.</li>
+<li>Flip the plane over and fold down the second wing identically, edge-to-edge with the first so both wings match exactly.</li>
+<li>Open the wings out flat so they sit level with only a slight upward dihedral (a shallow Y when viewed from the front). Pinch the keel below the CG as your throwing grip. Throw hard and flat, nose slightly down.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>US Letter (8.5x11) or A4, 70-90 gsm. Standard printer/copy paper is ideal; the design tolerates heavier stock, which raises wing loading and top speed.</td></tr>
+<tr><th>wingspan</th><td>~120 mm (folded) from an A4/Letter sheet — roughly half the sheet width; a deliberately small span</td></tr>
+<tr><th>dihedral</th><td>3-6 degrees, near-flat. Just enough for roll stability without adding drag or lift that would balloon the fast trajectory</td></tr>
+<tr><th>aspect</th><td>Very low, ~1.0-1.3 (short stubby wings). Low AR keeps induced-drag geometry compact and the wing stiff at speed</td></tr>
+<tr><th>C.G.</th><td>Forward, ~45-50% of body length back from the nose tip. Heavy layered nose + keel place mass ahead of the aerodynamic center for strong static pitch stability</td></tr>
+<tr><th>throw</th><td>Hard and flat, released at or just below horizontal with a fast, snappy overhand throw. Grip the keel just ahead of the CG. Aim level, not up.</td></tr>
+<tr><th>speed</th><td>Fast — the highest cruise speed of any common paper design; converts throw velocity directly into range.</td></tr>
+<tr><th>glide</th><td>Poor / short duration. Flat, mostly straight, gently descending parabolic path — built for speed and distance-per-second, not float time.</td></tr>
+<tr><th>behaviour</th><td>Tracks arrow-straight with little wander. Very tolerant of asymmetric folds. If thrown too hard nose-up it will climb then stall/dive; keep the nose flat or slightly down for a clean fast run.</td></tr>
+</tbody></table>
+<div class="feat"><span>sharp swept needle nose (layered, nose-heavy)</span><span>very low aspect-ratio stubby wings</span><span>deep centerline keel = fin + nose ballast</span><span>near-flat 3-6 deg dihedral</span><span>forward CG at ~47% for pitch stability</span><span>high wing loading for fast flat flight</span></div>
+<div class="fact"><b>field note</b>Because so much paper piles up in the nose, the classic dart is essentially a lawn dart with wings — its center of gravity sits near the tip, which is exactly why it flies straight and fast but almost never floats: it trades glide time for pure velocity. It is also the most forgiving design to fold, tolerating asymmetric creases better than any glider.</div>
+<p class="method" style="margin-top:14px">origin — Anonymous folk design; the canonical &quot;paper dart&quot; that predates modern named designs. Codified as the &quot;Basic Dart&quot; by Fold &#x27;N Fly. Distinct from John Collins&#x27; record-setting glider &quot;Suzanne&quot; (thrown by Joe Ayoob in 2012 for the Guinness distance record of 226 ft 10 in), a variable-dihedral glider that broke the record previously held by a ballistic dart.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p2">
+<div class="plate-hd">
+<span class="pn">02</span><h2>Suzanne</h2>
+<span class="aka">a.k.a. The World Champion, &quot;Suzanne&quot;</span>
+<span class="badge">longest distance (glide+transition)</span>
+<span class="pill" style="color:#B23A2E">hard</span>
+</div>
+<div class="plate-body">
+<p class="lead">Suzanne wins distance by being a two-phase flyer rather than a dart: a hard, up-angled launch turns muscle into altitude, then the forward CG and low-wing-loading planform convert that altitude into a long, flat, self-stabilizing glide, with the progressive dihedral keeping it stable across the whole launch-to-glide speed range.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — Suzanne (Collins/Ayoob distance glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="41.4" x2="125.0" y2="258.6" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 41.4 L138.6 59.5 L134.0 104.8 L220.0 213.3 L161.2 217.9 L143.1 190.7 L138.6 258.6 L111.4 258.6 L106.9 190.7 L88.8 217.9 L30.0 213.3 L116.0 104.8 L111.4 59.5 L125.0 41.4 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 104.8 L125.0 98.3 A6.5 6.5 0 0 1 131.5 104.8 Z" fill="#17232F"/><path d="M125.0 104.8 L125.0 111.3 A6.5 6.5 0 0 1 118.5 104.8 Z" fill="#17232F"/><circle cx="125.0" cy="104.8" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="107.8" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — Suzanne (Collins/Ayoob distance glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 122.1 L49.0 114.5 L49.0 99.3 L71.8 99.3 L71.8 106.9 L220.0 80.3 L220.0 99.3 L75.6 122.1 L49.0 129.7 L30.0 122.1 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — Suzanne (Collins/Ayoob distance glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="49.0" y1="70.2" x2="201.0" y2="134.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="201.0" y1="70.2" x2="49.0" y2="134.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="49.0" y1="70.2" x2="125.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="201.0" y1="70.2" x2="125.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="49.0" y1="102.5" x2="201.0" y2="102.5" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="117.7" x2="87.0" y2="93.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="117.7" x2="163.0" y2="93.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="109.8" y1="70.2" x2="140.2" y2="70.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="64.2" y1="245.0" x2="125.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="185.8" y1="245.0" x2="125.0" y2="117.7" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with A4/Letter in PORTRAIT (trim ~19mm off a short side if using US Letter). Fold the top-right corner down-left so the top edge lies along the left edge, making a diagonal crease; unfold flat.</li>
+<li>Fold the top-left corner down-right so the top edge lies along the right edge, making the mirror diagonal crease; unfold. You now have an X of creases near the top and a horizontal reference where they cross.</li>
+<li>Fold the LEFT vertical edge inward so it lines up along the right-hand diagonal crease; unfold. Then fold the RIGHT vertical edge in to the left-hand diagonal crease; unfold. These four creases pre-set the nose-shaping folds.</li>
+<li>Fold the top of the sheet straight DOWN with a horizontal valley fold running through the point where the two diagonals cross; unfold. This is the reference line for blunting the nose.</li>
+<li>Re-fold the left and right top side edges IN along the diagonal creases from step 3 at the same time. The top corners swing inward and the upper edges meet along the vertical centerline, forming a solid layered point. NOTE: these are FLAT diagonal folds (a blunted-dart nose) — this is NOT a waterbomb/preliminary base; do not collapse the paper into an internal triangle.</li>
+<li>Fold the top two outer corners of that point DOWN to meet at the centerline so the top-layer creases line up exactly with the folds beneath them. This layers paper toward the nose to build mass and precision.</li>
+<li>BLUNT THE NOSE: fold the sharp nose tip back a short distance (about 20-25mm) so it becomes a small flat/blunt front. Keeping the nose blunt concentrates mass forward and prevents crumpling on a hard throw. Sharpen all creases with a bone folder or fingernail.</li>
+<li>Turn the plane over and fold it in half along the centerline so the layered nose folds sit on the OUTSIDE (keel on the bottom, wing flaps up). Make the crease crisp.</li>
+<li>With the keel crease on the BOTTOM and the two wing flaps pointing up, fold the first WING: bring the top folded wing edge down to lie along the center keel crease, starting the wing crease about 6mm (1/4 in) back from the nose; crease firmly. Flip and repeat for the second wing so both are symmetric.</li>
+<li>Open the wings to set DIHEDRAL. Set a gentle upsweep so the included angle is about 165 deg near the nose root and about 155 deg at mid-wing (tips slightly higher than mid-wing, mid-wing slightly higher than the nose root) — a subtle progressive dihedral, not a sharp V. A cardboard angle gauge helps.</li>
+<li>For a record-legal build, apply small pieces of tape (Guinness permits tape; Collins&#x27; competition build uses several ~30mm strips of varying width along the fuselage/belly, applied in sequence) to hold the layers; check the plane is perfectly symmetric with no warps. Optional: a tiny reflex (up) at the very trailing edge only if it dives.</li>
+<li>THROW: grip the thick fuselage just behind the nose. Aim about 40-45 deg up and throw hard but with smooth acceleration, keeping the wings LEVEL and a full follow-through (drop the elbow slightly to keep wings level). It should climb, level off near apex, and glide out the final third of the flight.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>A4 or US Letter, up to 100 gsm for record use (Collins used Conqueror CX22 Diamond White 100gsm A4). If using US Letter, trim ~19mm off one short side to match A4 proportions. Everyday practice: 80gsm A4. Portrait orientation, folded LONG-side down.</td></tr>
+<tr><th>wingspan</th><td>~135-145 mm folded span (from a 210mm-wide A4 sheet); broad, deep wing</td></tr>
+<tr><th>dihedral</th><td>Progressive/variable: ~165 deg included angle near the nose root, ~155 deg at mid-wing (tips slightly up). Roughly 7-12 deg of net upsweep</td></tr>
+<tr><th>aspect</th><td>Low, ~1.6-2.0 (short, deep wing) — high area for low wing loading and float</td></tr>
+<tr><th>C.G.</th><td>Forward, ~28-32% of body length from the nose, set by the dense multi-layer blunt nose</td></tr>
+<tr><th>throw</th><td>Hard, up-angled overhand launch at ~40-45 deg, wings LEVEL, grip the thick nose/fuselage; smooth accelerating follow-through rather than a wild fling</td></tr>
+<tr><th>speed</th><td>Very fast on launch (ballistic climb) transitioning to a slow, floaty glide — deliberately dual-speed</td></tr>
+<tr><th>glide</th><td>Excellent once transitioned — long, flat, stable glide for the final third of flight; total airtime ~7-9 seconds</td></tr>
+<tr><th>behaviour</th><td>Climbs on the throw, levels/transitions near apex, then settles into a straight self-correcting glide. Trim for straight tracking; forward CG resists stall. Do NOT throw flat — it needs the climb to build the glide.</td></tr>
+</tbody></table>
+<div class="feat"><span>blunt weighted layered nose (mass forward, not a dart tip)</span><span>broad low-aspect wing (high area, low wing loading)</span><span>progressive dihedral: 165 deg nose / 155 deg mid-wing</span><span>deep multi-layer keel/fuselage</span><span>launched ~40-45 deg, climb-then-glide transition</span><span>several small legal tape strips reinforcing the belly/fuselage</span></div>
+<div class="fact"><b>field note</b>Despite having only about eight folds, Collins calls Suzanne &#x27;the most technical paper airplane I&#x27;ve ever made&#x27; — and it was the first GLIDER ever to hold the distance record, breaking a lineage of brute-force ballistic darts. It flew 226 ft 10 in, roughly three-quarters the length of a football field, and &#x27;really flies&#x27; only in the last third of its flight as it transitions from a hard climbing launch into a long, flat glide.</div>
+<p class="method" style="margin-top:14px">origin — Designed by John M. Collins (&quot;The Paper Airplane Guy&quot;), named after his wife Suzanne. Thrown by former quarterback Joe Ayoob to set the Guinness distance record of 226 ft 10 in (69.14 m) on Feb 26, 2012, in a hangar at McClellan (former Air Force Base), Sacramento CA. It was the first GLIDER (not a dart) ever to hold the distance record. NOTE: the record has since been broken twice — first to 252 ft 7 in (77.134 m) in Daegu, South Korea on Apr 16, 2022 (designed by Chee Yie Jian, thrown by Kim Kyu Tae), and then to the current Guinness mark of 289 ft 9 in (88.31 m) by Boeing engineers Dillon Ruble, Garrett Jensen &amp; Nathaniel Erickson on Dec 2, 2022. Suzanne is the most famous former distance record holder, but it was NOT the record immediately preceding the Boeing flight.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p3">
+<div class="plate-hd">
+<span class="pn">03</span><h2>Nakamura Lock</h2>
+<span class="aka">a.k.a. The Locked Nose Glider / Classic Cruiser</span>
+<span class="badge">Best cruiser / most stable slow floater (gentle long glides)</span>
+<span class="pill" style="color:#2E7D5B">easy</span>
+</div>
+<div class="plate-body">
+<p class="lead">The signature nose lock stacks and pins several paper layers at the front, concentrating mass forward so the CG sits well ahead of the wing&#x27;s aerodynamic center — the strong static-stability margin that makes it self-correct instead of pitching or diving. That forward mass is paired with a broad, blunt, relatively low-loaded wing and a natural shallow dihedral (from folding-in-half then unfolding the wings to a Y), giving good roll stability and slow, floaty flight. At the low speeds and small chord of a paper plane (Reynolds number roughly 20,000-40,000) a plane that flies slowly and holds a steady low angle of attack simply glides farther; the Nakamura Lock&#x27;s locked, non-crumpling nose keeps that CG and airfoil shape intact throw after throw, which is why it out-cruises flimsier dart designs.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — Nakamura Lock" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="48.7" x2="125.0" y2="251.3" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 48.7 L133.4 52.9 L135.6 107.8 L220.0 175.3 L220.0 196.4 L135.6 171.1 L135.6 251.3 L114.4 251.3 L114.4 171.1 L30.0 196.4 L30.0 175.3 L114.4 107.8 L116.6 52.9 L125.0 48.7 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 107.8 L125.0 101.3 A6.5 6.5 0 0 1 131.5 107.8 Z" fill="#17232F"/><path d="M125.0 107.8 L125.0 114.3 A6.5 6.5 0 0 1 118.5 107.8 Z" fill="#17232F"/><circle cx="125.0" cy="107.8" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="110.8" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — Nakamura Lock" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 107.8 L45.2 96.5 L52.8 88.9 L87.0 87.0 L220.0 83.2 L220.0 107.8 L87.0 123.1 L52.8 126.8 L41.4 123.1 L30.0 107.8 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — Nakamura Lock" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="125.0" y1="55.0" x2="30.0" y2="115.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="220.0" y2="115.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="30.0" y1="115.8" x2="220.0" y2="115.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="115.8" x2="52.8" y2="159.5" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="115.8" x2="197.2" y2="159.5" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="102.2" y1="100.6" x2="147.8" y2="100.6" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="68.0" y1="169.0" x2="68.0" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="182.0" y1="169.0" x2="182.0" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with the sheet portrait (long edges vertical). Fold it in half lengthwise, left edge onto right edge, crease firmly, then unfold. You now have a vertical center crease.</li>
+<li>Fold the top-left and top-right corners inward so their top edges meet exactly along the center crease. This makes a symmetric point (triangle) at the top, like the start of a dart.</li>
+<li>Fold that whole pointed top down toward you. The tip should come down to roughly 3-4 cm above the bottom of the triangular flaps, leaving a flat horizontal fold across the top.</li>
+<li>Fold the new top-left and top-right corners in to the center crease again, forming two angled flaps. Stop them just short so a small triangle of the layer folded down in step 3 stays peeking out below where the two flaps meet.</li>
+<li>Take that small exposed triangle tip and fold it UP over the two angled flaps. This tab pins the flaps down — this is the Nakamura Lock. Press it flat.</li>
+<li>Flip the whole model over, keeping the locked nose intact.</li>
+<li>Fold the plane in half along the original center crease so the locked nose is on the OUTSIDE (the lock ends up on the underside/keel). The two halves should mirror exactly.</li>
+<li>Rotate so the blunt nose faces left and the fold (keel) is at the bottom. Fold the top wing down: bring its top edge down to meet the bottom keel edge, so the wing is roughly parallel to the keel. Crease the full length.</li>
+<li>Flip over and fold the second wing down to match the first exactly, so both wings are symmetric.</li>
+<li>Open the wings up to a flat, level position, then lift them slightly into a shallow Y (dihedral) — tips a little higher than the body. Check that the nose is blunt and locked, the keel straight, and both wings even. Throw level with a gentle, smooth push.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>A4 80gsm (US Letter 8.5x11 works equally well)</td></tr>
+<tr><th>wingspan</th><td>approx 14 cm (about 66% of the A4 width, tip to tip with wings level)</td></tr>
+<tr><th>dihedral</th><td>shallow, about 8-12 degrees per wing (gentle Y) for roll stability without excess drag</td></tr>
+<tr><th>aspect</th><td>low-to-moderate, roughly 2.2 (broad chord, span ~14 cm, mean chord ~6.5 cm) — favors slow, stable, floaty glide over speed</td></tr>
+<tr><th>C.G.</th><td>well forward, about 28-32% of body length back from the blunt nose, held there by the stacked locked nose layers</td></tr>
+<tr><th>throw</th><td>Level, smooth, gentle to medium — released flat at shoulder height, not thrown hard or upward</td></tr>
+<tr><th>speed</th><td>Slow to moderate</td></tr>
+<tr><th>glide</th><td>Long, gentle, floaty descent — its defining strength</td></tr>
+<tr><th>behaviour</th><td>Very stable and self-correcting; tracks straight and settles into a smooth cruise. Prone to a gentle stall/float if over-thrown rather than a nose dive, thanks to the forward CG.</td></tr>
+</tbody></table>
+<div class="feat"><span>blunt locked nose (no sharp point)</span><span>nose-lock tab pins front layers</span><span>forward CG for stability</span><span>broad low-loaded wings</span><span>shallow Y dihedral</span><span>straight keel fuselage</span></div>
+<div class="fact"><b>field note</b>The little triangular tab you fold up in step 5 is the whole trick: Eiji Nakamura&#x27;s &#x27;lock&#x27; mechanically pins the nose layers together so the plane keeps its shape and forward balance flight after flight — many other classic folds rely only on friction and slowly unravel.</div>
+<p class="method" style="margin-top:14px">origin — Eiji Nakamura, Japanese paper-airplane designer/author (popularized in his mid-20th-century books); a classic &quot;locking&quot; dart-derivative glider.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p4">
+<div class="plate-hd">
+<span class="pn">04</span><h2>Sea Glider</h2>
+<span class="aka">a.k.a. Seagull Glider / Diagonal Glider</span>
+<span class="badge">highest glide ratio (most aerodynamic / longest glide distance per height)</span>
+<span class="pill" style="color:#B07908">medium</span>
+</div>
+<div class="plate-body">
+<p class="lead">Glide ratio equals lift-to-drag ratio, and at gliding speed the dominant loss is induced (lift-related) drag, whose coefficient falls in proportion to aspect ratio at a given wing area. The Sea Glider&#x27;s long, thin, near-triangular wings give a high aspect ratio and a large area for very little mass, so wing loading is low, sink rate is small, and the plane trims to a slow, flat, efficient glide. The rolled leading-edge hem does double duty: it moves the CG forward to roughly the wing&#x27;s quarter-chord for pitch stability, and it stiffens the leading edge so the airfoil holds a clean shape. Slight dihedral plus upturned winglets add roll/yaw stability and cut wingtip vortex drag, keeping the glide straight instead of spiralling. (Purpose-built high-aspect paper gliders in this family, like the Paperang, reach 12:1+; the simple Sea Glider glides well but a bit short of that.)</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — Sea Glider (High-Aspect-Ratio Paper Sailplane)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="52.9" x2="125.0" y2="247.1" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 52.9 L133.3 110.8 L220.0 238.8 L166.3 238.8 L129.1 162.4 L129.1 247.1 L120.9 247.1 L120.9 162.4 L83.7 238.8 L30.0 238.8 L116.7 110.8 L125.0 52.9 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 94.2 L125.0 87.7 A6.5 6.5 0 0 1 131.5 94.2 Z" fill="#17232F"/><path d="M125.0 94.2 L125.0 100.7 A6.5 6.5 0 0 1 118.5 94.2 Z" fill="#17232F"/><circle cx="125.0" cy="94.2" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="97.2" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — Sea Glider (High-Aspect-Ratio Paper Sailplane)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 93.6 L41.4 86.0 L52.8 89.8 L87.0 97.4 L144.0 105.0 L220.0 112.6 L220.0 124.0 L134.5 120.2 L52.8 112.6 L37.6 108.8 L30.0 93.6 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — Sea Glider (High-Aspect-Ratio Paper Sailplane)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="30.0" y1="55.0" x2="220.0" y2="245.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="30.0" y1="245.0" x2="220.0" y2="245.0" stroke="#17232F" stroke-width="2.0"/><line x1="41.4" y1="66.4" x2="208.6" y2="233.6" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="52.8" y1="77.8" x2="197.2" y2="222.2" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="117.4" y1="131.0" x2="117.4" y2="245.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="132.6" y1="131.0" x2="132.6" y2="245.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with A4 held portrait. Fold the sheet in half lengthwise (long left edge onto long right edge) to press a sharp center crease, then unfold. This will become the fuselage keel line.</li>
+<li>Fold the sheet corner-to-corner: bring the top-left corner down to the right edge so the top short edge lies exactly along the right long edge, forming a 45-degree diagonal. You now have a large triangle with a rectangular flap sticking out at the bottom. This diagonal fold is the triangle&#x27;s line of symmetry and will be the fuselage keel.</li>
+<li>Trim (cut) off that one leftover bottom rectangle along the edge of the triangle so the sheet becomes a clean square folded into a double-layer right triangle. The long folded edge (the hypotenuse) is your wing leading edge. (Only this single rectangle is cut — do not cut any other edge.)</li>
+<li>Roll the leading edge: fold the folded hypotenuse edge over about 2 cm and keep rolling it 3-4 times into a tight, firm hem all along the leading edge. This tube is the nose/ballast weight and stiffens the leading edge.</li>
+<li>Fold the whole triangle in half along its line of symmetry (the diagonal fold from Step 2, which is the fuselage keel), bringing the two wings together so the rolled edges stack. The rolled hem is now at the front (nose); the folded diagonal spine is the fuselage.</li>
+<li>Make the fuselage/keel: with the plane closed, fold each top layer down toward the belly a narrow strip (about 1.5-2 cm) parallel to the spine. This defines the keel depth and locks the rolled nose in place. Repeat identically on the other side so both sides match.</li>
+<li>Open the two wings outward from the keel so they sit flat and level (top view). Check that both wings are symmetric edge-to-edge and the nose weight is centered.</li>
+<li>Set dihedral: lift both wingtips slightly so the wings form a shallow Y (about 5-10 degrees up from horizontal) for roll stability.</li>
+<li>Fold up winglets: turn the outer 1.5-2 cm of each wingtip upward to a near-vertical 90 degrees. Keep them identical to cut tip-vortex drag and stabilize yaw.</li>
+<li>Trim and test: hold under the nose at the CG and launch gently, level, at low speed. If it dives, the nose is too heavy — reduce the rolled hem or add up-elevator by curling the trailing edges slightly; if it stalls/pitches up, add a small paper clip or one more roll at the nose.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>A4 80gsm (US Letter also works). Lightweight 70-80gsm keeps wing loading low; a heavier stock only helps if you add nose weight.</td></tr>
+<tr><th>wingspan</th><td>approx 26-27 cm effective tip-to-tip. (The A4-derived square is 210x210 mm, so its raw diagonal is ~29.7 cm; folding down the keel and folding up the outer ~2 cm winglets reduces the flat span to roughly 26 cm.)</td></tr>
+<tr><th>dihedral</th><td>5-10 degrees (shallow up-Y) plus near-vertical winglets on the outer ~2 cm</td></tr>
+<tr><th>aspect</th><td>high for a paper plane, effective span-squared/area roughly 4-5 (long thin swept planform); this is what drives the low induced drag</td></tr>
+<tr><th>C.G.</th><td>far forward, ~18-22% of body length back from the nose, set by the rolled leading-edge hem — near the wing&#x27;s quarter-chord</td></tr>
+<tr><th>throw</th><td>Gentle, level, low-speed hand launch from as high as possible (a balcony or stairwell shows off the glide ratio). Do NOT throw hard — speed makes it balloon and stall.</td></tr>
+<tr><th>speed</th><td>Slow (roughly 2-4 m/s)</td></tr>
+<tr><th>glide</th><td>Long and flat with a low sink rate, covering a lot of horizontal distance for the height lost. Well-trimmed high-aspect paper gliders in this family reach ~10-12:1; the simple Sea Glider glides well but typically a bit below that.</td></tr>
+<tr><th>behaviour</th><td>Smooth, floaty descent; very sensitive to trim, and maneuverable (the classic Sea Glider can turn quickly or even loop). Small trailing-edge curls or nose-weight tweaks turn a stall or dive into a clean level glide.</td></tr>
+</tbody></table>
+<div class="feat"><span>rolled weighted leading edge (nose ballast, forward CG)</span><span>long thin swept high-aspect wings</span><span>slim central keel / fuselage</span><span>shallow dihedral (up-Y)</span><span>near-vertical winglets to cut tip-vortex drag</span><span>large wing area = very low wing loading</span></div>
+<div class="fact"><b>field note</b>Doubling a wing&#x27;s aspect ratio roughly halves its induced drag at a given lift — the same physics that gives real sailplanes their absurdly long, skinny wings. Edmond Hui, a former hang-gliding instructor, applied exactly this to paper in his 1977 &quot;Paperang,&quot; which glides better than 12:1.</div>
+<p class="method" style="margin-top:14px">origin — Classic folk design popularized as the &quot;Sea Glider&quot; (see Fold &#x27;N Fly / DIY Magazine): a square folded on the diagonal with a weighted, folded leading edge and dihedral. Its aerodynamic lineage (weighted leading edge + high-aspect wings) is the same family as Edmond Hui&#x27;s Paperang (1977), a hang-glider-derived paper sailplane that exceeds a 12:1 glide ratio. Note: the simple Sea Glider is a maneuverable, floaty glider; the record-class 12:1+ ratio belongs specifically to the more elaborate Paperang.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p5">
+<div class="plate-hd">
+<span class="pn">05</span><h2>The Bulldog Dart</h2>
+<span class="aka">a.k.a. Snub-Nose Dart / Heavy-Nose Dart / &quot;World&#x27;s Best Paper Airplane&quot;</span>
+<span class="badge">most durable / crash-proof distance dart</span>
+<span class="pill" style="color:#2E7D5B">easy</span>
+</div>
+<div class="plate-body">
+<p class="lead">Folding the sharp point down and then folding the plane in on itself buries several paper layers into a short blunt nose, driving CG forward (roughly the front quarter to third of the body length, ahead of the aerodynamic center) for strong pitch stability. The layered blunt tip has no fragile point to crumple, so it spreads crash loads and survives head-on impacts. The heavy nose means it is a fast, penetrating flyer best given a gentle, level throw — thrown too hard it noses straight into the ground.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Bulldog Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="46.6" x2="125.0" y2="253.4" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 46.6 L133.4 63.4 L131.3 105.7 L220.0 236.6 L141.9 223.9 L133.4 253.4 L125.0 247.1 L116.6 253.4 L108.1 223.9 L30.0 236.6 L118.7 105.7 L116.6 63.4 L125.0 46.6 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 101.4 L125.0 94.9 A6.5 6.5 0 0 1 131.5 101.4 Z" fill="#17232F"/><path d="M125.0 101.4 L125.0 107.9 A6.5 6.5 0 0 1 118.5 101.4 Z" fill="#17232F"/><circle cx="125.0" cy="101.4" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="104.4" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Bulldog Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 122.1 L49.0 137.3 L71.8 122.1 L220.0 84.1 L220.0 72.7 L71.8 103.1 L52.8 99.3 L30.0 106.9 L30.0 122.1 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Bulldog Dart" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="125.0" y1="58.8" x2="45.2" y2="123.4" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="58.8" x2="204.8" y2="123.4" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="89.2" x2="60.4" y2="146.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="89.2" x2="189.6" y2="146.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="109.8" y1="96.8" x2="140.2" y2="96.8" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="109.8" y1="112.0" x2="109.8" y2="218.4" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="140.2" y1="112.0" x2="140.2" y2="218.4" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with the sheet in portrait (tall) orientation. Fold it in half lengthwise to make a vertical center crease, then unfold. This centerline is your reference for everything that follows.</li>
+<li>Fold the two top corners in to the center crease so their inner edges meet on the centerline. You now have a large arrow point at the top, like the start of a classic dart.</li>
+<li>Flip the whole sheet over, then fold the two top corners in to the center crease again on this second side. Doing the corner fold on both sides is what stacks the layers symmetrically (this is the real Bulldog sequence — do NOT just re-fold the slanted edges on the same side).</li>
+<li>THE BULLDOG MOVE: fold the sharp nose point straight down so the tip meets the junction of the previous corner folds. This tuck creates the short blunt, reinforced multi-layer nose that names the plane and holds the weight forward. Crease it hard.</li>
+<li>Fold the whole plane in half along the original center crease, folding it IN ON ITSELF so the tucked nose is trapped on the INSIDE and locked in place (it cannot spring open). The keel (spine) is now on the bottom.</li>
+<li>Rotate so the nose points left and the spine faces down. Fold down the first wing: bring the top edge down to meet the bottom spine, running the wing crease from the nose in a straight line back to the tail (leave a finger-width of fuselage above the spine to grip).</li>
+<li>Flip the plane over and fold the second wing down exactly to match the first, edge to edge and crease to crease, so both wings are symmetric.</li>
+<li>Open the wings out flat to a shallow Y (a few degrees of upward dihedral) and check that the nose fold is tight. (Optional: for a little pitch trim you can bend a small flap up on each wing&#x27;s trailing inner corner, but this is a straight-flying distance dart, not an aerobatic plane.)</li>
+<li>Throw it level with a smooth, MODERATE, gentle release — do not launch it hard or steeply upward. The heavy nose rewards a soft, flat throw; thrown too fast or lofted it will nose-dive into the ground.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>US Letter (8.5x11 in) or A4, 80gsm office paper. Heavier 100gsm stock makes the reinforced nose even tougher.</td></tr>
+<tr><th>wingspan</th><td>~14 cm span on Letter/A4 (each wing ~6 cm from spine); overall body length ~24 cm</td></tr>
+<tr><th>dihedral</th><td>shallow, ~5-8 deg upward Y for roll stability without sacrificing speed</td></tr>
+<tr><th>aspect</th><td>low, ~2.0-2.5 (short broad delta-ish wings) — rigid, crash-tolerant, forgiving at low Reynolds number</td></tr>
+<tr><th>C.G.</th><td>far forward, roughly the front quarter to third of body length back from the blunt nose (~25-30%), set by the tucked multi-layer nose</td></tr>
+<tr><th>throw</th><td>Level, with a smooth, gentle, moderate release and a flat wrist; do not throw it hard or loft it upward.</td></tr>
+<tr><th>speed</th><td>Fast</td></tr>
+<tr><th>glide</th><td>Moderate, shallow — penetrates air well but sinks steadily; not a long-hang floater.</td></tr>
+<tr><th>behaviour</th><td>Stable, straight, and punchy. The forward CG gives strong pitch stability and clean straight-line darts. The blunt reinforced nose shrugs off head-on crashes, so it survives repeated hard landings, but thrown too fast the heavy nose drives it into the ground — keep the throw gentle.</td></tr>
+</tbody></table>
+<div class="feat"><span>blunt tucked reinforced nose (4-6 layers, tucked inside)</span><span>CG far forward at ~27% length</span><span>low-aspect delta-ish wings</span><span>shallow dihedral Y</span><span>deep keel/fuselage spine</span><span>gentle level throw (heavy-nose dart, not aerobatic)</span></div>
+<div class="fact"><b>field note</b>The Instructables version of this fold is literally titled &quot;Best Paper Airplane in the World&quot; and has been viewed millions of times; its whole reputation rests on one counter-intuitive move — making the plane fly better by folding the sharp nose blunt.</div>
+<p class="method" style="margin-top:14px">origin — Popularized as the &quot;Best Paper Airplane in the World (a.k.a. Bulldog Dart)&quot; on Instructables (user seamster) and in The Art of Manliness (Jeremy Andenberg, Sept 2014). A folk/traditional refinement of the classic dart in which the sharp point is folded down and tucked inside when the plane is folded in half, reinforcing the nose. No single named inventor.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p6">
+<div class="plate-hd">
+<span class="pn">06</span><h2>The Ring-Wing Glider</h2>
+<span class="aka">a.k.a. Annular-Wing Glider, Ring Wing Glider, &quot;the tube that flies&quot;</span>
+<span class="badge">most surprising / novelty flyer — the design that flies best with no flat wing at all (best stability-per-simplicity)</span>
+<span class="pill" style="color:#2E7D5B">easy</span>
+</div>
+<div class="plate-body">
+<p class="lead">It flies because a hoop is a closed (annular) wing: the leading rim generates lift like a very short-chord wing bent into a full circle, and because the wing has no free tips, there is no distinct pair of trailing tip vortices — spanwise flow simply chases itself around the ring, which keeps induced losses tame at its tiny scale. The thick multi-fold band at the leading edge concentrates mass well ahead of the ring&#x27;s aerodynamic center, so CG sits forward (~30-35% of body length) giving strong pitch stability — the nose-heavy rim keeps pointing into the airflow. The circular cross-section is inherently roll- and yaw-neutral (axisymmetric), so it self-stabilizes about its flight axis and resists tumbling; any slight spin off the fingers only reinforces gyroscopic axial stability. At the low Reynolds numbers of a hand-thrown toy (~2-4x10^4) a smooth low-camber ring avoids the leading-edge separation that stalls flat paper wings, so it settles into a steady, straight glide rather than diving or pitching.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Ring-Wing Glider (Hollow Hoop / Tube Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="30.0" x2="125.0" y2="270.0" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M90.4 30.0 L159.6 30.0 L164.6 39.9 L164.6 242.8 L159.6 257.6 L144.8 267.5 L125.0 270.0 L105.2 267.5 L90.4 257.6 L85.4 242.8 L85.4 39.9 L90.4 30.0 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M45.8 148.8 L45.8 142.3 A6.5 6.5 0 0 1 52.3 148.8 Z" fill="#17232F"/><path d="M45.8 148.8 L45.8 155.3 A6.5 6.5 0 0 1 39.3 148.8 Z" fill="#17232F"/><circle cx="45.8" cy="148.8" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="56.8" y="151.8" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Ring-Wing Glider (Hollow Hoop / Tube Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M35.0 165.0 L50.0 180.0 L200.0 180.0 L215.0 165.0 L215.0 45.0 L200.0 30.0 L50.0 30.0 L35.0 45.0 L35.0 165.0 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Ring-Wing Glider (Hollow Hoop / Tube Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="45.2" y1="222.2" x2="204.8" y2="77.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="54.7" y1="216.5" x2="199.1" y2="87.3" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="64.2" y1="210.8" x2="193.4" y2="96.8" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Lay the sheet portrait (short edge toward you). Fold it in half diagonally, but DELIBERATELY OFFSET the corners so the two top points do NOT meet — they should stand apart like two mountain peaks about 2-3 cm apart. Make a firm crease along this diagonal fold; this folded edge becomes your heavy leading-edge band.</li>
+<li>Keep it folded on that diagonal (peaks offset). You now have a triangle-ish shape with a clean folded edge running corner-to-corner and the two crown points sticking up.</li>
+<li>Starting at the long folded edge, make a straight 1/2-inch (1.25 cm) fold, rolling the folded edge over onto itself. Crease hard — this begins the thick, heavy leading-edge band.</li>
+<li>Make a SECOND 1/2-inch (1.25 cm) fold along the same edge, in the same direction over the first fold. This gives the stiff, dense multi-thickness band along one edge — the weighted nose rim of the ring. (Two folds is the standard NASA JPL recipe.)</li>
+<li>OPTIONAL: if using lighter paper, add one more 1/2-inch fold for extra nose weight; keep the band tight and even so the rim stays circular later. Skip this on 100gsm paper.</li>
+<li>Gently curve the whole sheet into a cylinder, bringing the two short ends around toward each other, with the heavy folded band forming the FRONT lip of the ring.</li>
+<li>Overlap the two ends and TUCK one end inside the fold/pocket of the other end so the band interlocks and holds — like clasping a paper napkin ring. Adjust until the ring is round and the leading band forms a clean circular front lip.</li>
+<li>Shape the ring so it is roughly cylindrical and truly circular. A very slight forward taper (front opening a couple of millimeters smaller than the rear) is optional and can help the nose lead, but is not required. Final ring is roughly 8-10 cm in diameter.</li>
+<li>Check the seam is tucked, not just overlapped, so it won&#x27;t pop open. Squeeze the band gently to firm up its curvature and make the rim truly circular.</li>
+<li>To launch: pinch the ring at the &#x27;V&#x27; between the two crown points (top of the band) with thumb and index finger, heavy band forward, and toss it level and straight ahead with a light, smooth push — do not whip it. It will glide flat, held true by the ring.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>US Letter 8.5 x 11 in (or A4) 80gsm; a slightly heavier 100gsm sheet holds the ring shape better</td></tr>
+<tr><th>wingspan</th><td>Ring diameter ~9 cm (the &#x27;span&#x27; is the full hoop circumference, ~28 cm)</td></tr>
+<tr><th>dihedral</th><td>0 deg — a closed axisymmetric ring has no dihedral; roll stability comes from circular symmetry, not wing angle</td></tr>
+<tr><th>aspect</th><td>Very low effective aspect ratio (~1, approximate); the closed loop caps the tips so it does not spawn the usual pair of strong trailing tip vortices</td></tr>
+<tr><th>C.G.</th><td>~30-35% of body length from the front rim; the double (optionally triple) 1/2-inch fold puts mass well ahead of the aerodynamic center</td></tr>
+<tr><th>throw</th><td>Level, smooth, medium-light forward push while pinching the crown &#x27;V&#x27;; spin is NOT required — a straight, level toss glides fine, and a tiny amount of spin off the fingers only adds a little gyroscopic axial stability</td></tr>
+<tr><th>speed</th><td>Slow to moderate — roughly 3-5 m/s</td></tr>
+<tr><th>glide</th><td>Smooth, straight, remarkably stable level glide; flies farther and truer than beginners expect, typically 5-10 m indoors</td></tr>
+<tr><th>behaviour</th><td>Self-stabilizing: the forward-CG heavy rim keeps the nose leading and the axisymmetric ring resists roll, yaw and tumble; resists stalling at low Reynolds number so it settles rather than dives</td></tr>
+</tbody></table>
+<div class="feat"><span>heavy multi-fold leading rim at the nose (forward CG)</span><span>closed annular wing — no free wingtips, no distinct trailing tip vortex</span><span>axisymmetric ring: 0 dihedral, roll/yaw self-stable</span><span>seam tucked, not just overlapped</span><span>throw pinch point at crown &#x27;V&#x27;</span><span>single ring from one folded sheet (not the two-hoop straw &#x27;Hoopster&#x27;)</span></div>
+<div class="fact"><b>field note</b>A hoop has no wingtips, so it can&#x27;t shed the two trailing tip vortices that make ordinary wings &#x27;leak&#x27; lift at the ends — the same closed-wing idea NASA and aircraft designers have studied on full-size ring-wing and box-wing planes to cut induced drag. Your paper donut is a pocket-sized version of that research.</div>
+<p class="method" style="margin-top:14px">origin — The single-sheet &#x27;Ring Wing Glider&#x27; is popularized by NASA JPL Education as a STEM activity (one letter-size sheet folded and curled into one ring). The annular (closed) wing concept itself traces to early-1900s aeronautics — e.g. the Blériot III (1906) tandem annular wings and Cedric Lee&#x27;s annular-wing aeroplanes (~1913) — and later NASA / Lockheed ring-wing and box-wing induced-drag studies. Note: this single-ring design is distinct from Science World&#x27;s &#x27;Hoopster&#x27;, which uses two paper hoops on a straw.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p7">
+<div class="plate-hd">
+<span class="pn">07</span><h2>The Harrier</h2>
+<span class="aka">a.k.a. Harrier Stunt Dart / Looping Glider</span>
+<span class="badge">best aerobatic looper (adjustable elevons)</span>
+<span class="pill" style="color:#B07908">medium</span>
+</div>
+<div class="plate-body">
+<p class="lead">Its looping ability comes from three things working together: a very forward CG (the nose is folded under itself two-to-three times, stacking mass ahead of the wing) which gives strong pitch stability and lets the tail carry a large up-trim without stalling; a low-aspect-ratio, moderately-loaded delta-ish wing that tolerates the high angle of attack of a loop without tip-stalling; and cut, adjustable trailing-edge elevons that add reflex (up-deflection) to create a nose-up pitching moment. Thrown hard and slightly up, the up-elevons plus forward CG convert that speed energy into a tight vertical loop; bend the elevons down and the same airframe reverts to a clean flat glide. The forward CG also keeps it recoverable — it noses back to level after the loop instead of tumbling.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Harrier (Aerobatic Loop Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="43.7" x2="125.0" y2="256.3" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 43.7 L134.0 116.1 L220.0 238.2 L179.3 247.3 L136.3 215.6 L136.3 256.3 L113.7 256.3 L113.7 215.6 L70.7 247.3 L30.0 238.2 L116.0 116.1 L125.0 43.7 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 107.0 L125.0 100.5 A6.5 6.5 0 0 1 131.5 107.0 Z" fill="#17232F"/><path d="M125.0 107.0 L125.0 113.5 A6.5 6.5 0 0 1 118.5 107.0 Z" fill="#17232F"/><circle cx="125.0" cy="107.0" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="110.0" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Harrier (Aerobatic Loop Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 99.3 L41.4 122.1 L64.2 129.7 L115.5 99.3 L172.5 91.7 L220.0 87.9 L220.0 80.3 L172.5 84.1 L115.5 87.9 L64.2 91.7 L41.4 87.9 L30.0 99.3 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Harrier (Aerobatic Loop Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="125.0" y1="55.0" x2="39.5" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="210.5" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="39.5" y1="112.0" x2="210.5" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="112.0" x2="68.0" y2="146.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="112.0" x2="182.0" y2="146.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="68.0" y1="146.2" x2="182.0" y2="146.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="112.0" x2="45.2" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="125.0" y1="112.0" x2="204.8" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="30.0" y1="235.5" x2="68.0" y2="235.5" stroke="#17232F" stroke-width="2.0"/><line x1="96.5" y1="235.5" x2="121.2" y2="235.5" stroke="#17232F" stroke-width="2.0"/><line x1="128.8" y1="235.5" x2="153.5" y2="235.5" stroke="#17232F" stroke-width="2.0"/><line x1="182.0" y1="235.5" x2="220.0" y2="235.5" stroke="#17232F" stroke-width="2.0"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with the sheet landscape (long edge at top). Fold in half left-to-right to crease the vertical centerline, then unfold flat. This centerline guides every later fold. (A landscape start is what gives the short, wide delta-dart planform; a portrait start would make a long narrow dart instead.)</li>
+<li>Fold the two top corners down to the centerline so their inner edges meet, forming a large triangular point at the top (classic dart nose).</li>
+<li>Fold that whole triangular tip straight down, so its point reaches to about 25 mm (1 in) above the bottom edge. This buries mass low and forward — the start of the heavy nose.</li>
+<li>Fold the new top corners down to the centerline again. Small triangles will overhang the flap you made in step 3 — this is the second nose layer.</li>
+<li>Fold the small triangular flap (from step 3) that now sticks out upward, up and over the corners of step 4. This is the built-in lock that traps all the nose layers together and keeps the folds from opening in flight.</li>
+<li>Turn the whole model over and fold it in half along the original centerline (mountain fold), so all the nose folds are on the outside and the keel is on the fold. The nose stack should be a tight, heavy wedge.</li>
+<li>Fold the first wing down: bring the top (spine) edge down to meet the bottom edge of the body, so the wing is horizontal. Crease firmly. The wing root fold sits about 15-20 mm up from the keel bottom.</li>
+<li>Flip and repeat step 7 on the other side so both wings match. Creases must be at exactly the same height for symmetry.</li>
+<li>Open the wings out flat and set a slight upward dihedral (wingtips ~10 mm higher than roots) for roll stability during the loop&#x27;s inverted portion.</li>
+<li>Cut two short slits (~15 mm) into the trailing edge of each wing, one near the tip and one nearer the root, to free one elevon tab on each wing (two tabs total). Do not cut into the keel.</li>
+<li>Bend both elevon tabs UP about 20-30 degrees for looping. Equal deflection on both wings keeps loops vertical; add a touch more up on one side to spiral.</li>
+<li>Trim: throw hard and slightly nose-up. If it won&#x27;t complete the loop, bend elevons further up; if the loop is too tight or it stalls/tumbles, bend them down. For a flat glide instead, flatten the elevons to near-neutral.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>US Letter (8.5x11&quot;) or A4, 70-90 gsm. Standard copy paper is ideal — light enough to loop, stiff enough to hold the reflexed elevons.</td></tr>
+<tr><th>wingspan</th><td>~140 mm (folded from a Letter/A4 sheet started landscape); each wing ~60 mm semi-span from the keel</td></tr>
+<tr><th>dihedral</th><td>Slight positive, ~8-12 degrees (tips ~10 mm above roots) for roll recovery through the loop</td></tr>
+<tr><th>aspect</th><td>Low, ~2.0-2.5 (short, deep delta-dart wing) — resists tip stall at the high AoA a loop demands</td></tr>
+<tr><th>C.G.</th><td>Well forward: ~25-30% of body length from the nose, set by the multi-layer folded nose stack</td></tr>
+<tr><th>throw</th><td>Firm, fast throw angled 20-40 degrees nose-up for loops; level and gentle for a straight glide</td></tr>
+<tr><th>speed</th><td>Medium-to-fast — the loop is speed-driven, needs energy to pull the vertical circle</td></tr>
+<tr><th>glide</th><td>With elevons flattened, a clean moderate-distance glide (5-8 m indoors); heavy nose keeps it tracking level</td></tr>
+<tr><th>behaviour</th><td>Elevons up + hard throw = one or more tight vertical loops that recover to level flight thanks to the forward CG; asymmetric elevon adds barrel/spiral; elevons neutral = stable dart glide</td></tr>
+</tbody></table>
+<div class="feat"><span>heavy multi-layer folded nose (forward CG)</span><span>built-in nose lock tab</span><span>low-aspect delta-dart wing</span><span>slight upward dihedral</span><span>cut &amp; up-bent elevons at trailing edge</span><span>reflex (up-elevon) for the loop</span></div>
+<div class="fact"><b>field note</b>The Harrier&#x27;s looping trick is the same physics a full-size aerobatic aircraft uses — you trade forward airspeed for a vertical circle. Because the folded nose puts the CG so far forward, the plane is over-stabilized in pitch, so it needs those exaggerated up-bent elevons just to rotate into the loop, and that same stability is what snaps it back to level flight on the way out instead of tumbling.</div>
+<p class="method" style="margin-top:14px">origin — Popular modern folk design widely documented on Instructables, Paper Plane Depot and Fold&#x27;N&#x27;Fly; a dart/glider hybrid in the lineage of the classic &quot;Loop&quot; stunt plane (Fold&#x27;N&#x27;Fly hosts a cut-elevon &#x27;Loop&#x27; plane, and credited relatives include Carmel Morris&#x27;s &#x27;Ninja Super Looper&#x27;). No single universally credited inventor for this generic folk variant.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p8">
+<div class="plate-hd">
+<span class="pn">08</span><h2>The Returning Boomerang Glider</h2>
+<span class="aka">a.k.a. Comeback Plane / Loop-Back Glider</span>
+<span class="badge">best returning flight (circles back to the thrower)</span>
+<span class="pill" style="color:#B07908">medium</span>
+</div>
+<div class="plate-body">
+<p class="lead">The return is a trimmed climbing loop, not real boomerang gyroscopics. A hard ~40-degree upward throw gives it enough kinetic energy to pull vertical; slight up-elevator (raised trailing edge) forces a continuous pitch-up so the flight path arcs over the top. Strong ~15-degree dihedral plus upturned wingtip winglets make it extremely roll-stable and add a touch of yaw damping, so instead of spiraling off it holds a tight, repeatable loop. CG sits ~25% back from the leading edge — far enough forward to be pitch-stable, far enough aft that modest elevator deflection commands the big pitch rate needed to close the loop. Low wing loading (light paper, broad wing) and the low-Reynolds regime (~30,000) mean it flies slowly enough that the loop diameter stays small (roughly 4-6 m), bringing it back to the thrower&#x27;s hand.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Returning Boomerang Glider" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="46.6" x2="125.0" y2="253.4" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M125.0 46.6 L133.4 93.0 L220.0 156.3 L220.0 173.2 L137.7 169.0 L137.7 253.4 L112.3 253.4 L112.3 169.0 L30.0 173.2 L30.0 156.3 L116.6 93.0 L125.0 46.6 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 118.3 L125.0 111.8 A6.5 6.5 0 0 1 131.5 118.3 Z" fill="#17232F"/><path d="M125.0 118.3 L125.0 124.8 A6.5 6.5 0 0 1 118.5 118.3 Z" fill="#17232F"/><circle cx="125.0" cy="118.3" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="121.3" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Returning Boomerang Glider" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 114.5 L64.2 99.3 L87.0 93.6 L134.5 91.7 L197.2 89.8 L220.0 76.5 L220.0 122.1 L166.8 129.7 L106.0 133.5 L60.4 131.6 L30.0 114.5 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Returning Boomerang Glider" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="125.0" y1="55.0" x2="45.2" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="204.8" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="45.2" y1="112.0" x2="204.8" y2="112.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="85.4" x2="71.8" y2="123.4" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="85.4" x2="178.2" y2="123.4" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="55.0" x2="125.0" y2="245.0" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="125.0" y1="131.0" x2="49.0" y2="165.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="125.0" y1="131.0" x2="201.0" y2="165.2" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="45.2" y1="153.8" x2="45.2" y2="195.6" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="204.8" y1="153.8" x2="204.8" y2="195.6" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="87.0" y1="229.8" x2="109.8" y2="229.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="140.2" y1="229.8" x2="163.0" y2="229.8" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with the sheet portrait (short edge at top). Fold in half lengthwise (left edge to right edge) to set the center crease, then unfold. This centerline is your fuselage reference.</li>
+<li>Fold the top-left and top-right corners down to meet the center crease, forming a symmetric triangular nose. Crease sharply.</li>
+<li>Fold the resulting triangular tip straight down along the horizontal line where the two folded flaps end, so the point lies flat on the body (this buries weight in the nose to set CG forward).</li>
+<li>Fold the new top-left and top-right slanted edges in to the center crease again, making a slimmer, sharper nose. A small triangle of the tucked flap will stick out at the bottom of these folds — fold that little triangle up over them to lock the nose closed.</li>
+<li>Fold the whole plane in half along the original centerline, folded flaps facing OUT (valley-fold toward you), so the keel is on the underside and the nose points forward.</li>
+<li>Make the wings: fold the top layer down so the wing&#x27;s leading edge runs parallel to the bottom keel, leaving a keel/fuselage about 2.5 cm (1 in) tall. Angle the fold so the rear of the wing sits slightly higher than the front. Flip over and fold the second wing to match exactly.</li>
+<li>Open the plane to a shallow Y. Set a positive dihedral: both wings angled up about 15 degrees from horizontal so the tips ride above the keel.</li>
+<li>Add winglets/stabilizers: at each wingtip fold up a vertical tab about 1-1.5 cm (0.5 in) tall along a line parallel to the fuselage. Keep the two tabs equal — these give directional stability and tighten the loop.</li>
+<li>Trim the elevators: at the rear inner edge of each wing bend a small tab (about 1 cm) gently UP. Equal on both sides — this up-elevator is what pulls the plane into its loop.</li>
+<li>Sight down the nose and confirm symmetry: wings level with equal dihedral, both winglets vertical, both elevators bent up the same amount, no warps or twists. Any asymmetry turns the clean loop into a lopsided spiral.</li>
+<li>Throw test: grip the keel under the CG, and launch firmly at about a 40-degree upward angle. If it loops too early, reduce elevator; if it never comes over the top, add a touch more elevator or throw harder.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>A4 or US Letter, 15-20 lb / 70-80 gsm copy paper (light enough to curve; avoid cardstock)</td></tr>
+<tr><th>wingspan</th><td>approx. 20 cm (each wing ~9 cm semi-span from a folded A4)</td></tr>
+<tr><th>dihedral</th><td>~15 degrees (strong, for roll stability and a controlled loop)</td></tr>
+<tr><th>aspect</th><td>low, ~4:1 (broad wing, short span typical of a folded dart-glider hybrid)</td></tr>
+<tr><th>C.G.</th><td>~25% of wing chord back from the leading edge, held forward by the multi-layer folded nose</td></tr>
+<tr><th>throw</th><td>Firm, at roughly a 40-degree upward angle, released from below the CG with a slight wrist flick; more energy than a normal glider throw</td></tr>
+<tr><th>speed</th><td>Moderate-to-fast on launch, bleeding to slow at the top of the loop</td></tr>
+<tr><th>glide</th><td>Not a straight glider — it climbs, arcs over the top, and descends back toward the thrower; loop diameter roughly 4-6 m (15-20 ft)</td></tr>
+<tr><th>behaviour</th><td>Climbs steeply, pitches up into a vertical loop, comes over the top and returns to land near or in the thrower&#x27;s hand. Tune with elevator and throw strength; add tiny asymmetric elevator to bias the return left or right into your catching hand.</td></tr>
+</tbody></table>
+<div class="feat"><span>upturned wingtip winglets (end-plate stabilizers)</span><span>strong ~15° dihedral</span><span>raised trailing-edge elevators (up-trim for the loop)</span><span>heavy multi-layer folded nose (CG forward)</span><span>deep keel for yaw stability</span></div>
+<div class="fact"><b>field note</b>This plane isn&#x27;t a true boomerang — real boomerangs return via gyroscopic precession of a spinning airfoil. The paper &#x27;boomerang glider&#x27; cheats: it&#x27;s simply a very roll-stable glider trimmed with up-elevator and thrown hard enough vertically that its natural loop happens to end right back where you&#x27;re standing.</div>
+<p class="method" style="margin-top:14px">origin — Folk/hobbyist design popularized by paper-plane sites (Fold &#x27;N Fly, WonderHowTo). The &quot;returning glider&quot; trick — hard upward launch + upturned wingtips + up-elevator — is a widely taught schoolyard variant rather than a single named inventor&#x27;s plane.</p>
+</div></div>
+</div></section>
+<section class="plate" id="p9">
+<div class="plate-hd">
+<span class="pn">09</span><h2>The Tumblewing</h2>
+<span class="aka">a.k.a. Tumbling Wing, Rotor Wing, Air Surfer, John Collins&#x27; Tumblewing</span>
+<span class="badge">most imaginative / hovers on ridge lift (walkalong sustained flight)</span>
+<span class="pill" style="color:#2E7D5B">easy</span>
+</div>
+<div class="plate-body">
+<p class="lead">The tumblewing wins the &quot;imaginative&quot; category because it does not glide at all - it autorotates. Cut low across the wind, the wing continuously spins about its long (spanwise) axis, alternately flying and stalling each half-turn so that lift is generated Flettner/Magnus-style like a spinning rotor rather than by a fixed airfoil. Because it carries zero ballast, its wing loading is extraordinarily low (its flight is &quot;more akin to confetti&quot;), so a gentle updraft can support it. That is what makes it a walkalong glider: the pilot walks behind it holding a paddle tilted ~30 degrees, and the ridge lift (deflected updraft) off the moving board sustains the tumbling wing indefinitely. The tiny chord and slow speed put it at very low Reynolds number where the alternating-stall rotor mechanism, not smooth attached flow, is what keeps it aloft. Upturned winglets at each end kill spanwise drift and lock the spin axis straight so it tumbles in place instead of veering off.</p>
+<div class="drawings">
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Plan view — The Tumblewing (Walkalong Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><line x1="125.0" y1="127.4" x2="125.0" y2="172.6" stroke="#9AAAB9" stroke-width="1" stroke-dasharray="2 4"/><path d="M39.0 131.9 L211.0 131.9 L211.0 127.4 L220.0 127.4 L220.0 172.6 L211.0 172.6 L211.0 168.1 L39.0 168.1 L39.0 172.6 L30.0 172.6 L30.0 127.4 L39.0 127.4 L39.0 131.9 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><path d="M125.0 150.0 L125.0 143.5 A6.5 6.5 0 0 1 131.5 150.0 Z" fill="#17232F"/><path d="M125.0 150.0 L125.0 156.5 A6.5 6.5 0 0 1 118.5 150.0 Z" fill="#17232F"/><circle cx="125.0" cy="150.0" r="6.5" fill="none" stroke="#17232F" stroke-width="1.2"/><text x="136.0" y="153.0" class="ann">CG</text><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">PLAN / top view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 210" width="100%" role="img" aria-label="Side elevation — The Tumblewing (Walkalong Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 118.3 L45.2 103.1 L68.0 95.5 L125.0 91.7 L182.0 95.5 L204.8 103.1 L220.0 87.9 L220.0 110.7 L204.8 122.1 L125.0 114.5 L45.2 122.1 L30.0 118.3 Z" fill="#DCE5EE" stroke="#17232F" stroke-width="1.6" stroke-linejoin="round"/><text x="16" y="24" class="ann">◄ nose</text><line x1="14" y1="180" x2="236" y2="180" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="197" class="cap">ELEVATION / side view</text></svg></div>
+<div class="panel"><svg viewBox="0 0 250 300" width="100%" role="img" aria-label="Crease pattern — The Tumblewing (Walkalong Glider)" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><path d="M30.0 55.0 L220.0 55.0 L220.0 245.0 L30.0 245.0 Z" fill="#FFFFFF" stroke="#17232F" stroke-width="1.4"/><line x1="125.0" y1="131.0" x2="125.0" y2="169.0" stroke="#9AAAB9" stroke-width="1.4" stroke-dasharray="1 4"/><line x1="52.8" y1="131.0" x2="52.8" y2="169.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="197.2" y1="131.0" x2="197.2" y2="169.0" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="52.8" y1="136.7" x2="197.2" y2="136.7" stroke="#C0392B" stroke-width="1.4" stroke-dasharray="7 3 1.5 3"/><line x1="52.8" y1="163.3" x2="197.2" y2="163.3" stroke="#2E6FB7" stroke-width="1.4" stroke-dasharray="5 3"/><line x1="14" y1="270" x2="236" y2="270" stroke="#17232F" stroke-width="0.6" opacity="0.35"/><text x="14" y="287" class="cap">CREASE PATTERN / flat sheet</text></svg></div>
+</div>
+<div class="cols"><div>
+<h3 class="sub">fold sequence</h3><ol class="folds">
+<li>Start with a lightweight paper strip about 4 cm wide and 16 cm long, laid flat in landscape (long edges top and bottom, short ends left and right).</li>
+<li>Fold up the left short end: bring the left edge up about 1 cm from the end, making a small vertical winglet. Crease sharply.</li>
+<li>Fold up the right short end the same way, 1 cm in, so both ends now have matching winglets standing straight up at 90 degrees. These are your stabilizing fins.</li>
+<li>Lay the strip flat again (winglets pointing up). Take the FRONT long edge (the leading edge that will move into the wind) and fold a thin ~5 mm hem DOWNWARD (mountain fold, away from you) along its full length.</li>
+<li>Take the BACK long edge (trailing edge) and fold a thin ~5 mm hem UPWARD (valley fold, toward you) along its full length. Front-down / back-up is the key to setting the tumbling rotation.</li>
+<li>Optional: gently curve the whole strip into a very slight spanwise arc so the middle bows a hair - this helps keep the spin axis straight. Do not crush the curve; it should relax back nearly flat.</li>
+<li>Check symmetry: hold it by the two winglets and sight down the span. The front (down) hem and back (up) hem must be even along the whole length, with no twist.</li>
+<li>Launch: hold the wing by its BACK (up-bent) trailing edge, winglets pointing up and the front-down hem facing away from you, then simply let go so it falls forward and away, tumbling leading-edge-over immediately.</li>
+<li>Fly it: hold a stiff cardboard paddle upright, tilted forward ~30 degrees, positioned just below and behind the tumbling wing. Walk forward at a steady pace so the ridge lift off the paddle carries the wing on a cushion of air in front of you.</li>
+</ol></div><div>
+<h3 class="sub">specification</h3><table class="spec"><tbody>
+<tr><th>paper</th><td>Lightest paper you can find: phonebook paper, newsprint, or florist tissue (approx 10-20 gsm). Cut a strip ~4 cm x 16 cm (aspect ratio roughly 1:4). Standard 80 gsm A4 is too heavy - it will not float.</td></tr>
+<tr><th>wingspan</th><td>16 cm span (the long dimension) x 4 cm chord (the short dimension); winglets ~1 cm tall at each tip</td></tr>
+<tr><th>dihedral</th><td>none in the fixed sense - a very slight spanwise arc (a few degrees) to keep the spin axis straight; the wing rotates continuously about its spanwise axis</td></tr>
+<tr><th>aspect</th><td>planform aspect ratio roughly 1:4 (span:chord ~4). This is a rotor wing, so effective aspect ratio is not the operative parameter - spin rate and wing loading are</td></tr>
+<tr><th>C.G.</th><td>CG sits on the centerline at the geometric center of the strip; there is deliberately NO nose ballast, giving near-zero wing loading</td></tr>
+<tr><th>throw</th><td>No throw. Hold it by the back up-bent edge and release with the leading (front-down) edge facing away so it begins tumbling forward immediately, then bring the paddle in behind it.</td></tr>
+<tr><th>speed</th><td>Very slow - walking pace, roughly 0.5 to 1 m/s. The pilot&#x27;s walking speed sets the airspeed.</td></tr>
+<tr><th>glide</th><td>Effectively infinite when piloted: it does not glide down but hovers/climbs on the paddle&#x27;s ridge lift and can stay aloft as long as the pilot keeps walking. Unpowered, it tumbles gently to the floor in a few seconds.</td></tr>
+<tr><th>behaviour</th><td>Continuous forward tumbling (rotation about the spanwise axis, leading edge tucking down and under) that translates the wing horizontally into the wind. On a paddle&#x27;s updraft it floats level or climbs; steer by tilting and moving the paddle left/right. Extremely sensitive to drafts and paper weight.</td></tr>
+</tbody></table>
+<div class="feat"><span>front (leading) long edge folded DOWN</span><span>rear (trailing) long edge folded UP</span><span>upright winglets at both tips</span><span>no nose ballast - near-zero wing loading</span><span>tumbles/spins about spanwise axis</span><span>flown on paddle ridge lift</span></div>
+<div class="fact"><b>field note</b>Unlike every other paper airplane, a tumblewing is meant to NEVER touch the ground once launched - a skilled pilot can walk it across an entire room, up staircases, and even loop it around their own body, all powered by nothing but the sheet of cardboard they wave behind it.</div>
+<p class="method" style="margin-top:14px">origin — Paper version designed by John Collins (&quot;The Paper Airplane Guy&quot;), published in his 2004 book Fantastic Flight (Ten Speed Press); popularized as a walkalong glider by Slater Harrison (ScienceToyMaker.org). The walkalong-glider concept dates to Joseph E. Grant&#x27;s patent, US 2,718,092, granted 1955.</p>
+</div></div>
+</div></section>
+<div class="section-label">plates not yet drawn</div>
+<div class="future">
+<div class="ghost"><div class="n">proposed · 01</div><h4>Maximum time-aloft floater (vertical-throw hang-time / Guinness discipline)</h4><p>The competitive &#x27;longest time aloft&#x27; record (Takuo Toda&#x27;s ~29s) is its own discipline: thrown near-vertically at high speed, then optimized purely for slowest sink rate on the way down. It is physically distinct from #2 distance (horizontal range), #3 cruiser (gentle hand-launched glide), and #4 glide ratio (horizontal distance per height). A definitive field guide should include the airplane engineered to stay up the longest, not go the farthest.</p></div>
+<div class="ghost"><div class="n">proposed · 02</div><h4>Catapult / rubber-band-launched glider (stored-energy launch)</h4><p>Every one of the 9 designs is hand-thrown. A whole iconic class uses an external energy source — a rubber-band hook and slingshot, or a launch stick/catapult — to reach launch speeds and altitudes impossible by arm alone, then transitions to a long glide. This is orthogonal to all existing axes (it changes the launch method, not just the airframe) and is a staple of contest and hobby flying.</p></div>
+<div class="ghost"><div class="n">proposed · 03</div><h4>Autorotating helicopter / maple-seed spinner (whirlybird)</h4><p>The ring-wing novelty (#6) still generates lift by moving forward through air. A paper autorotator (dropped &#x27;helicopter&#x27; or maple-seed samara design) uses none of that — it spins on descent, converting gravity into rotation for a controlled slow fall with zero forward flight. It is the one genuinely distinct flight regime (rotary autorotation) not represented anywhere in the current field, and its &#x27;best&#x27; variant would round out coverage of how paper can stay airborne.</p></div>
+</div>
+<div class="foot">
+<h3 class="sub">how this guide was made</h3>
+<p class="method">Nine designs were each researched by a dedicated agent, then adversarially verified — a second agent mentally re-folded every sequence to confirm it produces the drawn shape, and fact-checked designers, origins, and records. The distance-record chain was corrected in the process: John Collins&rsquo; glider &ldquo;Suzanne&rdquo; (thrown by Joe Ayoob, 69.14 m / 226 ft 10 in, 2012) was the first glider to hold the record, later broken to 77.13 m (2022, Chee Yie Jian / Kim Kyu Tae) and then to the current 88.31 m (Dec 2022, Boeing engineers Ruble, Jensen &amp; Erickson). Drawings are generated directly from each verified design&rsquo;s geometry.</p>
+<h3 class="sub">references</h3>
+<p class="method">Fold&rsquo;N&rsquo;Fly (foldnfly.com) · NASA JPL &ldquo;Ring Wing Glider&rdquo; activity · John M. Collins, <em>The New World Champion Paper Airplane Book</em> · Slater Harrison / ScienceToyMaker (tumblewing &amp; walkalong gliding) · Art of Manliness (Bulldog Dart) · Guinness World Records (distance).</p>
+</div>
+</div>

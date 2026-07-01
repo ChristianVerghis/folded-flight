@@ -1,0 +1,2354 @@
+{
+ "concepts": [
+  {
+   "build_difficulty": "hard",
+   "drone_type": "Conventional pusher fixed-wing (single aft prop) with a V-tail on an aft carbon boom and a dense structural nose bay \u2014 battery-as-nose-mass layout",
+   "name": "Keelhaul",
+   "one_liner": "The battery isn't cargo \u2014 it's the nose mass that helps trim the plane, and the tail makes it stable.",
+   "paper_lineage": "Needle Dart and Nakamura Lock, borrowed for exactly one principle: concentrate the densest mass forward so component placement (not dead ballast) sets the CG. Explicitly NOT borrowed: their tiny low-aspect swept-delta wings and brute wing loading \u2014 those are low-Re artefacts that would hurt a real drone. NOTE: unlike those tailless darts, Keelhaul is a TAILED aircraft, so its stability is governed by the aircraft neutral point (wing + V-tail together), not by the wing aerodynamic centre alone.",
+   "principle": "Static pitch stability of a TAILED aircraft comes from the CG lying ahead of the aircraft NEUTRAL POINT (NP), where the NP is set by the combined wing+tail contribution and sits well aft of the wing aerodynamic centre. Mass placement sets where the CG lands; the wing/tail geometry sets where the NP lands; the gap between them is the static margin. This gap is pure rigid-body statics and is Reynolds-independent. Keelhaul uses the single densest object aboard \u2014 the LiPo \u2014 as forward mass so the CG can be placed at/ahead of the wing AC and comfortably ahead of the NP without bolting on dead lead. Stability is designed in through CG-vs-NP placement; the sliding battery is the fine-trim knob.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "The transferable half \u2014 forward mass placement to set the CG, and CG-ahead-of-NP for a positive static margin \u2014 is pure rigid-body statics and is completely Reynolds-independent; it works identically at paper-plane Re ~30k and at this drone's cruise Re ~192k (V=16 m/s, MAC=0.18 m: 16*0.18/1.5e-5 = 192,000). Correction to the original framing: static margin is (NP - CG)/MAC for this TAILED layout, not (wing-AC - CG); the wing AC is only the neutral point for a tailless wing, which this is not. The NON-transferable half is everything else the paper darts rely on: their sharp swept-delta leading edges and stubby AR~1 wings tolerate separation only because at Re~30k the boundary layer is forgiving and glide performance barely matters. At Re~2e5 that same low-AR, high-wing-loading dart is a draggy, fast, short-endurance brick. So Keelhaul keeps the forward-mass idea but flips the wing: AR~5.8, moderate wing loading (~50 g/dm2), a cambered SD7037-class section that behaves well at 1e5-3e5. Verdict partially-scales: the mass/CG principle scales fully; the paper aerodynamics do not.",
+   "realization_3dprint": "Fuselage pod printed in LW-PLA (foaming PLA, ~0.4-0.5 g/cm3 effective) with 2-perimeter walls and 8-10% gyroid infill for a light stiff shell. Nose bay is the exception: a solid-walled PETG cradle (3 perimeters, no foaming) that the LiPo slides into on a friction fit against a printed hard bulkhead at the tip \u2014 PETG for impact toughness and heat tolerance, its density used as useful forward mass. A single 8 mm pultruded carbon tube is the spanwise main spar, bonded into LW-PLA ribs/skin (solid-ish printed D-box leading edge, sparse trailing edge). A 6 mm carbon boom carries the pusher motor and V-tail aft. Control surfaces (2 ruddervators; elevon-style mixing, no separate ailerons) use INTEGRAL thin-web print-in-place hinges printed flat with the surface. IMPORTANT CORRECTION: a TPU living hinge cannot be co-printed inside a PLA/PETG surface on a single nozzle \u2014 so either (a) print the hinge as a ~0.4 mm integral PLA/PETG web (simple, single-nozzle, but fatigues and eventually needs reprint), or (b) use a genuine multi-material printer (2 extruders or filament-switching) to lay TPU webs into the PETG surfaces for durable flex hinges. Option (b) is assumed here and is why build difficulty is 'hard'. Servos sit in PETG pockets; wing halves join over the carbon spar with a PETG saddle + M3 nylon bolts for field disassembly.",
+   "weighted_components": "The layout is organised so the CG sits at/ahead of the wing aerodynamic centre AND comfortably ahead of the aircraft neutral point. From the diagram the wing root chord runs y=38 (LE) to y=52 (TE), so the wing AC (0.25c) is at y=41.5, NOT y~47 as originally misstated. The aircraft NP \u2014 wing plus the aft V-tail on the ~0.5 m boom \u2014 sits further aft, estimated around y~50-52 (tail volume ~0.4). Target CG is y~41 (right at the wing AC), which places it well ahead of the NP and yields a healthy static margin on the order of ~10-20% MAC once the tail is properly accounted for. To land the CG there without dead lead, the LiPo (heavy) is the primary forward mass in the nose bay at y~12, while the pusher motor is kept aft at y~93 as a deliberate counterweight that lengthens the moment arm, so a modest fore/aft battery slide in the PETG cradle tunes the CG (and hence static margin) precisely. Flight controller and GPS (medium/light) sit just behind the battery (y~26, y~34). Every forward gram does structural, electrical AND balance duty. The deep keel-like pod ahead of the CG contributes a little fixed side area; note it is FORWARD of the CG so it is slightly DESTABILIZING in yaw \u2014 the V-tail's vertical projection aft of the CG is what actually provides yaw stability and damping.",
+   "efficiency_gain": "Two related benefits from one decision (correct CG via component placement); they are not fully independent, so do not simply add them. (1) Mass: using the dense LiPo as forward mass avoids the dead nose ballast that a badly-planned tail-heavy build would need \u2014 this is good practice rather than a novel efficiency, so treat it as 'no wasted grams' not a guaranteed 5-8% endurance win. (2) Trim drag: a correct static margin lets the aircraft cruise near zero elevator/ruddervator deflection, so the tail carries almost no trim load. Against a poorly-trimmed baseline this is worth on the order of a few percent of cruise power (optimistically up to ~3-6%); at the low cruise CL~0.31 the absolute trim drag is small, so this is a modest, not dramatic, gain. Net: a clean, stable, hands-off cruise for zero added ballast hardware \u2014 a sensible design, not a breakthrough.",
+   "tradeoffs": "Forward CG plus aft pusher motor make the plane nose-heavy on the ground and demand a firm hand-launch or bungee at Vstall ~8.6 m/s, not a lazy toss. The deep keel pod adds wetted area/parasitic drag and, being forward of the CG, is mildly yaw-destabilizing \u2014 the V-tail must be sized to win that argument. LW-PLA is stiff-per-gram but brittle in a hard nose-in; the PETG cradle protects the battery but the LW-PLA wing skin will crack in a bad crash (cheap to reprint). Multi-material TPU hinges need a capable printer; the single-nozzle PLA-web fallback fatigues. Sliding-battery CG tuning is a genuine advantage but demands the builder actually balance it: get it tail-heavy (CG behind the NP) and the static margin goes negative and pitch becomes divergent. Realistic AUW is 950-1050 g depending on print settings, not a guaranteed 950 g. Print time ~18-24 h across parts.",
+   "key_specs": {
+    "span": "1.05 m",
+    "aspect": "AR ~5.8 (area ~0.19 m^2, MAC ~0.18 m)",
+    "auw": "~950-1050 g (LiPo ~230 g, ~22-24% of AUW as forward mass)",
+    "cruise": "16 m/s @ Re ~192,000, near-zero trim; CL_cruise ~0.31, L/D ~8-9",
+    "hover": "N/A \u2014 fixed-wing, no hover; Vstall ~8.6 m/s (CLmax ~1.08, SD7037-class)"
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 54,
+      "y": 8
+     },
+     {
+      "x": 55,
+      "y": 30
+     },
+     {
+      "x": 58,
+      "y": 38
+     },
+     {
+      "x": 92,
+      "y": 44
+     },
+     {
+      "x": 95,
+      "y": 50
+     },
+     {
+      "x": 92,
+      "y": 52
+     },
+     {
+      "x": 58,
+      "y": 52
+     },
+     {
+      "x": 56,
+      "y": 78
+     },
+     {
+      "x": 62,
+      "y": 90
+     },
+     {
+      "x": 54,
+      "y": 92
+     },
+     {
+      "x": 50,
+      "y": 88
+     },
+     {
+      "x": 46,
+      "y": 92
+     },
+     {
+      "x": 38,
+      "y": 90
+     },
+     {
+      "x": 44,
+      "y": 78
+     },
+     {
+      "x": 42,
+      "y": 52
+     },
+     {
+      "x": 8,
+      "y": 52
+     },
+     {
+      "x": 5,
+      "y": 50
+     },
+     {
+      "x": 8,
+      "y": 44
+     },
+     {
+      "x": 42,
+      "y": 38
+     },
+     {
+      "x": 45,
+      "y": 30
+     },
+     {
+      "x": 46,
+      "y": 8
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 18
+     },
+     {
+      "x": 8,
+      "y": 30
+     },
+     {
+      "x": 22,
+      "y": 34
+     },
+     {
+      "x": 40,
+      "y": 40
+     },
+     {
+      "x": 44,
+      "y": 52
+     },
+     {
+      "x": 56,
+      "y": 52
+     },
+     {
+      "x": 60,
+      "y": 40
+     },
+     {
+      "x": 85,
+      "y": 34
+     },
+     {
+      "x": 97,
+      "y": 48
+     },
+     {
+      "x": 100,
+      "y": 46
+     },
+     {
+      "x": 95,
+      "y": 30
+     },
+     {
+      "x": 90,
+      "y": 22
+     },
+     {
+      "x": 60,
+      "y": 18
+     },
+     {
+      "x": 30,
+      "y": 14
+     },
+     {
+      "x": 10,
+      "y": 12
+     }
+    ],
+    "components": [
+     {
+      "label": "LiPo battery (nose mass)",
+      "x": 50,
+      "y": 12,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 26,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 34,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Ruddervator servo L",
+      "x": 40,
+      "y": 50,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Ruddervator servo R",
+      "x": 60,
+      "y": 50,
+      "mass_hint": "light"
+     },
+     {
+      "label": "ESC",
+      "x": 50,
+      "y": 58,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Pusher motor + prop",
+      "x": 50,
+      "y": 93,
+      "mass_hint": "heavy"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 41
+    }
+   }
+  },
+  {
+   "name": "Albatross-12",
+   "one_liner": "A 1.8 m glider-grade printed wing that hovers on outrigger rotors, then cruises at ~13-14:1 for ~120 km range on a real 90 Wh pack.",
+   "paper_lineage": "Sea Glider / Edmond Hui Paperang high-aspect cruise wing. Borrowed principle: glide ratio equals L/D, and at cruise the dominant loss is induced drag, whose coefficient falls in proportion to aspect ratio at fixed wing area \u2014 so a long, thin, low-wing-loading wing trims to a slow, flat, efficient glide. Also borrows the Sea Glider's rolled leading-edge hem idea, reinterpreted as a carbon spar bonded at the quarter-chord that both stiffens the LE and helps pull CG forward toward the wing's quarter-chord.",
+   "drone_type": "High-aspect-ratio quadplane VTOL (fixed 4-rotor lift-boom + pusher cruise)",
+   "principle": "Induced drag coefficient CDi = CL^2 / (pi*e*AR), so raising AR at constant area directly cuts the dominant cruise loss and lifts L/D. A slender, low-wing-loading wing sinks slowly and cruises flat. The transferable idea is pure planform efficiency, not a low-Re folding trick.",
+   "reynolds_verdict": "scales",
+   "reynolds_note": "This is the honest case where the paper trick DOES transfer, because the underlying lever \u2014 induced drag falling with aspect ratio \u2014 is Reynolds-independent inviscid geometry, not a viscous low-Re effect. At mean chord 150 mm and cruise 13.3 m/s, chord Reynolds is ~133,000 \u2014 comfortably ABOVE the paper regime (~30-50k), which helps: flow stays attached more readily, so we do NOT inherit the Sea Glider's fussy laminar-separation behaviour. What does NOT transfer is the paper plane's razor-sharp folded leading edge (fine at Re~30k, but at Re>100k a small nose radius and a real low-camber airfoil, e.g. a 9% Selig/Clark-Y-ish profile, give lower drag and gentler stall). Net: the aspect-ratio payoff is real and even cleaner at drone scale; we use a proper printed airfoil instead of a folded crease. Caveat: the AR benefit acts only on INDUCED drag \u2014 it does nothing for the parasite drag of four exposed lift motors, booms and clamps, which dominates this airframe's real CD0.",
+   "realization_3dprint": "Wing skin printed in LW-PLA (foaming lightweight PLA) at 0.4 mm single-perimeter walls, in ~250 mm spanwise segments keyed together over a full-length pultruded carbon spar. Spar: 10 mm OD x 8 mm ID carbon tube running the full 1.8 m at the wing quarter-chord (the primary bending member \u2014 LW-PLA alone cannot carry the ~1 g bending of a 1.8 m span). A secondary 6 mm carbon tube at ~60% chord resists torsion. Fuselage pod and the two lift-rotor booms: PETG for toughness and UV/heat tolerance where motors dump heat. Aileron and ruddervator hinges: print-in-place TPU living hinges (95A), a 0.6 mm TPU web co-printed as the trailing-edge skin so there are no metal pins to fatigue. Rotor booms clamp to the spar with PETG saddle clamps + M3 bolts so the outboard track is adjustable. Motor mounts: PETG with brass heat-set inserts. Nose cone and battery tray: PETG (impact + payload security). Estimated printed structure ~650 g, spars ~180 g. This structural mass budget is realistic for a 1.8 m span; the fantasy in the original was the battery, not the print.",
+   "weighted_components": "CG must sit AHEAD of the aircraft NEUTRAL POINT (NP) for positive static margin. Two references matter and were conflated in the original: (a) the WING aerodynamic centre at the wing quarter-chord (y=41.5 in the box), and (b) the whole-aircraft NP, which sits AFT of the wing AC because the tail/ruddervator adds lift-curve slope at a moment arm. CG is placed at y=39.8 \u2014 about 12% MAC ahead of the wing AC, and therefore comfortably ahead of the NP by MORE than that (a healthy ~10-18% static margin against the true NP; safely stable). We load heavy items forward: the battery (heaviest single item, ~500 g 6S LiPo, ~90 Wh) rides in the nose tray well forward of AC and is the primary CG-trim tool \u2014 slide it fore/aft on rails to null pitch trim after any payload change. The camera/gimbal payload and GPS sit just behind the nose, still ahead of AC. The flight controller sits near CG so IMU rotations stay clean. The rear pusher motor and ESC sit at the tail (y~92), their moment balancing the nose mass so the battery need not be extreme-forward. The FOUR lift rotors are on outrigger booms straddling the wing; the front pair is at y=33 and the rear pair moved forward to y=53 so the rotor-pair midpoint (y=43) lands close to CG (y=39.8), keeping hover pitch nearly decoupled from the CG offset (the original y=57 rear pair put the midpoint at y=45, biased aft of CG). Because a 1.8 m wing has ~16x the roll inertia of a compact 0.45 m quad of equal mass (Ixx ~0.24 vs 0.015 kg m^2), roll authority in hover is the hard problem: we push the lift booms as far OUTBOARD as structure allows (rotor track ~0.9 m, arm ~0.45 m) and size each rotor at T/W~1.6 for ~270 g per-rotor thrust headroom. Rolling the two windward rotors up and the two leeward rotors down by that headroom yields ~4.8 Nm and ~1100 deg/s^2 in hover \u2014 actually MORE than adequate on paper, but rate is inertia-limited and roll will still FEEL slow versus a racing quad because the aircraft accelerates then must be arrested against the same large inertia. Yaw uses rotor-torque differential; pitch uses fore/aft boom-pair differential.",
+   "efficiency_gain": "Going from a typical AR~5 VTOL wing to AR~12 at the same 0.27 m^2 area more than halves the induced-drag coefficient at cruise CL (CDi ~0.011 vs ~0.027 at CL0.6, verified), which is the real, Reynolds-independent win. With a CLEAN airframe (CD0~0.03) that lifts cruise L/D from ~9-10 to ~14.6 (best L/D ~16). BUT this quadplane carries four exposed lift motors, booms and clamps in the freestream; a realistic installed CD0 is ~0.04-0.05, so honest cruise L/D is ~11-14 and cruise electrical power ~30-34 W (not 30 W as a clean floor). The physics is right \u2014 L/D_max = 0.5*sqrt(pi*e*AR/CD0) grows as sqrt(AR) \u2014 but parasite drag caps the payoff. On a REAL 90 Wh / 500 g pack (the 178 Wh in 500 g of the original is impossible at 356 Wh/kg), usable cruise range is ~110-140 km, call it ~120 km nominal \u2014 still a strong ~40-50% range gain over an AR~5 equivalent, just not the 200-230 km originally claimed.",
+   "tradeoffs": "The long span pays for its efficiency four ways. (1) Hover roll control is degraded ~16x by span-squared roll inertia; differential thrust gives adequate moment (~4.8 Nm) but rate is inertia-limited, so gusty low-altitude hover is the weakest flight phase. (2) Structural: a 1.8 m LW-PLA wing needs a real carbon spar and torsion tube or it will flutter/diverge; the segmented print introduces keyed, bonded joints that must be built carefully. (3) Ground/transport handling and crosswind sensitivity increase with span. (4) Parasite drag from the four exposed lift rotors and booms is significant and does NOT benefit from the high aspect ratio, capping real cruise L/D at ~11-14. Hover is power-hungry (~195-200 W elec vs ~30-34 W cruise), so on a real 90 Wh pack only ~4-5 min of hover is budgeted \u2014 the profile must be hover-briefly / transition-fast / cruise-long. This is a cruise-optimised airframe that merely tolerates hover, not a loiter-in-place multirotor. If instead you want the original 178 Wh energy, the pack weighs ~1.05 kg, AUW rises to ~2.35 kg, hover T/W falls to ~1.2 (below the 1.6 target), and stall speed rises \u2014 a genuine and unattractive trade.",
+   "key_specs": {
+    "span": "1.8 m",
+    "aspect": "AR 12 (S=0.27 m^2, mean chord 150 mm)",
+    "auw": "~1.8 kg all-up (structure ~650 g, spars ~180 g, battery ~500 g / ~90 Wh, avionics+payload+motors ~470 g)",
+    "cruise": "13.3 m/s (48 km/h) at CL 0.6, Re~133k, installed L/D~13 (best-case ~14.6 clean), ~30-34 W electrical, ~120 km range (best-case ~140 km)",
+    "hover": "4 lift rotors 10-inch, ~450 g each in hover / ~720 g sized (T/W ~1.6 at 1.8 kg AUW), 0.9 m rotor track, ~195-200 W elec, ~4-5 min hover budget on a 90 Wh pack"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 47,
+      "y": 10
+     },
+     {
+      "x": 47,
+      "y": 38
+     },
+     {
+      "x": 2,
+      "y": 40
+     },
+     {
+      "x": 2,
+      "y": 44
+     },
+     {
+      "x": 47,
+      "y": 52
+     },
+     {
+      "x": 47,
+      "y": 88
+     },
+     {
+      "x": 44,
+      "y": 96
+     },
+     {
+      "x": 44,
+      "y": 99
+     },
+     {
+      "x": 56,
+      "y": 99
+     },
+     {
+      "x": 56,
+      "y": 96
+     },
+     {
+      "x": 53,
+      "y": 88
+     },
+     {
+      "x": 53,
+      "y": 52
+     },
+     {
+      "x": 98,
+      "y": 44
+     },
+     {
+      "x": 98,
+      "y": 40
+     },
+     {
+      "x": 53,
+      "y": 38
+     },
+     {
+      "x": 53,
+      "y": 10
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 20
+     },
+     {
+      "x": 6,
+      "y": 30
+     },
+     {
+      "x": 20,
+      "y": 33
+     },
+     {
+      "x": 40,
+      "y": 34
+     },
+     {
+      "x": 45,
+      "y": 40
+     },
+     {
+      "x": 55,
+      "y": 40
+     },
+     {
+      "x": 60,
+      "y": 33
+     },
+     {
+      "x": 88,
+      "y": 31
+     },
+     {
+      "x": 95,
+      "y": 44
+     },
+     {
+      "x": 100,
+      "y": 46
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 96,
+      "y": 22
+     },
+     {
+      "x": 88,
+      "y": 24
+     },
+     {
+      "x": 55,
+      "y": 22
+     },
+     {
+      "x": 20,
+      "y": 22
+     },
+     {
+      "x": 6,
+      "y": 16
+     },
+     {
+      "x": 0,
+      "y": 20
+     }
+    ],
+    "components": [
+     {
+      "label": "Battery 6S ~90 Wh (slides for CG trim)",
+      "x": 50,
+      "y": 16,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Camera/gimbal payload",
+      "x": 50,
+      "y": 26,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "GPS",
+      "x": 44,
+      "y": 30,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Flight controller (near CG)",
+      "x": 50,
+      "y": 39,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Lift rotor FL",
+      "x": 22,
+      "y": 33,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Lift rotor FR",
+      "x": 78,
+      "y": 33,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Lift rotor RL",
+      "x": 22,
+      "y": 53,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Lift rotor RR",
+      "x": 78,
+      "y": 53,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Pusher motor + ESC",
+      "x": 50,
+      "y": 92,
+      "mass_hint": "medium"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 39.8
+    }
+   }
+  },
+  {
+   "name": "Torus VTOL \"Halo\"",
+   "one_liner": "A closed box-wing VTOL that hides two lift ducts inside its annular wing \u2014 the paper ring reborn as structure, not as a low-Re lift trick.",
+   "paper_lineage": "Ring-Wing Glider (annular/closed-wing principle) plus the Bulldog Dart's forward-CG blunt-nose mass stacking. From the Ring-Wing it borrows exactly ONE transferable idea: a closed (annular/box) lifting surface has no free wingtips, so it does not shed the usual pair of strong trailing tip vortices. From the Bulldog it borrows the multi-layer forward mass concentration that pins the CG ahead of the aerodynamic centre.",
+   "drone_type": "Ducted box-wing VTOL (annular closed wing with two embedded fore/aft lift ducts + one pusher cruise duct)",
+   "principle": "A closed wing (box-wing / annular wing) redistributes the bound circulation so the induced-drag-generating tip vortices of an equivalent monoplane are eliminated. At a vertical gap-to-span ratio h/b of about 0.2, Prandtl's best-wing-system theory predicts an IDEAL induced drag of ~0.68 of a monoplane of equal span and lift \u2014 an ideal span efficiency e of ~1.47, which realized hardware degrades to roughly ~1.3 once wing joints, tip end-plates and interference are counted. Independently, wrapping the two lift rotors in ducts recovers the tip-leakage loss of an open prop and augments static thrust ~1.2-1.5x by unloading the blade tips and adding duct-lip suction. Both effects are potential-flow / momentum-theory results, so they hold at drone Reynolds numbers \u2014 unlike the paper ring's benefit.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "HONEST verdict: the SPECIFIC paper ring-wing benefit does NOT scale. The paper hoop (chord ~10-15mm, Re ~2-4x10^4) works because at that Re a curved surface avoids the leading-edge separation that stalls a flat paper wing, and its \"no tip vortex\" claim is really about a tiny, low-circulation loop. At this drone's cruise (chord ~90mm, 16 m/s, Re ~96,000; duct-lip Re ~1.3x10^5) flow stays attached on a proper cambered section anyway, so the curved-ring anti-separation trick buys nothing. What DOES survive is the geometric truth underneath it: a genuinely CLOSED lifting system has no tip vortices, and Prandtl's box-wing induced-drag reduction (ideal ~1.47x span efficiency at h/b=0.2, ~1.3x realized) is a potential-flow result independent of Re. Likewise duct thrust augmentation is momentum-theory-based and if anything works BETTER at higher Re (thinner boundary layers, less lip separation). So we keep the closed-wing geometry and the ducts, and discard the \"ring beats a flat wing\" reasoning. Net: the shape transfers, the paper-scale justification does not.",
+   "realization_3dprint": "Wing box + fuselage pod printed in LW-PLA (foaming, ~0.5-0.6 g/cc effective) at 2-perimeter, 5% gyroid infill for a light, stiff aero shell. The two annular lift ducts and the rear cruise duct are printed as thin (1.2mm wall) LW-PLA shrouds with an integral bellmouth lip. Because the front and rear wing elements are separated both fore-aft and by the ~164mm vertical box gap, they cannot share a single straight spar: each element is stiffened by its OWN 6mm pultruded carbon spar (two spars total), and the duct thrust and bending loads react into whichever element's spar they sit nearest. Fore and aft wing elements are joined at the tips by printed PETG end-plates (the closing members of the box) \u2014 PETG for its higher toughness where the closed loop takes the most bending and impact. Elevon and rudder hinges are printed as thin (0.4mm) TPU living hinges co-printed into the trailing edges (print-in-place, no pins). Motor mounts and the nose ballast tray are PETG for stiffness and heat tolerance near the ESCs. Bolted joints use heat-set brass inserts in PETG bosses. Total part count kept low: ~6 printed pieces plus 2 carbon spars. Weight realism: a 360g LW-PLA airframe is optimistic for this much wetted area (box wing + three ducts + end-plates); ~400-480g is more likely, so plan for AUW creeping toward ~1200-1300g.",
+   "weighted_components": "CG/static-margin logic: the aerodynamic centre (neutral point) of a box-wing sits near the mid-chord of the wing system, which here is around y=55 in the top-view box (mean between the front element at y~42 and rear element at y~68). For static pitch stability the CG must sit AHEAD (lower y) of that AC with a positive static margin of ~10-15% of the mean aerodynamic chord. I place the two heaviest items \u2014 the LiPo battery (heavy, y=30) and the forward flight-controller/GPS stack \u2014 well forward in the nose pod, and add a small dense tungsten ballast tray at the very nose (y=22) exactly as the Bulldog Dart stacks paper layers forward. The two lift-duct motors are mounted ON the fore and aft duct centerlines (both at x=50, y=42 and y=68) so their combined thrust line passes through the centerline and near the CG, keeping hover trim neutral in both roll and pitch \u2014 earlier off-center placement would have produced a rolling moment in hover. The rear pusher motor (medium, y=88) is aft but light and its moment is deliberately balanced by the nose ballast. Result: CG lands at y\u224847, roughly 10% MAC ahead of the AC at y\u224855 \u2014 a stable positive static margin without being so nose-heavy it needs excessive cruise up-trim.",
+   "efficiency_gain": "Two stacked, physically-real but MODEST gains. (1) Cruise: the closed box-wing cuts induced drag toward ~0.68 of an equal-span monoplane in the ideal limit (span efficiency up to ~1.47 ideal, ~1.3 realized). Because this is a draggy airframe (three ducts, box structure, fuselage give CD0~0.05) and cruise CL is only ~0.5, induced drag is NOT the dominant term, so the realized cruise L/D improvement over an open monoplane of equal span is roughly 5-14%, NOT 20-30%. (2) Hover/transition: ducting the two lift rotors augments static thrust ~1.2-1.5x for the same disk power and recovers blade-tip leakage, so hover is meaningfully more efficient for a given footprint. Note the disk loading is high (~310 N/m^2 with two 6-inch rotors), so hover power is not cheap even with the duct benefit. Prop safety (fully shrouded rotors) is a free bonus of the same geometry.",
+   "tradeoffs": "The closed box-wing is heavier and far more complex to build than a simple wing \u2014 two spanwise spars (one per element), tip end-plates, and three printed ducts add structural mass and drag-producing wetted area, so much of the ideal induced-drag win is eaten back by extra profile/interference drag; the net L/D gain is real but only ~5-14%, well short of the ideal 1.47x. Ducts add mass and wetted-area drag in fast forward flight (the lift ducts become dead weight and blockage once transitioned), and duct-lip separation in edgewise/gusty flight can bite. The small 6-inch lift disks give a high disk loading (~310 N/m^2), so hover is power-hungry and gust-sensitive. The h/b=0.2 gap that maximises the box-wing benefit also makes the airframe ~164mm tall and less compact to transport. Build difficulty and part fit-up (getting both spars, both lift ducts, and the tip end-plates concentric and square) are the main practical risks.",
+   "key_specs": {
+    "span": "820 mm tip-to-tip (front and rear wing elements share this span)",
+    "aspect": "effective box-wing aspect ratio ~6.5 (equivalent-monoplane basis); geometric per-element AR ~5",
+    "auw": "~1150 g target, realistically ~1200-1300 g (LW-PLA airframe ~400-480 g, 4S 3300 mAh LiPo ~330 g, 3 motors+ESCs ~230 g, 2 carbon spars+hardware ~120 g, payload/ballast ~110 g)",
+    "cruise": "16 m/s cruise (Re ~96k at 90 mm mean chord), 22 m/s dash",
+    "hover": "two 6-inch ducted lift rotors, high disk loading ~310 N/m^2, hover on ~65-75% throttle; ~4-5 min hover / ~22 min cruise mixed endurance"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 46,
+      "y": 14
+     },
+     {
+      "x": 45,
+      "y": 30
+     },
+     {
+      "x": 9,
+      "y": 38
+     },
+     {
+      "x": 6,
+      "y": 42
+     },
+     {
+      "x": 6,
+      "y": 46
+     },
+     {
+      "x": 44,
+      "y": 46
+     },
+     {
+      "x": 44,
+      "y": 66
+     },
+     {
+      "x": 8,
+      "y": 68
+     },
+     {
+      "x": 6,
+      "y": 72
+     },
+     {
+      "x": 6,
+      "y": 78
+     },
+     {
+      "x": 12,
+      "y": 80
+     },
+     {
+      "x": 46,
+      "y": 76
+     },
+     {
+      "x": 47,
+      "y": 92
+     },
+     {
+      "x": 53,
+      "y": 92
+     },
+     {
+      "x": 54,
+      "y": 76
+     },
+     {
+      "x": 88,
+      "y": 80
+     },
+     {
+      "x": 94,
+      "y": 78
+     },
+     {
+      "x": 94,
+      "y": 72
+     },
+     {
+      "x": 92,
+      "y": 68
+     },
+     {
+      "x": 56,
+      "y": 66
+     },
+     {
+      "x": 56,
+      "y": 46
+     },
+     {
+      "x": 94,
+      "y": 46
+     },
+     {
+      "x": 94,
+      "y": 42
+     },
+     {
+      "x": 91,
+      "y": 38
+     },
+     {
+      "x": 55,
+      "y": 30
+     },
+     {
+      "x": 54,
+      "y": 14
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 28
+     },
+     {
+      "x": 8,
+      "y": 40
+     },
+     {
+      "x": 20,
+      "y": 46
+     },
+     {
+      "x": 30,
+      "y": 48
+     },
+     {
+      "x": 38,
+      "y": 62
+     },
+     {
+      "x": 44,
+      "y": 66
+     },
+     {
+      "x": 50,
+      "y": 62
+     },
+     {
+      "x": 55,
+      "y": 48
+     },
+     {
+      "x": 70,
+      "y": 46
+     },
+     {
+      "x": 82,
+      "y": 52
+     },
+     {
+      "x": 92,
+      "y": 60
+     },
+     {
+      "x": 100,
+      "y": 58
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 88,
+      "y": 34
+     },
+     {
+      "x": 60,
+      "y": 30
+     },
+     {
+      "x": 40,
+      "y": 26
+     },
+     {
+      "x": 20,
+      "y": 22
+     },
+     {
+      "x": 8,
+      "y": 22
+     },
+     {
+      "x": 0,
+      "y": 28
+     }
+    ],
+    "components": [
+     {
+      "label": "Tungsten nose ballast",
+      "x": 50,
+      "y": 22,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "4S LiPo battery",
+      "x": 50,
+      "y": 30,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "GPS",
+      "x": 48,
+      "y": 28,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 38,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Front lift-duct motor",
+      "x": 50,
+      "y": 42,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Rear lift-duct motor",
+      "x": 50,
+      "y": 68,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Lift ESCs",
+      "x": 54,
+      "y": 44,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Pusher cruise motor",
+      "x": 50,
+      "y": 88,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Elevon servo",
+      "x": 68,
+      "y": 70,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Payload / camera",
+      "x": 50,
+      "y": 34,
+      "mass_hint": "medium"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 47
+    }
+   }
+  },
+  {
+   "name": "HAR-1 \"Mantis\" Tailless Flying-Wing VTOL",
+   "one_liner": "A reflexed, moderately-swept flying wing with three tilting rotors - no tail, no boom, all lift surface.",
+   "paper_lineage": "The Harrier (Aerobatic Loop Glider). Borrowed principle: tailless pitch trim and control via reflex + trailing-edge elevons, with pitch stability bought entirely by a deliberately forward CG rather than a horizontal stabilizer. The Harrier's 'up-elevon reflex + forward CG = stable without a tail' logic is the whole airframe philosophy here; we drop the loop-mission (elevons deflect down/reflex-neutral for efficient cruise instead of up for looping). Note: only the geometric/stability logic is borrowed - the paper's flat-plate airfoil is explicitly discarded (see Reynolds note).",
+   "drone_type": "Tailless swept flying-wing VTOL (tri-tiltrotor: 2 tilting wing motors + 1 fixed lift motor, transitions to cruise on the two tilt motors)",
+   "principle": "A flying wing removes the tail's wetted area (~15-20% of a conventional layout's wetted area) and its structural weight/moment arm. The price is that longitudinal stability can no longer come from a tail lifting-down behind the CG; it must come from (1) wing sweep + (2) a reflexed (up-turned trailing edge) airfoil that produces a nose-up Cm0, and (3) a CG placed AHEAD of the wing's neutral point. Review correction: the NP is AERODYNAMIC (sits near 25-35% MAC aft of the mean-chord leading edge, well forward of the planform area/mass centroid) and must not be confused with the mass-balance point - designing to put CG 'ahead of the centroid' does NOT guarantee stability. Trim and pitch control both live in trailing-edge elevons. You trade a large, forgiving stability margin for a CG you must locate precisely - a few percent of chord too far aft and it diverges.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "The Harrier as paper flies at Re~30k-50k where a flat, low-camber plate with a sharp leading edge works fine because flow is barely attached anyway. This drone cruises at ~16 m/s, chord ~0.169 m, giving Re~183,000 (range ~165k-200k across the CL band) - 4-6x higher. At that Re a sharp-edged flat plate is actively bad: you want a real cambered/reflexed airfoil with a rounded leading edge (an MH-class reflexed section, e.g. MH60/MH45), which holds attached flow and gives an L/D of ~12-14 vs the paper plate's ~4-5. So the specific paper AIRFOIL does NOT scale and must be replaced. HOWEVER, the borrowed design PRINCIPLE - tailless layout, trailing-edge reflex for nose-up Cm0, elevon trim/control, and forward-CG-for-stability - is Reynolds-independent and transfers cleanly, as the concept itself concedes. That mixed result is why the honest verdict is 'partially-scales', not 'does-not-scale': the stability geometry scales, the flat-plate section does not.",
+   "realization_3dprint": "Wing skins: LW-PLA (foaming PLA) printed at ~0.55 material flow for a light closed-cell shell, single-perimeter spanwise-printed panels in ~180mm segments, glued at spar joints. Main spar: pultruded carbon tube 10mm OD x 8mm ID full span, bonded into printed C-channel ribs; a secondary 6mm carbon rod at the elevon hinge line for torsional stiffness. Ribs and motor mounts: standard PETG (higher temp tolerance near motors, tougher than PLA). Elevon hinges: printed-in-place living hinges in TPU (95A) as a continuous 0.4mm web co-printed into the PETG trailing-edge cap - flexible, fatigue-resistant, zero backlash. Motor nacelles / tilt-servo cradles: PETG for heat and vibration tolerance; the two wing tilt mechanisms use a carbon 4mm pin in a PETG bushing driven by a metal-gear servo. Nose radome and battery tray: LW-PLA tray with a PETG bulkhead the spar passes through. Winglets: LW-PLA, canted 20 degrees, printed integral with tip ribs to carry the elevon reaction load. Structure mass ~500g is tight but achievable (LW-PLA skins ~0.7 kg/m^2 over ~0.37 m^2 wetted ~260g, carbon spar+rod ~140g, PETG ribs/nacelles/mounts ~120g) - budget carefully, there is little slack but it is not fantasy.",
+   "weighted_components": "Everything heavy is pushed FORWARD of the wing neutral point to buy static margin a tailless wing has no tail to provide. Corrected NP: for this moderate-sweep, reflexed planform the neutral point sits at ~y=33 on the 0-100 top-view body scale (roughly 30% MAC aft of the mean-chord LE), NOT at the area centroid (~y=34) or the previously-claimed y=38. The 4S 3300mAh LiPo (single heaviest item, ~300g) is mounted in a nose tray as far forward as it fits (y~20), acting as power and deliberate ballast. Payload/camera (~80g) sits at y~24; GPS and flight controller at y~27-31. The two tilt motors (~60g each) are on the wing LE at y~30. The rear/center lift motor is a stability liability behind the NP (y~44), so it is deliberately the smallest of the three (a lightweight pancake motor) and idles/folds in cruise. Integrating all components plus ~500g of structure at the planform area centroid (y~34) gives a resultant CG of ~y=30 - note this is FORWARD of the previously-stated y=35, because the structure cannot realistically sit aft. Net: CG ~y=30, NP ~y=33, MAC ~38 body-units, giving a static margin of ~(33-30)/38 = ~8% MAC. That ~8% is the honest design target: positive (nose-heavy) and inside the 5-15% band, but modest - not the ~10% comfortable buffer previously claimed, and it hinges on sweep+reflex actually delivering NP~y=33. If the NP comes out forward of that, margin collapses toward zero, so CG and NP must both be verified by glide-trim testing, not assumed.",
+   "efficiency_gain": "Removing the tailplane and tail boom cuts roughly 15-20% of total WETTED area and eliminates the tail's structural mass and download. Against a well-designed TAILED RC wing of the same wing area (which would also use a proper airfoil), the realistic cruise-power saving from going tailless is ~10-15%, not 20-30% - because induced drag (CDi~0.014 at cruise CL~0.49) is the dominant component and is unchanged by tail removal, and the tail is only a fraction of total parasite drag. The larger, separate win - swapping the paper's flat plate (L/D ~4-5) for a reflexed section (L/D ~12-14) - is a gain over the PAPER, not over a modern tailed design, so it must not be stacked on top of the tailless saving. Cruise aero power is ~16-19W (drag ~1.0-1.2N at 16 m/s), ~30-45W at the shaft. The genuine advantage remains real: the whole airframe is lifting surface with no non-lifting boom or stabilizer.",
+   "tradeoffs": "The forward-CG requirement is unforgiving and the margin is only ~8%: mislocating the battery by even 15-20mm shifts static margin by several percent and can make it pitch-divergent - assembly must jig the battery position and the design needs a CG check every flight, plus a glide-trim test to confirm the real NP. Elevons do double duty (pitch + roll), so control authority is more coupled and less redundant than separate elevator/aileron. A reflexed airfoil sacrifices peak CL (CLmax ~0.9), raising stall speed (~11.8 m/s) so the VTOL transition at 15 m/s is only ~1.27x Vstall - adequate but not generous, fly it with attention. Yaw stability is weak (no tail fin) - relied on entirely from swept winglets and differential motor thrust, adequate but twitchy in gusts. The aft center lift motor is dead weight and drag in cruise. Tailless wings have a narrow usable CG range, so payload swaps must be mass-AND-location matched, not just weight-matched.",
+   "key_specs": {
+    "span": "1.10 m",
+    "aspect": "6.5 (area 0.186 m^2, MAC 0.169 m)",
+    "auw": "~1.45 kg (battery ~300g, structure ~500g, 3 motors+ESCs ~350g, servos/FC/GPS/payload ~300g)",
+    "cruise": "~16 m/s (CL~0.49, Re~183k), L/D ~11-14",
+    "hover": "tri-rotor VTOL, T/W ~2.0 at hover (max thrust ~28N on 9-10in props), hover power ~130-160W; stall ~11.8 m/s so transition at ~15 m/s (~1.27 Vstall)"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 54,
+      "y": 6
+     },
+     {
+      "x": 62,
+      "y": 14
+     },
+     {
+      "x": 78,
+      "y": 30
+     },
+     {
+      "x": 92,
+      "y": 48
+     },
+     {
+      "x": 96,
+      "y": 54
+     },
+     {
+      "x": 90,
+      "y": 56
+     },
+     {
+      "x": 74,
+      "y": 48
+     },
+     {
+      "x": 60,
+      "y": 42
+     },
+     {
+      "x": 56,
+      "y": 44
+     },
+     {
+      "x": 55,
+      "y": 58
+     },
+     {
+      "x": 45,
+      "y": 58
+     },
+     {
+      "x": 44,
+      "y": 44
+     },
+     {
+      "x": 40,
+      "y": 42
+     },
+     {
+      "x": 26,
+      "y": 48
+     },
+     {
+      "x": 10,
+      "y": 56
+     },
+     {
+      "x": 4,
+      "y": 54
+     },
+     {
+      "x": 8,
+      "y": 48
+     },
+     {
+      "x": 22,
+      "y": 30
+     },
+     {
+      "x": 38,
+      "y": 14
+     },
+     {
+      "x": 46,
+      "y": 6
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 22
+     },
+     {
+      "x": 6,
+      "y": 30
+     },
+     {
+      "x": 14,
+      "y": 36
+     },
+     {
+      "x": 26,
+      "y": 39
+     },
+     {
+      "x": 42,
+      "y": 38
+     },
+     {
+      "x": 60,
+      "y": 34
+     },
+     {
+      "x": 78,
+      "y": 30
+     },
+     {
+      "x": 92,
+      "y": 30
+     },
+     {
+      "x": 100,
+      "y": 33
+     },
+     {
+      "x": 100,
+      "y": 27
+     },
+     {
+      "x": 82,
+      "y": 24
+     },
+     {
+      "x": 60,
+      "y": 22
+     },
+     {
+      "x": 40,
+      "y": 20
+     },
+     {
+      "x": 20,
+      "y": 19
+     },
+     {
+      "x": 8,
+      "y": 19
+     },
+     {
+      "x": 0,
+      "y": 22
+     }
+    ],
+    "components": [
+     {
+      "label": "4S LiPo (nose ballast)",
+      "x": 50,
+      "y": 20,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 31,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 27,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Tilt motor L",
+      "x": 34,
+      "y": 30,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Tilt motor R",
+      "x": 66,
+      "y": 30,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Tilt servo L",
+      "x": 38,
+      "y": 34,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Tilt servo R",
+      "x": 62,
+      "y": 34,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Center lift motor",
+      "x": 50,
+      "y": 44,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Elevon servo L",
+      "x": 40,
+      "y": 48,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Elevon servo R",
+      "x": 60,
+      "y": 48,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Payload/camera",
+      "x": 50,
+      "y": 24,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Neutral point (~30% MAC)",
+      "x": 50,
+      "y": 33,
+      "mass_hint": "light"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 30
+    }
+   }
+  },
+  {
+   "name": "Samara-1 (S\u0101mara Monocopter)",
+   "one_liner": "A one-motor, one-servo powered blade that hovers like a maple seed and autorotates toward a survivable landing the instant power dies.",
+   "paper_lineage": "Primary lineage: the Tumblewing (Walkalong Glider) \u2014 the only paper design in the set that generates lift by continuous autorotation about its spanwise axis rather than a fixed airfoil, and whose CG sits on the geometric centerline with deliberately near-zero wing loading. Secondary borrow: the Nakamura Lock / Bulldog Dart nose-lock principle of stacking dense mass forward of the aerodynamic center for a strong static-stability margin \u2014 here transposed to putting the spar, battery, and FC mass forward of the blade's CHORDWISE aerodynamic center (25% chord). Exact principles borrowed: (1) lift-by-rotation instead of lift-by-fixed-wing, and (2) concentrate the heavy layers ahead of the AC (in the chord direction) to guarantee a nose-down, into-flow restoring moment.",
+   "drone_type": "Monocopter (single powered rotating blade / motorized samara) with passive autorotative descent",
+   "principle": "A monocopter is a single rigid blade that spins the ENTIRE airframe about a vertical axis; a tip-mounted motor supplies the torque and the blade's own airfoil supplies lift, exactly as a maple samara does when it falls. Control is radically simple: one cyclic input (a servo-driven trailing-edge flap pulsed once per revolution) tilts the thrust vector to translate; collective/throttle sets climb. The transferable idea from the Tumblewing is that a rotating wing sustains flight with essentially zero fixed-wing structure and near-zero wing loading, and \u2014 when thrust is lost \u2014 the same geometry keeps rotating on the descent airflow (autorotation), trading altitude for rotor kinetic energy that is bled off in a landing flare. This is autorotative energy recovery: descent airflow drives the blade, the spinning mass stores energy in its rotational inertia, and a flare converts stored spin into a momentary lift spike to cushion touchdown.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "Honest split. The Tumblewing's SPECIFIC low-Re mechanism does NOT transfer: at paper scale (Re ~20-40k) the confetti-like strip flies by alternating stall each half-turn (a Flettner/Magnus-ish rotor living in the separated-flow regime). The monocopter blade runs at Re ~91k at 75% radius (verified: tip radius 0.35 m, 550 body-rpm -> omega 57.6 rad/s, V=15.1 m/s at 0.75R, chord 0.09 m, nu 1.5e-5) climbing to ~121k at the tip \u2014 well above the paper regime and in attached-flow territory. So the design deliberately does NOT rely on alternating stall; it uses a real cambered thin section (SD7003/AG-class) operating attached, which is why efficiency improves at scale rather than degrading. What DOES scale cleanly is the higher-level autorotation momentum/energy balance, which is Reynolds-robust across this whole range. Net: the geometry and the safe-descent physics transfer; the paper toy's stall-driven lift generation does not, and keeping it would be a mistake at Re~91k.",
+   "realization_3dprint": "Blade spar: a pultruded carbon tube (6 mm OD, ~0.36 m) is the single structural backbone running root-to-tip; everything clamps to it (counted once, inside the blade mass). Airfoil shell: printed in LW-PLA (foaming lightweight PLA) at 0.30 mm layers, 1-perimeter, ~40% foam expansion, printed as top+bottom half-shells that snap-bond over the spar with layers running spanwise for bending strength \u2014 a rigid ~40 g full-length blade including spar. Root nacelle is PETG (tough, holds threaded brass inserts) and houses the battery + FC + servo + GPS; PETG survives the repeated hard landings that are the point of an autorotation-safe craft, and its mass sits FORWARD of the 25% chord line so it contributes to the chordwise static margin. The single cyclic flap is a full-span-inboard TPU living-hinge (95A TPU printed thin, ~0.8 mm, flat so layer lines run across the bend) so there is no metal pin to wear or jam. Motor mount at the tip is PETG with a printed-in cooling scoop. ~6 printed parts + 1 carbon spar; no airframe bearings (the craft spins as a body; only the tip motor has bearings). Print orientation: shells flat for finish, nacelle upright for insert strength, TPU hinge flat.",
+   "weighted_components": "The heavy items \u2014 LiPo battery (heavy) and FC/IMU (medium) \u2014 sit at the INBOARD root nacelle near the spin axis, while the brushless motor+prop (heavy) sits at the far TIP; this is the samara mass split (dense seed one end, light vane trailing). Two DISTINCT stability arguments, kept on the correct axes. (1) Radial/spin-axis balance: battery near the root keeps the radial CG close to the spin axis, minimizing added rotational inertia, while the tip motor provides the moment arm for torque. (2) CHORDWISE static margin (the requested rule, on the chord = x-axis): the spar + battery/FC nacelle mass is packed FORWARD of the blade aerodynamic center. In the corrected top-view the AC lies at 25% chord (x~53 in the box), and the mass-weighted CG lies forward of it at x~48 \u2014 i.e. CG is ahead of AC in the chord direction, giving a static margin of roughly 8-12% of chord. That forward-of-AC CG is the Nakamura-Lock/Bulldog nose-lock margin: a nose-down, into-flow restoring moment that keeps the leading edge pitched correctly through every revolution and holds a stable autorotative attitude on power loss. (Note: the earlier version incorrectly used the spanwise y-axis to argue chordwise margin; margin is a CHORD-direction quantity and is now shown on x.) GPS (light) and payload (light) trim without dominating.",
+   "efficiency_gain": "Two efficiency wins, physically grounded, stated as best-case not typical. (1) Part-count/actuator efficiency: one motor + one servo replaces the 4-8 motors and multiple ESCs of a quad, cutting propulsion mass, wiring, and control loss paths by ~2-4x for a given disk area. (2) Aerodynamic: the swept disk (pi*R^2 = 0.385 m^2 for R=0.35 m) gives a low disk loading (~650 g/m^2, verified) versus a same-weight quad's ~5000 g/m^2 (4x 5-in props); since induced power scales with sqrt(disk loading), ideal induced hover power is ~4.0 W for the monocopter vs ~11 W for the quad (ratio 0.36, i.e. sqrt of the ~7.6x DL ratio). After real single-blade Figure of Merit (~0.5-0.6, tip and torque-reaction losses) and ESC/motor efficiency (~60-70%), expect roughly 15-30% lower hover power than a same-weight quad \u2014 directionally solid, but treat absolute endurance figures as optimistic, not guaranteed. The autorotation is a SAFETY energy-recovery feature, not a cruise gain: on motor/ESC failure the stored rotor KE (~2.4 J) plus descent-driven autorotation cushions the landing for free, where a quad simply falls.",
+   "tradeoffs": "Real, not glossed. (1) The whole airframe spins at ~550 rpm, so onboard sensors see a rotating frame \u2014 the FC must de-rotate the IMU/GPS and phase the cyclic flap once per rev with tight timing; cameras need a de-spun gimbal or software de-rotation, and it looks like a spinning disc in flight. (2) Vibration and gyroscopic coupling are significant; the tip motor and blade must be well balanced or the spar fatigues. (3) Forward flight is slow and inefficient vs a fixed-wing \u2014 this is a hover/loiter/safe-descent platform. (4) Cyclic authority is one pulse per rev, so it is less agile than a quad. (5) Launch needs a spin-up procedure. (6) As a SINGLE-blade rotor its autorotative attitude stability is poorer than a two-bladed rotor and the stored rotational KE is modest, so the flare-arrested touchdown is MARGINAL, not comfortable \u2014 treat it as damage-limiting, not guaranteed-gentle. The payoff for all this: minimal part count, low disk loading, and a genuinely passive, actuator-free descent mode.",
+   "key_specs": {
+    "span": "0.70 m tip-to-tip swept disc diameter (0.35 m blade radius from the root spin axis)",
+    "aspect": "blade planform AR ~3.9 (0.35 m span / ~0.09 m mean chord); low rotor solidity (~0.08)",
+    "auw": "~250 g all-up: ~40 g blade+spar, ~85 g 3S 850 mAh LiPo, ~35 g motor+prop (2204/2306-class), ~15 g FC+servo+GPS, ~75 g nacelle/shell-bond/hardware",
+    "cruise": "translational ~4-6 m/s (thrust-vectored via 1/rev cyclic); not a fast platform",
+    "hover": "~550 body-rpm, V=15.1 m/s at 0.75R, Re=91k (tip 121k); disk loading ~650 g/m^2; ideal induced hover power ~4.0 W, realistic ~8-12 W electrical after FoM and ESC/motor losses; autorotation descent ~3-4 m/s (~1.8-2.2x hover induced velocity) with a marginal flare-arrested touchdown"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 44,
+      "y": 8
+     },
+     {
+      "x": 56,
+      "y": 8
+     },
+     {
+      "x": 57,
+      "y": 20
+     },
+     {
+      "x": 58,
+      "y": 40
+     },
+     {
+      "x": 60,
+      "y": 62
+     },
+     {
+      "x": 62,
+      "y": 82
+     },
+     {
+      "x": 60,
+      "y": 94
+     },
+     {
+      "x": 50,
+      "y": 97
+     },
+     {
+      "x": 40,
+      "y": 94
+     },
+     {
+      "x": 38,
+      "y": 82
+     },
+     {
+      "x": 40,
+      "y": 62
+     },
+     {
+      "x": 42,
+      "y": 40
+     },
+     {
+      "x": 43,
+      "y": 20
+     },
+     {
+      "x": 44,
+      "y": 8
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 46
+     },
+     {
+      "x": 8,
+      "y": 54
+     },
+     {
+      "x": 22,
+      "y": 57
+     },
+     {
+      "x": 40,
+      "y": 55
+     },
+     {
+      "x": 60,
+      "y": 52
+     },
+     {
+      "x": 80,
+      "y": 50
+     },
+     {
+      "x": 95,
+      "y": 49
+     },
+     {
+      "x": 100,
+      "y": 48
+     },
+     {
+      "x": 100,
+      "y": 44
+     },
+     {
+      "x": 80,
+      "y": 44
+     },
+     {
+      "x": 55,
+      "y": 45
+     },
+     {
+      "x": 30,
+      "y": 46
+     },
+     {
+      "x": 12,
+      "y": 45
+     },
+     {
+      "x": 0,
+      "y": 46
+     }
+    ],
+    "components": [
+     {
+      "label": "Motor + prop (blade tip)",
+      "x": 50,
+      "y": 12,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "3S LiPo battery (root nacelle, fwd of AC)",
+      "x": 47,
+      "y": 86,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Flight controller / IMU (root, fwd of AC)",
+      "x": 48,
+      "y": 80,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Cyclic servo (root nacelle)",
+      "x": 49,
+      "y": 74,
+      "mass_hint": "light"
+     },
+     {
+      "label": "GPS (root)",
+      "x": 49,
+      "y": 68,
+      "mass_hint": "light"
+     },
+     {
+      "label": "AC line (~25% chord)",
+      "x": 53,
+      "y": 50,
+      "mass_hint": "light"
+     },
+     {
+      "label": "TPU cyclic flap (trailing edge, aft of AC)",
+      "x": 57,
+      "y": 50,
+      "mass_hint": "light"
+     }
+    ],
+    "cg_point": {
+     "x": 48,
+     "y": 72
+    }
+   }
+  },
+  {
+   "name": "Suzanne-V (Vireo)",
+   "one_liner": "A tilt-rotor VTOL that climbs on props, feathers them, and dead-sticks home \u2014 muscle-then-glide, in carbon-and-plastic.",
+   "paper_lineage": "Suzanne (Collins/Ayoob distance glider) \u2014 the exact borrowed principle is the two-phase energy schedule: convert a burst of launch energy into altitude, then let a forward-CG, low-wing-loading planform cash that altitude back as a long, flat, self-stabilizing glide. Suzanne does it with a hard up-angled arm throw and a dense blunt nose at 28-32% CG; Vireo substitutes rotor thrust for the arm (climbing to 100-150 m instead of 3 m) and then feathers/stops the props so the SAME airframe becomes a pure sailplane. The forward-CG-for-glide-stability idea is taken wholesale (as a modest positive static margin, NOT extreme nose-heaviness); the launch mechanism is mechanized. Secondary lineage: the Sea Glider's high-aspect wing is borrowed for the glide phase to push L/D up.",
+   "drone_type": "tri-mode quad-tiltrotor VTOL sailplane (4 motors: 2 front tilting + 2 rear fixed-vertical on booms; feathering/stopping props for dead-stick glide)",
+   "principle": "Efficiency lives in the flight PROFILE, not the airframe alone. Hovering/multirotor cruise is power-expensive (induced power scales with thrust^1.5 over disk area); gliding is nearly free (only avionics draw). So spend battery in short, steep climbs to build gravitational potential energy, then stop the props (kill prop drag entirely) and trade that PE for horizontal range at the wing's best L/D. Repeat: climb-glide-climb-glide. Range per cycle = climb_height x L/D. A forward CG \u2014 meaning a small positive static margin (~8-12% MAC), NOT the wing-chord-scale offset a naive reading suggests \u2014 keeps the aircraft pitch-stable and hands-off through the whole speed range from climb-out to glide, in the spirit of Suzanne's nose-heavy trim spanning launch and glide speeds.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "The ENERGY-MANAGEMENT idea scales perfectly \u2014 it is Newtonian mechanics (PE = mgh, range = h*L/D), independent of Reynolds number. What does NOT transfer is the paper-plane airfoil behavior: Suzanne flies at Re ~30-50k where flat, sharp-edged, cambered folds work fine and laminar separation is tolerated. Vireo glides at Re ~157,000 (V~10 m/s, chord 0.23 m) \u2014 high enough that a genuine cambered airfoil with a rounded leading edge (e.g. AG35/SD7003-class low-Re sailplane section) is REQUIRED; a flat plate would separate and cap L/D near 6. At Re ~157k a good section gives strong 2D cl/cd, but the WHOLE-AIRCRAFT L/D is capped by induced drag (AR 6.1, e~0.75) plus the parasite drag of a bluff VTOL pod, four nacelles, two booms and stopped/feathered props \u2014 so a realistic best L/D is ~10, not the 11-12 a clean sailplane section alone might suggest. Bottom line: copy Suzanne's strategy, not her cross-section; and do not credit the airframe with clean-sailplane L/D. The forward-CG stability logic is scale-invariant and transfers directly.",
+   "realization_3dprint": "Wing: printed in LW-PLA (foaming lightweight PLA) at ~0.30 mm walls, single-perimeter, 0% infill, in ~200 mm spanwise segments that thread onto a 10 mm pultruded carbon tube main spar (at 30% chord, the structural + torsional backbone) plus a 6 mm carbon trailing rod. Print the true cambered airfoil directly \u2014 no flat plates. Fuselage pod: PETG for impact/heat tolerance around the motors and battery bay, printed as two clamshell halves with captured brass heat-set inserts (M3) for the spar saddle and motor-boom clamps; keep the pod cross-section as slender/faired as the battery bay allows to protect glide L/D. Rear booms: carbon square tube (12 mm) bonded into PETG cuffs. Tilt mechanism: PETG servo-driven cradle for the two front motors, with printed-in end stops at 0 deg (hover) and 90 deg (feathered/stowed). Control surfaces: full-span elevons as living TPU hinges (TPU 95A printed continuous with the LW-PLA using a filament change at the hinge line, or a thin TPU strip trapped in a printed pocket) \u2014 flexible, fatigue-proof, zero slop. Winglets: LW-PLA, printed integral with the outboard segment, canted up ~75 deg to cut tip-vortex drag during the long glide (Sea-Glider trick). Total print time ~40-50 h, ~380-420 g of filament (tight; budget the higher end).",
+   "weighted_components": "CG is placed just FORWARD of the whole-aircraft neutral point to give a small positive static margin (~8-12% MAC) for a hands-off dead-stick glide \u2014 this is Suzanne's forward-CG idea applied as a proper static margin, NOT as a wing-chord-scale nose offset. The wing occupies the top-view box from y~46 (LE) to y~56 (TE), so the mean chord (MAC) is ~10 box-units and the aerodynamic center (quarter-chord) sits at y~48.5, with the neutral point close to it for this near-tailless elevon layout. Target CG is therefore ~y=47.5, i.e. ~1 box-unit (~10% MAC, physically ~23 mm) ahead of the NP \u2014 a healthy +8-12% static margin. To achieve this the 4S LiPo (~480 g, 'heavy', the single densest item and the Suzanne 'blunt nose' analogue) is bayed at y~44, forward of the AC but not extreme; an EO/payload puck at y~26 provides fine forward trim ballast. The four motors (each 'heavy') form a symmetric quad: front pair at y~22 (ahead of CG on the tilt cradle) and rear pair at y~88 on the booms; their fore/aft moments largely cancel about the CG, and the tilt mechanism keeps the front pair's thrust line through the CG in hover. Flight controller (y~47) sits essentially AT the CG for clean inertial sensing. NOTE: the earlier claim of an ~8-box-unit CG-to-AC offset would be ~80% MAC \u2014 an absurd, unflyable static margin; corrected here to a ~1-unit / ~10% offset.",
+   "efficiency_gain": "Range improves roughly 1.5-1.6x versus flying the same battery as a continuous efficient multirotor: ~21-23 km (climb-glide) vs ~14-15 km (pure powered cruise) on a 59 Wh usable pack. Physics: each 150 m climb costs ~3.8 Wh and buys ~1.5 km of dead-stick glide at the corrected whole-aircraft L/D ~10 (props stopped, so prop and induced hover losses are ZERO during ~90% of flight time); ~15 climb-glide cycles fit in the battery. The gain is fundamentally because gliding replaces expensive continuous rotor thrust (which scales as thrust^1.5 / disk-area) with free gravitational-PE conversion. Optional regenerative descent (windmilling the two rear props on steep glides) could claw back a further ~2-4% \u2014 marginal, because prop-as-turbine efficiency at these Re is poor and the drag penalty of an unfeathered prop usually costs more glide than the regen returns; arm it only on deliberately steep let-downs.",
+   "tradeoffs": "1) Mechanical complexity/mass: tilt servos, feathering hubs and stop-start ESC logic add ~120 g and failure modes a fixed quad doesn't have. 2) Prop stop/feather reliability is the critical risk \u2014 a prop that fails to feather leaves a windmilling drag disk that roughly halves glide L/D; a prop that fails to restart from glide is a forced dead-stick landing. 3) The high-aspect glider wing (AR 6.1) is gust-sensitive and structurally floppier than a stubby multirotor arm layout \u2014 hence the carbon spar. 4) Climb-glide is a sawtooth altitude profile: illegal or awkward in tight airspace and useless indoors; it needs 150 m of vertical room. 5) LW-PLA is UV- and heat-sensitive and dents easily; PETG pod mitigates the high-load zones but the wing skin is fragile. 6) Best L/D ~10 is far short of a real sailplane and modestly below the airfoil's 2D potential \u2014 the airframe is a compromise dominated by induced drag and VTOL parasite drag, and it must also hover. 7) Static margin must be tuned by ballast; the rear boom motors bias the natural CG aft, so getting the ~10% margin requires the forward battery placement above rather than heavy nose ballast.",
+   "key_specs": {
+    "span": "1.4 m",
+    "aspect": "6.1 (area 0.32 m^2, mean chord 0.23 m)",
+    "auw": "~1.6 kg all-up",
+    "cruise": "glide 10-10.6 m/s at whole-aircraft L/D ~10 (Re ~157k); powered cruise ~12 m/s",
+    "hover": "~208 W electrical (4 props, 0.18 m dia, FM~0.6); ~17 min pure-hover-equivalent endurance (59 Wh / 208 W)"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 54,
+      "y": 8
+     },
+     {
+      "x": 55,
+      "y": 18
+     },
+     {
+      "x": 62,
+      "y": 30
+     },
+     {
+      "x": 92,
+      "y": 46
+     },
+     {
+      "x": 98,
+      "y": 50
+     },
+     {
+      "x": 98,
+      "y": 56
+     },
+     {
+      "x": 66,
+      "y": 56
+     },
+     {
+      "x": 66,
+      "y": 92
+     },
+     {
+      "x": 60,
+      "y": 96
+     },
+     {
+      "x": 56,
+      "y": 90
+     },
+     {
+      "x": 55,
+      "y": 60
+     },
+     {
+      "x": 50,
+      "y": 60
+     },
+     {
+      "x": 45,
+      "y": 60
+     },
+     {
+      "x": 44,
+      "y": 90
+     },
+     {
+      "x": 40,
+      "y": 96
+     },
+     {
+      "x": 34,
+      "y": 92
+     },
+     {
+      "x": 34,
+      "y": 56
+     },
+     {
+      "x": 2,
+      "y": 56
+     },
+     {
+      "x": 2,
+      "y": 50
+     },
+     {
+      "x": 8,
+      "y": 46
+     },
+     {
+      "x": 38,
+      "y": 30
+     },
+     {
+      "x": 45,
+      "y": 18
+     },
+     {
+      "x": 46,
+      "y": 8
+     },
+     {
+      "x": 50,
+      "y": 0
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 18
+     },
+     {
+      "x": 6,
+      "y": 26
+     },
+     {
+      "x": 14,
+      "y": 30
+     },
+     {
+      "x": 24,
+      "y": 31
+     },
+     {
+      "x": 40,
+      "y": 30
+     },
+     {
+      "x": 55,
+      "y": 27
+     },
+     {
+      "x": 70,
+      "y": 24
+     },
+     {
+      "x": 82,
+      "y": 22
+     },
+     {
+      "x": 90,
+      "y": 24
+     },
+     {
+      "x": 92,
+      "y": 34
+     },
+     {
+      "x": 88,
+      "y": 36
+     },
+     {
+      "x": 80,
+      "y": 30
+     },
+     {
+      "x": 66,
+      "y": 22
+     },
+     {
+      "x": 50,
+      "y": 18
+     },
+     {
+      "x": 34,
+      "y": 16
+     },
+     {
+      "x": 20,
+      "y": 15
+     },
+     {
+      "x": 10,
+      "y": 14
+     },
+     {
+      "x": 0,
+      "y": 18
+     }
+    ],
+    "components": [
+     {
+      "label": "EO payload / trim ballast",
+      "x": 50,
+      "y": 26,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 32,
+      "mass_hint": "light"
+     },
+     {
+      "label": "4S 5000mAh LiPo (main ballast)",
+      "x": 50,
+      "y": 44,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "flight controller (at CG)",
+      "x": 50,
+      "y": 47,
+      "mass_hint": "light"
+     },
+     {
+      "label": "ESC pack",
+      "x": 50,
+      "y": 53,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "front tilt motor L",
+      "x": 30,
+      "y": 22,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "front tilt motor R",
+      "x": 70,
+      "y": 22,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "tilt servo L",
+      "x": 35,
+      "y": 25,
+      "mass_hint": "light"
+     },
+     {
+      "label": "tilt servo R",
+      "x": 65,
+      "y": 25,
+      "mass_hint": "light"
+     },
+     {
+      "label": "rear boom motor L (feathering)",
+      "x": 34,
+      "y": 88,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "rear boom motor R (feathering)",
+      "x": 66,
+      "y": 88,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "elevon servo L",
+      "x": 42,
+      "y": 66,
+      "mass_hint": "light"
+     },
+     {
+      "label": "elevon servo R",
+      "x": 58,
+      "y": 66,
+      "mass_hint": "light"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 47.5
+    }
+   }
+  },
+  {
+   "name": "Polyhedra P1",
+   "one_liner": "A printed polyhedral-wing glider-drone that flies straight on its own so the electronics can loaf.",
+   "paper_lineage": "Borrows the passive-stability toolkit shared by the Sea Glider, Suzanne, and the Nakamura Lock: (1) built-in dihedral for roll stability without active control, and (2) a forward CG held by concentrated nose mass giving a positive static margin. Suzanne's KEY contribution is copied literally \u2014 its progressive/variable dihedral (steeper near the root, flatter outboard) is reproduced here as a printed polyhedral wing (flat center, ~6 deg mid-panel, ~12 deg tip panel). The Sea Glider contributes the high-AR, low-wing-loading planform and upturned winglets; the Nakamura Lock/Bulldog contributes the dense forward nose ballast concept (here it is the battery, not folded paper).",
+   "drone_type": "Passively-stable high-wing polyhedral pusher glider-drone. Tailless/plank layout: single aft pusher prop, elevon pitch+roll control, plus a small vertical fin/rudder to damp Dutch roll. No gyro-dependent stabilization required for straight-and-level.",
+   "principle": "Passive stability = geometry doing the control loop's job. Polyhedral dihedral creates a restoring roll moment: when a gust drops one wing, the sideslip that follows makes the lower (more dihedral-angled) wing meet the air at higher effective incidence, rolling the aircraft back level \u2014 no aileron input needed. Washout (leading-edge-down twist toward the tips, ~3-4 deg) means the tips run at lower local AoA than the root, so at high AoA the ROOT stalls first: the outboard wing keeps flying, roll authority survives, and the stall is a gentle nod rather than a tip-drop spin. A forward CG (ahead of the neutral point) provides the positive static pitch-stability margin. Because this is a tailless/plank, the neutral point sits near the wing aerodynamic center (~25% MAC), so a CG at ~15% MAC gives a healthy ~10% static margin. The transferable idea: bake the stabilizing moments into the molded geometry so the flight controller spends energy on navigation and gust trim, not on second-by-second attitude-holding.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "Honest split, and it holds up. The STABILITY geometry (dihedral, washout, forward CG/static margin) is Reynolds-INDEPENDENT \u2014 it is rigid-body mechanics and transfers cleanly from paper (Re~30-50k) to this drone (cruise Re~149,000, computed from V=14 m/s, MAC=0.16 m, nu=1.5e-5). That is the whole point of the concept and it is legitimate. What does NOT transfer is airfoil behavior: paper planes fly flat/near-zero-camber plates that only work because at Re~30k a cambered airfoil's laminar separation bubble is unstable anyway. At Re~150k you can and MUST use a real cambered low-Re section (e.g. AG-series / SD7037-like, 6-8% thick, 2-3% camber) to reach best-glide L/D ~15-16; a flat plate would give L/D ~6-8 here and waste the high aspect ratio. So: keep the paper geometry, throw away the paper airfoil. Washout magnitude also scales down slightly \u2014 the sharper stall at higher Re means 3-4 deg is enough where a paper plane needs more.",
+   "realization_3dprint": "Wing: printed in LW-PLA (foaming lightweight PLA, ~0.4-0.5 g/cm^3 after activation) as hollow single-wall (0.4-0.5 mm) sparless shells, printed in 3 panels per side (center/mid/tip) so the polyhedral break angles (~6 deg and ~12 deg) are PRINTED IN, not glued at random \u2014 the print bed guarantees repeatable dihedral. A pultruded carbon tube spar (6 mm OD x 4 mm ID, ~2 g/m) slides through printed-in rib bosses spanning root-to-mid to carry bending; the outer tip panels are cantilevered LW-PLA only (low load out there). Washout is printed into the rib chord line \u2014 each successive rib rotates 1-1.5 deg leading-edge-down. Winglets print as part of the tip panel. Fuselage/nose: PETG for the battery bay and motor mount (impact + heat tolerance near the ESC/motor). Control-surface hinges: printed-in-place TPU (95A) living hinges, or a thin TPU strip co-printed as a flexure between PETG surfaces \u2014 survives thousands of cycles, no metal pins. Wing-to-fuse joint: two nylon bolts through PETG saddles for field disassembly. Weight check confirms feasibility: LW-PLA single-wall shell ~80 g + carbon spar ~2 g + PETG nose/fuse ~60 g ~= 145 g, comfortably inside the 260 g airframe budget with margin for ribs, winglets, hinges and adhesive. Total print time ~14-18 h; no support needed if panels are printed on the trailing edge.",
+   "weighted_components": "CG logic is the heart of the design, and the diagram coordinates are now made consistent with it. In the top view the wing root chord runs from the leading edge at y=40 to the trailing edge at y=54 (14 units of chord). The neutral point of this tailless/plank sits near the wing aerodynamic center at ~25% MAC, i.e. y=43.5. For static pitch stability the CG MUST sit AHEAD of that. Target: CG at 15% MAC = y=42.1, giving a healthy ~10% static margin (the earlier y=40 was on the leading edge = 0% MAC ~= 25% static margin, too nose-heavy \u2014 corrected). This is achieved by ballasting the nose: the single heaviest item, the LiPo battery, sits far forward at y=22, and the motor is a PUSHER at the extreme tail (y=94) deliberately \u2014 a tractor motor up front would over-shift the CG forward and force dead nose-weight, whereas the pusher's aft mass is balanced against the forward battery so almost nothing is wasted trim ballast. The flight controller/GPS (light-to-medium) sit just behind the battery (y=33-37) fine-tuning the CG. Payload/camera (medium) is placed right at the CG (y=42) so swapping payloads barely moves the balance. Net result: heavy nose battery + aft pusher motor bracket the CG at ~15% MAC (y=42.1), comfortably ahead of the 25%-MAC neutral point (y=43.5) \u2014 the aircraft is statically stable in pitch by construction.",
+   "efficiency_gain": "Two efficiency wins, stated honestly. (1) AERO: AR~6.9 (vs ~1-2 for the paper darts) cuts induced drag several-fold at loiter CL, and a real cambered low-Re airfoil lifts best-glide L/D to ~15-16 (18 only with an exceptionally clean CD0<=0.02 build). Note the split between speeds: at the 14 m/s cruise the required CL is only ~0.29, so cruise L/D is ~11-13 (you are flying below best-glide CL, trading efficiency for speed); best-glide/loiter L/D ~15-16 occurs at ~9-10 m/s (CL~0.6-0.7). With 35 g/dm^2 wing loading the sink rate at best glide is low, so on the same battery loiter endurance improves markedly versus a low-AR powered wing. The benign washout stall lets you trim near CLmax for slow efficient loiter without spin risk. (2) CONTROL/GUST-REJECTION: because dihedral+washout+forward-CG hold attitude passively, gust rejection is mechanical (instant) rather than sensor-loop-limited, and the servos/FC are not fighting continuous corrections. The direct power saving is modest \u2014 servo holding current is only a few watts and propulsion dominates total draw \u2014 so treat this as a robustness/latency benefit with a small (single-digit to ~10%) avionics-power reduction in gusty air, not a headline efficiency number.",
+   "tradeoffs": "Passive stability trades agility for calm: the same dihedral that self-levels also resists commanded rolls, so this is a survey/loiter platform, not an acrobat \u2014 it will never loop like the Harrier. Dihedral adds a small drag and effective-lift penalty (~2-3% span-efficiency loss) and couples roll into yaw (Dutch-roll tendency), damped by the small vertical fin/rudder. Washout costs a little peak lift and cruise efficiency (the tips fly below optimum CL). Cruise L/D (~12) is meaningfully below the best-glide figure \u2014 you only get ~15-16 L/D by slowing to ~9-10 m/s to loiter. LW-PLA is light but soft: the airframe is more flutter- and dent-prone than solid PLA or foam-core, hence the carbon spar and the PETG nose. High-AR thin wings have lower flutter margins and are easy to overstress in a hard catapult launch \u2014 this wants a gentle hand or bungee launch, echoing the Bulldog's 'don't throw it too hard' caveat. Finally, a fixed printed washout/dihedral is non-adjustable: you tune stability at CAD time, so getting the static margin right (CG at ~15% MAC / y=42) before printing matters \u2014 the corrected diagram now reflects that target.",
+   "key_specs": {
+    "span": "1.10 m",
+    "aspect": "6.9 (area 0.176 m^2, MAC 0.16 m)",
+    "auw": "~620 g (battery ~140 g, airframe ~260 g, avionics+motor ~220 g)",
+    "cruise": "~14 m/s (Re ~149,000), cruise L/D ~11-13; best-glide/loiter L/D ~15-16 at ~9-10 m/s; stall ~7.2 m/s (CLmax~1.1)",
+    "hover": "none \u2014 fixed-wing glider-drone, cannot hover; slow-flight/loiter down to ~8 m/s"
+   },
+   "build_difficulty": "medium",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 54,
+      "y": 30
+     },
+     {
+      "x": 54,
+      "y": 40
+     },
+     {
+      "x": 97,
+      "y": 52
+     },
+     {
+      "x": 98,
+      "y": 58
+     },
+     {
+      "x": 56,
+      "y": 54
+     },
+     {
+      "x": 55,
+      "y": 88
+     },
+     {
+      "x": 60,
+      "y": 100
+     },
+     {
+      "x": 40,
+      "y": 100
+     },
+     {
+      "x": 45,
+      "y": 88
+     },
+     {
+      "x": 44,
+      "y": 54
+     },
+     {
+      "x": 2,
+      "y": 58
+     },
+     {
+      "x": 3,
+      "y": 52
+     },
+     {
+      "x": 46,
+      "y": 40
+     },
+     {
+      "x": 46,
+      "y": 30
+     },
+     {
+      "x": 50,
+      "y": 0
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 30
+     },
+     {
+      "x": 8,
+      "y": 42
+     },
+     {
+      "x": 20,
+      "y": 46
+     },
+     {
+      "x": 45,
+      "y": 47
+     },
+     {
+      "x": 50,
+      "y": 58
+     },
+     {
+      "x": 58,
+      "y": 47
+     },
+     {
+      "x": 92,
+      "y": 44
+     },
+     {
+      "x": 100,
+      "y": 52
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 92,
+      "y": 36
+     },
+     {
+      "x": 55,
+      "y": 34
+     },
+     {
+      "x": 20,
+      "y": 34
+     },
+     {
+      "x": 8,
+      "y": 32
+     },
+     {
+      "x": 0,
+      "y": 30
+     }
+    ],
+    "components": [
+     {
+      "label": "LiPo battery 4S 1300",
+      "x": 50,
+      "y": 22,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 34,
+      "mass_hint": "light"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 37,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Camera/payload",
+      "x": 50,
+      "y": 42,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Elevon servo L",
+      "x": 40,
+      "y": 56,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Elevon servo R",
+      "x": 60,
+      "y": 56,
+      "mass_hint": "light"
+     },
+     {
+      "label": "ESC",
+      "x": 50,
+      "y": 80,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Pusher motor+prop",
+      "x": 50,
+      "y": 94,
+      "mass_hint": "medium"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 42.1
+    }
+   }
+  },
+  {
+   "name": "Nakamura Locke \u2014 Snap-Lock Tri-Tiltrotor Cruiser",
+   "one_liner": "A tool-free snap-together tri-tiltrotor whose locked, mass-loaded nose fixes CG a sane margin ahead of the neutral point \u2014 the Nakamura Lock in plastic.",
+   "paper_lineage": "Nakamura Lock: the exact principle borrowed is its signature 'locked nose' \u2014 stacking and pinning several layers at the front so mass concentrates ahead of the wing's aerodynamic center, producing a positive static-stability margin that self-corrects rather than pitches or dives. I translate the paper 'lock' (folded-and-pinned layers that never crumple, keeping CG and airfoil intact throw after throw) into a 3D-print methodology: snap-fit self-locking joints and a solid, non-deforming forward battery bay that holds CG constant flight after flight. The broad, blunt, low-wing-loading planform and shallow dihedral Y are carried over directly. What is NOT carried over is the paper's disregard for the exact size of the margin: a paper dart tolerates an enormous forward CG, a powered cruiser does not, so the borrowed idea is bounded to a controllable ~8-10% MAC.",
+   "drone_type": "Tri-tiltrotor VTOL (three tilting rotors: two front nacelles + one rear boom rotor, all on TPU living hinges), snap-fit modular airframe. Note: the rear rotor MUST tilt so it lifts in hover; a fixed horizontal pusher would give zero hover lift and leave two lift points ahead of CG, which is uncontrollable.",
+   "principle": "Static pitch stability is set by where the mass lives, not by the airfoil: put the CG a fixed, known, MODEST distance (~8-10% MAC) ahead of the neutral point and the aircraft weathercocks nose-first and self-damps in pitch. Critically, the reference for the margin is the whole-aircraft NEUTRAL POINT, not the wing AC alone; on a tailless layout the NP sits essentially at the wing AC (nudged forward by the fuselage), so the CG must be placed only a small chord-fraction ahead of it \u2014 not far forward, which would be uncontrollably nose-heavy. A rigid, mass-loaded nose 'locks' that CG so the margin never drifts between builds. Structurally, the same lock philosophy gives tool-free snap assembly: geometry, not glue, carries the loads.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "The paper Nakamura flies at Re ~20,000-40,000. This drone cruises at Re ~170,000 (V ~11.3 m/s, chord 0.22 m), roughly 4-8x higher. What DOES scale: the CG/static-margin logic is Reynolds-independent \u2014 forward mass gives pitch stability at any Re, so the 'locked forward CG = self-correcting slow cruiser' behavior transfers directly, and this is the design's backbone. What does NOT scale: the paper's tolerance for a blunt, thick, slightly-crumpled low-camber section relies on low-Re flow reattaching easily; at Re ~170k a blunt or rough leading edge instead trips early separation and costs L/D. So I keep the blunt planform (for CG and slow-flight margin) but replace the 'any old fold' airfoil with a defined ~9% low-camber section and a clean, sanded leading edge. Net: the stability trick fully transfers; the aerodynamic sloppiness does not and must be engineered out. Honest caveat: at Re ~170k even a clean version of this thick, low-AR planform is a modest-L/D wing, not a sailplane.",
+   "realization_3dprint": "Wing skins/ribs in LW-PLA (foaming, ~0.6-0.8 g/cm3) printed thin (0.4-0.6 mm walls) with a sparse gyroid infill (12-15%) for stiffness-to-weight; a pultruded carbon spar (6 mm round or 8x0.8 mm tube) slides through print-in-place D-box rib holes as the main bending member. Fuselage pod in PETG for toughness and heat tolerance near ESCs. All THREE motor nacelles tilt on print-in-place TPU (95A) living hinges printed monolithically with the nacelle \u2014 hover-to-cruise rotation driven by servo pushrods (front pair on a common linkage, rear on its own servo); TPU tolerates thousands of flex cycles without a pinned bearing. Assembly is entirely snap-fit: wing panels engage the fuselage via dovetail + cantilever-snap latches (PETG, ~0.5 mm interference) that 'lock' like the Nakamura nose \u2014 no screws, no glue. Layered/gyroid stiffening is concentrated at the spar box and the snap tongues. All hinge and snap features print flat-on-bed for layer-shear strength across the load path.",
+   "weighted_components": "The rule: heavy items go FORWARD, in a rigid bay, to pin the CG a MODEST ~8-10% MAC ahead of the neutral point \u2014 not as far forward as a paper dart. On a tailless layout the NP sits ~at the wing AC (~y48 in this planform, nudged slightly forward by the fuselage), so the target CG is ~y47, only about one chord-tenth ahead of it. The 4S LiPo (heaviest single item, ~200 g) sits in the forward battery bay at y~30; the flight controller + GPS ride behind it (y~40-45). The wing AC/neutral point is at ~y48. The resulting CG at (50, 47) sits just ahead of the NP \u2014 a controllable positive static margin of ~8-10% MAC (chord ~11 units, so ~1 unit of margin). That small forward offset IS the static stability: any nose-up disturbance raises AoA, lift at the AC produces a nose-down restoring moment about the slightly-forward CG, so the aircraft self-corrects \u2014 the Nakamura behavior, bounded to a flyable margin. The battery is the CG trim knob: sliding it fore/aft in its rails tunes margin without redesign. The rear rotor (medium, aft at y~88) TILTS to lift in hover, giving the third pitch-control point; in hover the three rotors straddle the CG (two ahead at y~30, one behind at y~88) so pitch is fully controllable. In cruise the same rotor is a pusher.",
+   "efficiency_gain": "Two gains, honestly bounded. (1) Structural (the real one): tool-free snap-fit + TPU living hinges + gyroid LW-PLA cut fastener/bearing count to near zero and drop empty-airframe mass roughly 20-30% vs a screwed PETG-solid equivalent, lowering wing loading (~4.8 kg/m2, ~48 g/dm2) and thus sink rate \u2014 a genuine energy benefit. (2) Aerodynamic/operational: AR ~4.1 with a clean engineered section gives a realistic cruise L/D around 7-9 (drag buildup: induced at e~0.75 plus section and parasite drag from the pod, three nacelles, exposed spar and snap seams). The fixed, known CG mainly buys low pilot workload and good gust rejection; any cruise-power benefit from reduced trim corrections is small (~1-3%), and note a forward CG slightly INCREASES up-elevator trim drag. Correcting the earlier claim: static stability is NOT free cruise energy \u2014 the honest saving is structural mass, not a 10-20% current reduction.",
+   "tradeoffs": "A modest forward CG (~8-10% SM) costs a little trim drag and makes the craft deliberately not agile \u2014 it resists maneuvering, the price of a stable cruiser (the paper Nakamura's trade vs a dart, but bounded here to stay controllable rather than nose-diving). LW-PLA is fragile and heat-sensitive: it cannot sit near ESCs (hence PETG pod) and dents on hard landings. TPU living hinges are the fatigue-life risk \u2014 now on all THREE rotors \u2014 field-replaceable, but a torn hinge grounds that rotor and, for the rear one, hover pitch control. Making the rear rotor tilt (required for hover) adds a third tilt servo and mixing complexity vs a plain plank wing or a fixed pusher. Snap-fit joints loosen with cycling and can rattle; interference must be tuned per printer. Blunt low-AR planform limits top-end L/D vs a true high-aspect sailplane. Weight budget is tight: the tri-tilt hardware eats margin, so 0.95 kg AUW is optimistic-realistic and demands disciplined LW-PLA printing.",
+   "key_specs": {
+    "span": "0.90 m",
+    "aspect": "~4.1 (area 0.198 m^2, mean chord 0.22 m)",
+    "auw": "~0.95 kg (battery ~200 g; printed LW-PLA/PETG shell ~0.48 kg; motors/ESC/servos/props/spar/FC/GPS ~0.27 kg) \u2014 tight but achievable",
+    "cruise": "~11.3 m/s (41 km/h), Re ~170,000, CL~0.6, L/D ~7-9",
+    "hover": "tri-TILTROTOR VTOL (all 3 rotors tilt to lift); ~0.95 kg thrust needed, size for ~1.5-1.7 kg total (hover T/W ~1.6-1.8 with all three lifting); 6-7 in props give disk loading ~190-260 N/m2 and ~130-180 W ideal, FoM ~0.65"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 54,
+      "y": 10
+     },
+     {
+      "x": 56,
+      "y": 22
+     },
+     {
+      "x": 57,
+      "y": 34
+     },
+     {
+      "x": 92,
+      "y": 44
+     },
+     {
+      "x": 95,
+      "y": 50
+     },
+     {
+      "x": 93,
+      "y": 55
+     },
+     {
+      "x": 58,
+      "y": 54
+     },
+     {
+      "x": 57,
+      "y": 78
+     },
+     {
+      "x": 62,
+      "y": 92
+     },
+     {
+      "x": 58,
+      "y": 100
+     },
+     {
+      "x": 50,
+      "y": 97
+     },
+     {
+      "x": 42,
+      "y": 100
+     },
+     {
+      "x": 38,
+      "y": 92
+     },
+     {
+      "x": 43,
+      "y": 78
+     },
+     {
+      "x": 42,
+      "y": 54
+     },
+     {
+      "x": 7,
+      "y": 55
+     },
+     {
+      "x": 5,
+      "y": 50
+     },
+     {
+      "x": 8,
+      "y": 44
+     },
+     {
+      "x": 43,
+      "y": 34
+     },
+     {
+      "x": 44,
+      "y": 22
+     },
+     {
+      "x": 46,
+      "y": 10
+     },
+     {
+      "x": 50,
+      "y": 0
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 42
+     },
+     {
+      "x": 6,
+      "y": 55
+     },
+     {
+      "x": 16,
+      "y": 60
+     },
+     {
+      "x": 30,
+      "y": 62
+     },
+     {
+      "x": 45,
+      "y": 60
+     },
+     {
+      "x": 60,
+      "y": 56
+     },
+     {
+      "x": 75,
+      "y": 52
+     },
+     {
+      "x": 88,
+      "y": 50
+     },
+     {
+      "x": 100,
+      "y": 54
+     },
+     {
+      "x": 100,
+      "y": 44
+     },
+     {
+      "x": 80,
+      "y": 40
+     },
+     {
+      "x": 55,
+      "y": 36
+     },
+     {
+      "x": 30,
+      "y": 34
+     },
+     {
+      "x": 12,
+      "y": 36
+     },
+     {
+      "x": 0,
+      "y": 42
+     }
+    ],
+    "components": [
+     {
+      "label": "4S LiPo battery (nose bay, CG trim rails)",
+      "x": 50,
+      "y": 30,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 40,
+      "mass_hint": "light"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 45,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Left tilt-motor nacelle",
+      "x": 26,
+      "y": 30,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Right tilt-motor nacelle",
+      "x": 74,
+      "y": 30,
+      "mass_hint": "medium"
+     },
+     {
+      "label": "Front tilt servo (linkage)",
+      "x": 50,
+      "y": 36,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Carbon spar (at AC / neutral-point line)",
+      "x": 50,
+      "y": 48,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Rear TILTING rotor + ESC + tilt servo (lifts in hover, pusher in cruise)",
+      "x": 50,
+      "y": 88,
+      "mass_hint": "medium"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 47
+    }
+   }
+  },
+  {
+   "name": "DEP-1 \"Bellwether\"",
+   "one_liner": "A blown-wing quad-tiltrotor VTOL whose four lift rotors also over-blow a deliberately undersized low-AR wing \u2014 trading cruise glide for a compact, stiff, transition-friendly planform (a transition tool, not a cruise-efficiency trick).",
+   "paper_lineage": "Core planform philosophy is lifted from The Needle Dart: accept a small, low-aspect-ratio, high-wing-loading wing and make up the missing lift by other means. The Needle Dart does it with raw throw speed (high dynamic pressure from the arm); Bellwether does it with blown dynamic pressure from prop-wash. The exact transferable principle is 'lift = q x S x CL, so if you can raise local q you can shrink S' \u2014 the dart raises q with velocity, the drone raises q with the slipstream, though only usefully in the slow transition corridor where the wing is near stall. Forward-CG static-margin logic (heavy layers stacked ahead of the aerodynamic centre) is borrowed from the Nakamura Lock / Bulldog Dart nose-stack idea, realised here as a dense battery-and-payload nose mass \u2014 but tempered to a sane ~8% MAC margin rather than the extreme forward ballast a paper dart tolerates.",
+   "drone_type": "Quad tilt-rotor VTOL with a distributed-propulsion blown wing (four wing-leading-edge tilt-rotors double as high-lift blowers during the slow transition corridor)",
+   "principle": "Lift is L = q x S x CL. A propeller slipstream raises the LOCAL dynamic pressure over the wing behind it by roughly (V_slipstream / V_freestream)^2, so a washed wing behaves as if flying faster than the airframe. Crucially this is POWERED lift: the extra q is bought with propulsive power, not free. Blowing ~55% of span lets the craft fly slower at a given wing, or keep a low transition speed with a SMALLER, lower-aspect-ratio, higher-wing-loading wing that would otherwise stall too fast \u2014 a Needle-Dart planform. Because the lift rotors and the blowers are the same four tilt-rotors, there is no dead-weight dedicated high-lift motor as on X-57, and transition is soft because the wing keeps being blown as the rotors tilt down. The benefit is concentrated in the slow transition band; at cruise (CL ~0.43) the wing is far below stall and needs no blow.",
+   "reynolds_verdict": "partially-scales",
+   "reynolds_note": "Split the mechanism in two. (a) The pure dynamic-pressure / powered-lift q-boost is Reynolds-agnostic and DOES survive to drone scale \u2014 this is the part that lowers transition/stall speed and it works at any Re. (b) The much-touted low-Re bonus \u2014 turbulent slipstream killing the laminar-separation bubble for CLmax gains 'up to ~57%' in UIUC/Ananda-Deters-Selig rig data \u2014 is a LOW-Re artifact by the concept's own evidence: those gains peak at Re 30,000-80,000 precisely because that is where the bubble cripples a clean wing. The clean wing here cruises at Re ~200,000 where the bubble is already weak, so mechanism (b) contributes little in cruise; it only helps across the transition Re band (~50k-120k) during slow flight. NASA X-57 confirms powered lift is not a small-scale artifact (measured CL 3.45 -> 6.43, ratio 1.86), but that is a high-lift-flap-plus-blow CLmax ratio at low speed, NOT a cruise q-multiplier. Honest working number: assume an effective blown-region q-ratio of ~1.6-1.7 over ~55% of span, and expect the bubble-suppression bonus only in the transition corridor, not in cruise. Verdict: partially-scales.",
+   "realization_3dprint": "Wing: LW-PLA (foaming PLA, realistically ~0.6-0.7 g/cm^3 when actively foamed) printed as thin-wall single-perimeter aerofoil shells in ~250 mm spanwise segments, threaded onto a 10 mm pultruded carbon tube main spar plus a 6 mm carbon rear spar for torsional stiffness (blown wings see real torsion from offset rotor thrust). Leading edge printed at 2 perimeters because prop-wash and grit hit there. Independent buildup: skin ~120 g, main spar ~75 g, rear spar ~28 g, ribs+LE ~50 g => wing+spar ~270 g (budget it at 0.27 kg, not 0.25). Wing-root ribs and tilt-rotor nacelle/pivot bosses in PETG for heat and fatigue resistance. Tilt mechanism: PETG nacelle yoke on a carbon-rod pivot, driven by a metal-gear servo through a printed PETG horn; TPU (95A) bushings damp motor vibration. TPU landing feet and living-hinge reflex flaperons (thin flexure, no metal hinge). Fuselage pod: PETG clamshell with an internal LW-PLA equipment tray. Motor mounts and spar-to-fuselage saddle: PETG with brass heat-set inserts. Bonded with CA + activator; spar removable for transport. All 3D-printable with commodity FDM; nothing exotic.",
+   "weighted_components": "Heavy mass is stacked forward to buy a SANE static margin against a small low-AR wing whose aerodynamic centre (AC) sits at ~25% MAC. In the top-view box the wing occupies y~40 (leading edge) to y~47 (trailing edge), so MAC spans ~7 box units and the quarter-chord AC lands near y=41.9. The target CG is placed just AHEAD of it at y=41.3, giving a gap of ~0.6 box units = ~+8% MAC \u2014 genuinely stable but trimmable (the earlier y=38 target implied ~57% MAC, an untrimmable over-margin, and was an error). The dense 4S/6S Li-ion/LiPo battery is the CG-setting lever, sliding fore/aft on the tray to trim CG onto y=41.3 after build. Flight controller, GPS, and FPV/mapping payload sit in the nose (low y) to reinforce forward mass. CRITICALLY, the four tilt-rotor motors are re-spaced so the hover THRUST CENTROID coincides with the CG: front pair at y=36 (ahead of CG) and rear pair at y=47 (behind CG), centroid y=41.5 ~ CG \u2014 the earlier layout (front y=33, rear y=55, centroid y=44) put the thrust centroid ~6 units aft of the CG and would have pitched the craft nose-down in hover. Servos (tilt + flaperon) are light and near the roots so they barely move CG. Net: CG at (50, 41.3), AC at (50, 41.9), thrust centroid at (50, 41.5) \u2014 CG ahead of AC (statically pitch-stable) and on the thrust centroid (clean hover).",
+   "efficiency_gain": "Honest, correctly-signed gains. (1) Wing shrink: with the blown region carrying ~1.6-1.7x dynamic pressure over ~55% of span, effective lift-area multiplier ~1.36, so the wing can be ~24% smaller in area (AR ~6 vs a ~9 baseline) for the same safe transition/stall speed. This buys reduced WING MASS and a stiffer, easier-to-print wing \u2014 worth real grams and structural robustness. (2) Free high-lift: unlike X-57's 12 dead-weight high-lift props switched off in cruise, Bellwether's blowers ARE its lift rotors, so zero propulsion-mass penalty for the blown capability and an inherently soft transition. Rough magnitude: ~10-15% lower transition power margin and a lighter/stiffer wing. IMPORTANT CORRECTION: the smaller wing does NOT reliably cut cruise drag. Dropping AR 9->6 raises induced drag at cruise CL ~0.43 enough to roughly cancel the parasite saving \u2014 a drag audit gives total wing drag ~0.69 N (AR9) vs ~0.72 N (AR6), i.e. essentially a wash, possibly slightly worse. So the earlier '5-8% cruise-drag reduction' claim is withdrawn; cruise drag is approximately neutral. And because cruise CL ~0.43 is far below stall, blowing is a TRANSITION tool, not a cruise-efficiency lever. Physics: raising local q lets the wing operate below stall through transition without large area \u2014 that is the whole payoff.",
+   "tradeoffs": "Honest downsides. (1) In pure hover the wing is dead weight and a download surface under the rotors \u2014 blowing helps transition, not hover, so hover efficiency is slightly WORSE than a wingless quad of equal weight. (2) Tilt-rotors add mechanical complexity, failure modes, and vibration paths; the TPU-damped PETG nacelles are a genuine fatigue-risk area. (3) Asymmetric blow (one motor out) produces a strong coupled rolling+pitching moment because half the blown lift vanishes \u2014 the FC needs a blown-wing-specific failure mode, not just standard quad motor-out. (4) The blown wing makes a large nose-up pitching moment in the transition corridor that eats trim authority; the ~8% forward CG and reflex flaperons are sized for it but constrain how far aft CG can go. (5) Swirl and non-uniform blow keep the real q-ratio (~1.6-1.7) well below ideal (V_slip/V_free)^2 ~ 1.86 \u2014 do not oversell the shrink. (6) Low AR (~6) has higher induced drag than a high-AR sailplane wing, so this trades GLIDE/cruise efficiency for a compact, blowable, printable, transition-friendly planform \u2014 cruise drag is roughly neutral vs a larger high-AR wing, not better. (7) AUW is tight: honest all-up mass is ~1.45 kg once tilt gear and wiring are counted, not 1.3 kg.",
+   "key_specs": {
+    "span": "1.0 m",
+    "aspect": "~6 (deliberately low; mean chord ~0.167 m) so the slipstream covers a big lift fraction and the wing is stiff and printable",
+    "auw": "~1.45 kg all-up (0.35 battery, 4 x 0.09 motors+props, 0.27 wing+spar, 0.20 fuselage, 0.15 avionics+payload, ~0.15 tilt gear/servos/wire) \u2014 the earlier 1.3 kg left no mass for tilt hardware and was optimistic",
+    "cruise": "~18 m/s, wing loading ~85 N/m^2, cruise CL ~0.43, cruise Re ~200,000 (still safely sub-stall)",
+    "hover": "quad tilt-rotor; 4 rotors ~10 in, disc loading ~70 N/m^2 (~7 kg/m^2), ideal hover power ~70 W, realistic electrical ~180-200 W; wing is download/dead-weight in hover (honest penalty)"
+   },
+   "build_difficulty": "hard",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 46,
+      "y": 10
+     },
+     {
+      "x": 45,
+      "y": 30
+     },
+     {
+      "x": 92,
+      "y": 40
+     },
+     {
+      "x": 93,
+      "y": 47
+     },
+     {
+      "x": 55,
+      "y": 46
+     },
+     {
+      "x": 54,
+      "y": 78
+     },
+     {
+      "x": 62,
+      "y": 92
+     },
+     {
+      "x": 62,
+      "y": 97
+     },
+     {
+      "x": 38,
+      "y": 97
+     },
+     {
+      "x": 38,
+      "y": 92
+     },
+     {
+      "x": 46,
+      "y": 78
+     },
+     {
+      "x": 45,
+      "y": 46
+     },
+     {
+      "x": 7,
+      "y": 47
+     },
+     {
+      "x": 8,
+      "y": 40
+     },
+     {
+      "x": 55,
+      "y": 30
+     },
+     {
+      "x": 54,
+      "y": 10
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 42
+     },
+     {
+      "x": 6,
+      "y": 55
+     },
+     {
+      "x": 20,
+      "y": 60
+     },
+     {
+      "x": 30,
+      "y": 58
+     },
+     {
+      "x": 40,
+      "y": 52
+     },
+     {
+      "x": 45,
+      "y": 62
+     },
+     {
+      "x": 55,
+      "y": 60
+     },
+     {
+      "x": 62,
+      "y": 50
+     },
+     {
+      "x": 85,
+      "y": 48
+     },
+     {
+      "x": 100,
+      "y": 58
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 62,
+      "y": 38
+     },
+     {
+      "x": 40,
+      "y": 40
+     },
+     {
+      "x": 20,
+      "y": 38
+     },
+     {
+      "x": 6,
+      "y": 38
+     },
+     {
+      "x": 0,
+      "y": 42
+     }
+    ],
+    "components": [
+     {
+      "label": "Payload (FPV/mapping cam)",
+      "x": 50,
+      "y": 8,
+      "mass_hint": "light"
+     },
+     {
+      "label": "GPS",
+      "x": 50,
+      "y": 15,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Flight controller",
+      "x": 50,
+      "y": 22,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Battery (slides to set CG ~y41.3)",
+      "x": 50,
+      "y": 37,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Front-L tilt-rotor motor",
+      "x": 22,
+      "y": 36,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Front-R tilt-rotor motor",
+      "x": 78,
+      "y": 36,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Rear-L tilt-rotor motor",
+      "x": 30,
+      "y": 47,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Rear-R tilt-rotor motor",
+      "x": 70,
+      "y": 47,
+      "mass_hint": "heavy"
+     },
+     {
+      "label": "Tilt servo (L)",
+      "x": 40,
+      "y": 42,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Tilt servo (R)",
+      "x": 60,
+      "y": 42,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Flaperon servo (L)",
+      "x": 44,
+      "y": 48,
+      "mass_hint": "light"
+     },
+     {
+      "label": "Flaperon servo (R)",
+      "x": 56,
+      "y": 48,
+      "mass_hint": "light"
+     },
+     {
+      "label": "ESCs / PDB",
+      "x": 50,
+      "y": 44,
+      "mass_hint": "medium"
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 41.3
+    }
+   }
+  }
+ ],
+ "vtol_levers": [
+  {
+   "rank": 1,
+   "name": "Minimize disk loading: fit the largest rotor discs the geometry allows (all three rotors)",
+   "mechanism": "Ideal hover induced power P_i = T^1.5/sqrt(2*rho*A), so power loading (T/P) scales as 1/sqrt(DL). Halving disk loading cuts induced velocity ~29% and ideal hover power ~29% at fixed thrust. Upsizing each disc e.g. 9->12 in raises area (12/9)^2=1.78x and cuts ideal induced power to 1/sqrt(1.78)=0.75 (~25%). Larger slower discs also run at higher blade Re, nudging figure of merit up from ~0.4-0.5 toward ~0.6-0.65. (Merges the two duplicate disk-loading candidates.)",
+   "impact": "HOVER: dominant single lever, ~20-25% real hover-power reduction after FoM losses, directly extending hover/climb endurance and shrinking the required battery. Mild positive on TRANSITION thrust margin. Cruise unaffected if oversized props feather/stop; mainly costs weight.",
+   "cost": "Bigger props are cheap (money low). Real cost is structural mass creep (longer booms/spars, larger nacelles) and packaging: tip clearance through the full 0-90 deg tilt sweep and >=15% D tip-to-tip gap to limit interference. Wider footprint and tip-strike risk in transition.",
+   "printable_implementation": "Print hollow booms in PETG/PA-CF over a pultruded carbon tube through a printed sleeve to carry the larger tip motor without flutter. Size prop cutouts and tilt-axis geometry so the largest disc clears wing/fuselage with >=15% D gap. Print motor nacelles as separate high-infill parts bonded to low-infill booms to keep tip mass down. Keep motor-mount bolt pattern parametric to swap Kv. Re-check tip Mach as D grows at fixed RPM.",
+   "priority": "high",
+   "phase": "hover"
+  },
+  {
+   "rank": 2,
+   "name": "Drive airframe mass fraction down: LW-PLA foaming + carbon spars + selective infill map",
+   "mechanism": "Hover power scales ~W^1.5 and cruise ~W^1, so every gram is paid continuously, worst in hover: adding 0.6 kg to a 3 kg ship raises hover power (3.6/3)^1.5=+31%. LW-PLA foams to ~0.4-0.6 g/cc vs 1.24 for solid PLA (~50-60% skin-mass cut). Pair with a deliberate density map: near-solid only at load paths (spar caps, boom roots, tilt bearings), 5-12% gyroid in shear webs, single-perimeter LW skin on fairings. (Merges the LW-PLA and cut-dead-VTOL-mass candidates.)",
+   "impact": "RANGE + HOVER + CRUISE. A realistic 0.3-0.5 kg cut on a ~2.5-3 kg ship lowers hover power ~11-28% and cruise power ~15-18%; endurance scales roughly with the power drop (~15-25% more range). Also lowers Vstall, shrinking the transition corridor. Highest-leverage structural lever because printed parts are chronically over-built.",
+   "cost": "Weight strongly negative (saves mass). Money low (~$35/kg LW-PLA). Complexity medium: foaming needs per-nozzle temp/flow calibration or density is inconsistent and layers weak; LW parts are soft, so bearing seats and motor mounts must stay solid PLA/PETG. Risk of under-building tilt hard points.",
+   "printable_implementation": "Print skins in vase/single-wall LW-PLA at calibrated foaming temp (~230-250C, flow ~45-55%). Use slicer modifier meshes: 3-4 perimeters + 30-40% infill on spar caps/boom roots, 8-12% gyroid webs, 0-1 perimeter LW skin on fairings. Keep tilt bearing blocks and the 3 motor mounts as separate solid inserts, bonded/bolted in. Topology-optimize tilt brackets in CF-nylon.",
+   "priority": "high",
+   "phase": "all"
+  },
+  {
+   "rank": 3,
+   "name": "Tilt fully horizontal + weight-on-wing + cruise-matched prop + stop/fold the tail rotor",
+   "mechanism": "In cruise the wing should carry L=W so rotors only fight drag (T=D<<W), making cruise power 3-6x below hover, but only if (a) rotors tilt fully horizontal (residual tilt tilts a lift vector and adds trim drag) and (b) the prop isn't stuck at low-efficiency low advance ratio. A flat-pitch hover prop at cruise J often sits at eta~0.4; a cruise-matched pitch raises it to ~0.6+. The tail rotor is pure dead weight/drag in cruise, so stopping+feathering it edge-on removes its disc drag entirely. (Merges the tilt-unload, decouple-propulsion, and tail-feather candidates.)",
+   "impact": "CRUISE + RANGE dominant, the biggest cruise-power lever: weight-on-wing plus aligned thrust plus a cruise-matched prop can swing cruise power +/-20-30%, and folding the tail rotor removes its windmilling/parasite drag. Since cruise spends most mission energy, this sets range/endurance. TRANSITION: clean handoff. No hover cost (blades deploy for hover).",
+   "cost": "Medium complexity/weight: needs reliable full-90-deg tilt with a solid horizontal hard-stop and a folding/stopping tail hub (hinge or two-position latch + control logic). Money moderate. Low-cost fallback: just pick a higher-pitch prop matched to cruise J on the tilting pair and accept slightly lower hover thrust margin.",
+   "printable_implementation": "Print the tilt yoke with a hard mechanical end-stop at horizontal so the servo holds no torque in cruise (no creep/drain), on captured press-fit 6xx bearings (never printed journals). Print a spring-loaded folding hub or feather detent for the tail so blades index edge-on and stow into a printed streamline fairing. Provide swappable printed motor mounts so the tilting pair can take a larger cruise-biased prop.",
+   "priority": "high",
+   "phase": "cruise"
+  },
+  {
+   "rank": 4,
+   "name": "Match blade solidity, twist, and RPM to the low-Re regime (blade-element sizing)",
+   "mechanism": "Small props run at 75%-station Re ~50k-150k where profile drag rises sharply and section L/D collapses, dropping FoM from full-scale 0.78-0.81 to ~0.5-0.65. FoM is maximized by holding section Cl near best-L/D (~0.5-0.7) across the span, which fixes solidity (~0.08-0.12) and RPM together, plus proper nonlinear washout (~15-25 deg, pitch ~1/r) for near-uniform inflow that minimizes both induced and profile power. Too few narrow blades at high RPM raises tip Mach; too much solidity at low RPM stalls the root. (Merges solidity-matching and blade-twist candidates.)",
+   "impact": "HOVER: large, roughly +8-18% combined hover-power reduction (several points of FoM from matched loading + optimal twist) versus an off-the-shelf mismatched, lightly-twisted prop. Also improves CLIMB/TRANSITION thrust margin and delays tip stall at high collective. Cruise slightly suboptimal on the hover-tuned blade (secondary; mitigated by pitch/RPM scheduling).",
+   "cost": "Complexity moderate (needs a BEMT tool and a matched motor Kv so target RPM sits in the motor's efficient band). Weight neutral, money low. Twist itself is free geometry. Risk: wrong Kv forces the motor off-peak and eats the aero gain.",
+   "printable_implementation": "Generate blades with QMIL/QPROP-style BEMT targeting Cl~0.6 across span at hover RPM with hyperbolic-approx twist (high root pitch, 15-25 deg washout to tip); loft into CAD. Use 2-3 blades at ~0.10 solidity. Print in PA-CF/PETG at >=4 perimeters so the blade holds designed pitch under load (flexible blades unload and lose FoM). Orient layers so centrifugal/bending loads run in-plane, not across layers. Below Re~60k use a thin high-camber sharp-LE section, not a scaled Clark-Y. Verify printed twist with calipers.",
+   "priority": "high",
+   "phase": "hover"
+  },
+  {
+   "rank": 5,
+   "name": "Unidirectional carbon spar/boom, printed parts only as shear web and connectors",
+   "mechanism": "FDM polymers have low specific stiffness (PLA E~3.5 GPa) and weak interlayer bonds, so a fully-printed spar is heavy for its bending stiffness and delaminates. Bending stiffness E*I wants material far from the neutral axis, so put it in pultruded carbon caps/tubes (E~120-150 GPa) and let the print be only the low-stress shear web, ribs, and locating sockets.",
+   "impact": "WEIGHT FRACTION + all phases. A carbon-capped spar is typically 40-60% lighter than an equivalent all-printed box spar at equal tip deflection, and stiffer wings hold the cruise airfoil shape (less washout/flutter) so effective L/D holds up. Also stiffens the two tilt booms, cutting vibration-driven control loss in hover and transition.",
+   "cost": "Weight negative (saves). Money low-moderate ($5-15/airframe of carbon). Complexity medium: needs accurate bonded sockets and interference/epoxy fit, adds a bonding step and a non-printed BOM item.",
+   "printable_implementation": "Design the wing as printed rib-and-shear-web sections threaded onto a pultruded carbon tube (~8-10 mm OD) with printed collar sockets at +0.1-0.15 mm slip+epoxy clearance. Route two carbon booms wing-to-nacelle the same way. Split the wing into 2-3 spanwise print segments keyed on the spar to fit the bed.",
+   "priority": "high",
+   "phase": "all"
+  },
+  {
+   "rank": 6,
+   "name": "Flight scheduling: rush the transition corridor and cruise at best-L/D / min-power speed",
+   "mechanism": "Hover power is ~7x cruise for this class (~443 W vs ~60 W), so time in hover and the stalled transition window is the dominant discretionary drain. The wing makes no useful lift below ~1.2*Vstall (~12-14 m/s), so driving forward acceleration hard during tilt unloads the rotors and collapses power toward cruise sooner. Separately, cruise power = drag*V with parasitic (~V^2) and induced (~1/V^2) terms giving a min-power/best-L/D speed; the baseline cruises at CL~0.42, above L/D-max on the parasitic side, so trimming a few m/s slower recovers L/D. (Merges the hover-dwell, airspeed-schedule, and wing-loading/cruise-CL-trim candidates.)",
+   "impact": "RANGE + TRANSITION, entirely free of hardware. Cruising toward best-L/D can add ~10-20% range; correct transition airspeed avoids the power spike and shaves seconds of high-power operation per cycle (each 10 s ~0.8% of a 150 Wh pack). On multi-hop missions the cumulative saving is 5-15% of usable energy. Lower transition speed also narrows the stall/transition gap, a safety positive.",
+   "cost": "Essentially free: control-law/tuning plus careful flight testing to find real best-L/D and safe transition airspeed. Needs a decent FC (e.g. ArduPlane QuadPlane) with tuned transition-airspeed and tilt-rate params and clean airspeed sensing. Small structural-load penalty from higher transition acceleration. Trades trip time for energy.",
+   "printable_implementation": "No aero surface change. Print a vibration-isolated pitot mount ahead of the prop wash and out of the fuselage boundary layer for trustworthy airspeed. Print low-backlash tilt gearing (herringbone/preloaded, captive-nut hard points) so commanded tilt rate is achieved. Add a trim-adjustable elevator/servo tab so cruise trim dials to best-L/D without re-slicing. Log via the FC and iterate. Use conservative CLmax (~1.0-1.1) at Re 150-300k when setting transition airspeed.",
+   "priority": "high",
+   "phase": "all"
+  },
+  {
+   "rank": 7,
+   "name": "Print orientation aligned to the principal load path",
+   "mechanism": "FDM is strongly anisotropic: interlayer (Z) tensile strength is only ~30-60% of in-plane. Tilt booms, motor arms and the tilt yoke see bending that puts a face in tension across layer lines if printed in the wrong pose. Orienting so the primary tensile bead runs along the load lets thinner walls hit the same strength (less mass) and removes the sudden delamination failure mode.",
+   "impact": "WEIGHT FRACTION + transition/safety. Correct orientation typically lets you drop 1-2 perimeters (10-25% wall mass) on booms/arms at equal strength, and removes the dominant crash mode in the high-load transition phase where rotor thrust vector and wing lift both load the booms.",
+   "cost": "Weight negative-to-neutral, money none, complexity low-medium: some parts need supports or a split+bond to reach the good orientation; requires per-part thinking rather than print-it-flat.",
+   "printable_implementation": "Print tilt booms and motor arms with beads running along the boom axis (two-piece bonded tube if longer than the bed), not layers stacked across the axis. Print the tilt yoke so pivot-load beads run continuous around the bearing. Where a part must cross layers in tension, add a carbon pin or filament wrap. Validate with a 3-point bend on a coupon.",
+   "priority": "high",
+   "phase": "transition"
+  },
+  {
+   "rank": 8,
+   "name": "Match motor Kv and cell count so hover thrust lands at 50-65% throttle",
+   "mechanism": "A BLDC motor + ESC peaks in a mid-load band (~50-70% throttle); below ~30% ESC switching and current-per-thrust losses dominate, near 100% copper (I^2R) losses spike. Kv sets RPM (~Kv*V), so choose prop+Kv+cell-count so static thrust equals weight at ~55% throttle. Over-Kv'd motors force tiny inefficient twitchy openings in hover; under-Kv'd motors bog and overheat.",
+   "impact": "HOVER + TRANSITION, plus range indirectly. Moving the hover point from ~35% to ~55% throttle typically recovers 5-15% of drivetrain electrical efficiency (motor+ESC eta ~70% toward ~82-85%) and improves control authority and thermal margin during the transition surge.",
+   "cost": "Essentially free if chosen at design time (right motor SKU + cell count); expensive to fix later (re-motor/re-cell). Needs a thrust-stand measurement or a good manufacturer thrust table plus an AUW estimate.",
+   "printable_implementation": "Design motor mounts with a parametric bolt circle (16/19/25 mm) and a swappable printed motor-boss insert so a different Kv/frame-size drops in without reprinting the nacelle. Add printed cooling scoops/vents over ESC and motor (transition is the thermal worst case). Print a bolt-on thrust-stand cradle to measure the real thrust-vs-throttle curve before committing.",
+   "priority": "high",
+   "phase": "hover"
+  },
+  {
+   "rank": 9,
+   "name": "Higher aspect ratio wing (span extension / tapered planform)",
+   "mechanism": "Induced drag CDi = CL^2/(pi*e*AR). At baseline AR~7.3, CL~0.42, raising AR to 10-12 (longer span at same area, or reduced chord) cuts CDi materially. Because a tiltrotor carries the wing as dead weight in hover there is a real optimum: too much span raises structural mass and hover bending, but in the induced-drag-limited part of the polar the gain is direct, and it grows once CD0 is reduced.",
+   "impact": "CRUISE + RANGE. L/D rises from ~9.4 toward ~10.3 at AR 12 in the current CD0-dominated budget; payoff grows to +10-15% L/D once CD0 drops and induced drag becomes a bigger share. Slightly HURTS hover (more spanwise mass/inertia, longer roll arm, heavier wing). Transition mildly positive (cleaner wing-borne lift onset).",
+   "cost": "Medium: longer span needs a stiffer/heavier spar to survive cruise gusts and hover download; weight penalty scales more than linearly with span. Multi-section printing/joining adds complexity. Pairs naturally with the carbon-spar lever.",
+   "printable_implementation": "Print the wing in spanwise segments over a continuous carbon tube bonded through printed ribs; keep skin a thin shell (1.2-2 mm, 2-3 perimeters) with sparse gyroid only near root. Add printed spar caps or an embedded carbon strip for bending stiffness without solid infill. Taper the planform (tip chord ~0.6 root) to approximate elliptic loading and push e toward ~0.9.",
+   "priority": "high",
+   "phase": "cruise"
+  },
+  {
+   "rank": 10,
+   "name": "Surface finish + low-Re laminar-flow airfoil on the wing",
+   "mechanism": "At cruise the wing runs Re ~150k-350k where CD0 (skin-friction + pressure drag) is ~3-4x induced drag at CL~0.42. FDM layer lines (0.1-0.2 mm ridges) act as distributed roughness that trips the boundary layer early and can spawn a laminar separation bubble that spikes profile drag. Sealing/smoothing plus a section designed for this Re band (SD7037, E387, S9000-class) keeps flow attached and shrinks the bubble, cutting profile drag ~15-30%.",
+   "impact": "CRUISE + RANGE: dropping CD0 from ~0.035 to ~0.028 lifts L/D from ~9.4 to ~11 at the same CL, a ~15-20% range/endurance gain. Modest hover benefit (lower cruise power frees battery for hover reserve). Neutral on transition.",
+   "cost": "Low money, low weight. Cost is labor: filler-primer, wet-sand to ~400-600 grit, optionally a thin heat-shrink/glass skin (~30-80 g on a 1.6 m wing). Airfoil swap is free at design time, costly to retrofit.",
+   "printable_implementation": "Print with span axis vertical or use ironing on top surfaces to minimize layer-line roughness in the flow direction; keep seams off the LE suction peak. Model as a thin shell, prime + wet-sand the leading 40% of chord. Add a trip strip at 30-40% chord ONLY if flight data shows a persistent bubble. Use a validated low-Re coordinate set, not a scaled full-size section.",
+   "priority": "high",
+   "phase": "cruise"
+  },
+  {
+   "rank": 11,
+   "name": "Battery chemistry, voltage, and capacity matched to the phase power profile",
+   "mechanism": "Range scales with usable Wh/kg. LiPo gives high C for the brief hover/transition surge but ~180-200 Wh/kg; 21700 high-drain Li-ion gives ~250-280 Wh/kg with limited continuous C. A tiltrotor spends seconds at high power and minutes-hours cruising, so a Li-ion or Li-ion-dominant pack is often range-optimal, sized so hover surge current (I=P_hover/V) stays inside the C rating. Higher pack voltage lowers current for the same power, cutting I^2R losses in wiring/connectors/ESC and allowing thinner lighter wire. Do not oversize: dead battery mass costs range roughly linearly.",
+   "impact": "RANGE dominant (usable range can swing 20-40% via Wh/kg alone), plus a few percent system efficiency from higher voltage. Wrong chemistry either can't supply hover current (need LiPo) or wastes range (LiPo where Li-ion would do). Touches hover, transition, cruise and range together.",
+   "cost": "Money (high-drain Li-ion and higher-voltage ESCs cost more) and packaging; higher voltage needs matching motor/ESC ratings; under-sized Li-ion risks sag during the hover surge.",
+   "printable_implementation": "Print a sliding battery tray with detents to trim CG in flight test (hover-vs-cruise CG shift is a real tiltrotor issue). Print vented 21700 holders with a snug non-compressive fit if going Li-ion. Recess an XT60/XT90 with strain relief and route short fat power leads straight to the ESCs to minimize resistance.",
+   "priority": "high",
+   "phase": "all"
+  },
+  {
+   "rank": 12,
+   "name": "Smooth blade surfaces and sharpen LE/TE (recover print-vs-molded prop loss)",
+   "mechanism": "At blade Re<~150k the boundary layer is largely laminar and separation-prone; FDM layer lines act as large relative roughness that trips and thickens it, raising section Cd and cutting thrust, and a blunt printed TE (nozzle-limited ~0.4 mm) adds base drag and noise. Low-Re prop studies show a smoothed 3D-printed rotor can match a commercial rotor's aero and acoustics. This is the concrete execution of the Reynolds-aware prop guardrail: pick diameter/RPM for the highest practical blade Re at Mtip<~0.4, then finish the blade.",
+   "impact": "HOVER: +3-6% thrust/power recovery (a couple points of FoM), more on a rough print. Equal benefit to CRUISE prop efficiency and lower noise. Net positive across ALL phases; it is pure loss-recovery, and it also serves as a guardrail against over-estimating thrust/endurance from paper (high-Re) prop efficiencies.",
+   "cost": "Labor, not weight or money: sanding/vapor-smoothing time. Small risk of altering the airfoil if over-sanded. Vapor smoothing needs ABS/ASA (acetone) rather than PETG/PLA. Guardrail portion is free analysis discipline.",
+   "printable_implementation": "Print aero surfaces at <=0.12 mm layers with lines running spanwise, wet-sand 400->800 grit, finish with filler-primer (acetone-vapor for ABS/ASA). Hand-thin the TE to <0.5 mm and round the LE to the design radius. Prefer bought carbon/nylon props for the primary discs and print only the hub adapter; if printing, balance every prop. Payoff is largest on the smallest/slowest-tip rotors.",
+   "priority": "medium",
+   "phase": "all"
+  },
+  {
+   "rank": 13,
+   "name": "Thin-wall aft structure, tips, and fairings as sacrificial low-inertia mass",
+   "mechanism": "Aft of the spar the structure carries little bending load, but naive prints put 2-3 solid perimeters everywhere, adding mass far from CG and at the tips where it inflates roll/yaw inertia. At cruise chord Re~2.7e5 the airfoil is forgiving, so surfaces aft of the spar only need to hold shape, not carry load: make them single-perimeter skin over sparse ribs or a printed lattice.",
+   "impact": "WEIGHT FRACTION + hover/transition control. Typically 40-100 g off the wing, concentrated at tips/TE so it cuts roll and yaw inertia disproportionately for snappier, less power-hungry attitude control in hover and cleaner transition.",
+   "cost": "Weight negative, money none, complexity low. Trade: thin skins are fragile to handling, accepted as sacrificial/repairable. Below chord Re~1e5 (tiny tips) keep skins smooth and avoid ultra-rough sparse lattices so laminar separation doesn't dominate.",
+   "printable_implementation": "Slice everything aft of the spar and the outboard tips as 1-perimeter LW-PLA over ribs at ~30-40 mm pitch, or a printed lattice under a 0.5-0.6 mm skin. Keep the LE (impact + laminar-flow-critical) at 2 smooth perimeters. Make the tip a removable/replaceable printed part so crash damage is a cheap reprint. Consolidating each nacelle into fewer monolithic prints with press-fit bearing seats is a related nearly-free 60-160 g win in the same spirit.",
+   "priority": "medium",
+   "phase": "hover"
+  }
+ ],
+ "issues": [
+  "[cg_ballast] CRITICAL PHYSICS ERROR: The concept computes static margin as the offset between CG and the WING aerodynamic centre (0.25 MAC). That is only valid for a tailless flying wing. Keelhaul has a V-tail on an aft boom, so the aircraft NEUTRAL POINT sits well aft of the wing AC (the tail adds pitch stiffness). Correct static margin = (NP - CG)/MAC, not (AC - CG)/MAC. The headline claim 'CG-to-AC offset alone sets the static margin / gives +10%' is methodologically wrong. Corrected wording throughout to distinguish NP from AC and to credit the tail.",
+  "[cg_ballast] GEOMETRY vs CLAIM CONTRADICTION: Concept states the 0.25-MAC AC 'lands at y~47', but its own diagram wing root runs LE y=38 to TE y=52 (chord 14 units), so 0.25c is at y=41.5, not 47. The stated CG y=45 is therefore actually ~3.5 units (25% chord) BEHIND the true wing AC, i.e. tail-heavy relative to the wing alone. The plane is only stable because of the tail it argued away. Fixed: cg_point moved to y=41 (just ahead of wing AC y=41.5); corrected all AC/CG numbers to match the diagram.",
+  "[cg_ballast] PRINTABILITY IMPOSSIBILITY: 'print-in-place TPU living hinge printed flat as part of the (LW-PLA/PETG) surface' cannot be done on a single-nozzle printer \u2014 you cannot embed a TPU web inside a PLA/PETG part in one pass. Corrected to either an integral thin-web PLA/PETG print-in-place hinge (works, but fatigues) or an explicit multi-material printer requirement; build_difficulty raised to 'hard' to reflect the multi-material/carbon/foaming-PLA process stack.",
+  "[cg_ballast] EFFICIENCY OVERCLAIM (mass): 'saves 30-80 g of dead lead vs tail-heavy beginner builds' benchmarks against a strawman bad design. Deliberate component placement for CG is standard practice, not a novel efficiency gain. Reframed as good practice, not a quantified 5-8% endurance win.",
+  "[cg_ballast] EFFICIENCY DOUBLE-COUNT: gains (1) mass and (2) trim-drag are presented as 'compounding' but both derive from the same correct-CG decision; the trim-drag figure (3-6% cruise power) is at the optimistic end and only accrues vs a mistrimmed baseline. Softened and de-duplicated.",
+  "[cg_ballast] WEIGHT OPTIMISM: 950 g AUW with a 230 g LiPo leaves ~478 g for all printed structure; a realistic LW-PLA airframe (skin+ribs+D-box+bulkheads) for a 1.05 m span is ~400 g, so 950 g is achievable but tight. Corrected AUW to a 950-1050 g band and adjusted the ballast-fraction claim accordingly (~22-24%).",
+  "[cg_ballast] MINOR: reynolds_note Re value stated 197,000; recompute V*MAC/nu = 16*0.18/1.5e-5 = 192,000. Trivial, corrected to ~192k.",
+  "[high_ar_wing] FATAL: Battery spec is physically impossible. A 500 g 6S LiPo cannot hold 178 Wh (that is 356 Wh/kg, ~2x the best real LiPo at 150-180 Wh/kg). A real 500 g pack holds ~85-90 Wh. You can honor at most two of {500 g, 178 Wh, 1.8 kg AUW}. Corrected to a real ~90 Wh / 500 g pack, keeping AUW 1.8 kg.",
+  "[high_ar_wing] RANGE OVERCLAIM: 200-230 km depends entirely on the impossible 178 Wh figure. With a real 90 Wh pack at AUW 1.8 kg and honest drag, cruise range is ~110-140 km, not 200+. Corrected to ~120 km (best-case ~140 km at CD0=0.03).",
+  "[high_ar_wing] STABILITY REASONING ERROR: The concept uses the WING quarter-chord AC (y=41.5) as the stability reference. The aircraft NEUTRAL POINT sits AFT of the wing AC because the tail contributes lift-curve slope at a moment arm. True static margin is measured against the NP, so the real margin is LARGER (more stable) than the ~8-15% claimed. CG=39.8 ahead of wing-AC=41.5 is still correct and safe; only the reasoning/label is wrong. Corrected wording distinguishes AC from NP.",
+  "[high_ar_wing] CRUISE POWER OPTIMISTIC: 30 W assumes a clean CD0~0.03. A quadplane with FOUR exposed lift motors, booms and saddle clamps in the freestream realistically runs CD0~0.04-0.05, cutting cruise L/D to ~11-13 and raising cruise power to ~30-34 W. 30 W is a best-case floor, not nominal. Corrected to ~30-34 W and L/D ~13-14.6 (best case).",
+  "[high_ar_wing] HOVER POWER SLIGHTLY OPTIMISTIC: Momentum theory for 4x 10-inch disks lifting 1.8 kg with figure-of-merit 0.65 and motor/ESC eff 0.82 gives ~198 W electrical, not 180 W. Corrected to ~195-200 W (and hover endurance on a real 90 Wh pack ~4-5 min budgeted, but the profile should still be hover-brief).",
+  "[high_ar_wing] ROLL-AUTHORITY ARITHMETIC INCONSISTENT: With 270 g thrust headroom per rotor over a 0.45 m arm and two rotors per side, differential roll moment is ~4.8 Nm and ~1140 deg/s^2 (Ixx~0.24), i.e. DOUBLE the quoted 2.4 Nm / 560 deg/s^2. The quoted figures appear to use one rotor per side. The qualitative point (roll is the weak axis due to span^2 inertia) is correct; the numbers were garbled. Corrected to internally consistent values.",
+  "[high_ar_wing] MINOR GEOMETRY/HOVER COUPLING: The lift-rotor pair-midpoint in the top view is at y=(33+57)/2=45, which is BEHIND both the AC (41.5) and CG (39.8), not coincident with CG as claimed. This introduces a small hover pitch bias the pusher/attitude loop must trim. Corrected by moving the rear rotor pair forward (y=53) so the pair-midpoint lands at y=43, much closer to CG.",
+  "[high_ar_wing] TERMINOLOGY: 'more than halves the induced-drag coefficient' (0.027 -> 0.011 going AR5->AR12) is correct and verified; retained. L/D 14.6 at CL0.6 and LDmax 16.3 verified as arithmetically sound with e=0.85, CD0=0.03; retained as best-case.",
+  "[ducted_boxwing] DISK LOADING WRONG BY ~3.4x: two 6-inch (152mm) rotors carrying 1150g give ~310 N/m^2, not the claimed 90 N/m^2. To hit 90 N/m^2 you would need ~11-inch rotors. Corrected to ~310 N/m^2 and flagged as high (power-hungry).",
+  "[ducted_boxwing] CRUISE L/D GAIN OVERCLAIMED: 20-30% requires induced drag to dominate. For this draggy ducted box-wing (CD0~0.05, cruise CL~0.5) induced drag is a minority of total drag, so realized net L/D gain is ~5-14%, not 20-30%. Realized span efficiency also degrades from ideal 1.47 to ~1.3 after joints/interference. Corrected.",
+  "[ducted_boxwing] GEOMETRY - ASYMMETRIC LIFT DUCTS: both lift-duct motors were placed at x=25 (both on the left wing), which would produce an off-center hover thrust line and an uncontrollable rolling moment. They are fore/aft centerline ducts, so moved to x=50.",
+  "[ducted_boxwing] GEOMETRY - COMPONENTS OUTSIDE OUTLINE: GPS (42,26) and Elevon servo (70,66) fell outside the top-view outline (point-in-polygon fail). Moved GPS to (48,28) and elevon servo to (68,70), both now inside.",
+  "[ducted_boxwing] SPAR INCONSISTENCY: realization text claimed ONE 6mm carbon spar running through BOTH front and rear wing members, but the two elements are separated fore-aft and by the ~164mm vertical h/b=0.2 gap - a single straight spar cannot pass through both. key_specs correctly says 2 spars. Corrected the wording to two spars (one per element).",
+  "[ducted_boxwing] WEIGHT OPTIMISTIC (flagged, not fatal): 360g LW-PLA airframe for an 820mm box-wing with three printed ducts, two spars and tip endplates is tight; realistic is ~400-480g, pushing AUW to ~1200-1300g. Battery mass (330g for 4S3300) and motor/ESC mass are realistic. Adjusted the note to state AUW likely creeps up.",
+  "[ducted_boxwing] MINOR: cg_point y nudged from 45 to 47 to stay consistent with the corrected (centerline) component layout; CG remains ahead of the neutral point with a healthy ~10% static margin - stability is sound.",
+  "[ducted_boxwing] NON-ISSUE CONFIRMED: the Reynolds verdict is honest. The design correctly discards the paper-ring low-Re anti-separation artifact and keeps only Re-independent potential-flow effects (closed-wing induced-drag reduction, momentum-theory duct augmentation). Hover ENDURANCE (4-5 min) is actually conservative, not overclaimed.",
+  "[tailless_flywing] STABILITY (load-bearing error): stated neutral point y=38 is not where the aero NP of this planform sits. For a swept delta/flying-wing (LE apex y=2, mean-chord LE ~y=10-14, MAC ~38 body-units) the NP falls near 25-35% MAC aft of the MAC LE, i.e. ~y=24-28. y=38 is essentially the planform AREA CENTROID (computed y=34) pushed further aft - that is where mass balances, not where the aero NP is. Placing NP ~10 units too far aft makes the design LOOK comfortably stable (CG35 ahead of NP38) while masking that it is actually marginal.",
+  "[tailless_flywing] STABILITY: diagram cg_point y=35 is not supported by its own component layout. Integrating listed components (battery 300g@y=20, payload 80g@y=24, GPS/FC ~y=27-31, tilt motors 2x60g@y=30, aft lift motor ~55g@y=44, servos) plus ~500g structure at the planform area centroid (y~34) yields a real CG of y~29-30, i.e. FURTHER FORWARD than claimed y=35. To reach y=35 the structure centroid would have to sit at y~46 (implausibly aft).",
+  "[tailless_flywing] STABILITY (net consequence): with corrected NP (~y=33, achievable via the quoted moderate sweep + reflex Cm0) and real CG (~y=30), static margin is ~8% MAC - inside the 5-15% target - but that is NOT the picture the concept paints. As written (real CG ~29-30 vs a first-principles NP as low as ~y=25) the margin could be near zero or negative. Workable, but it is a knife-edge tailless wing whose stability depends on sweep/reflex pushing the NP aft, not the ~10% comfortable buffer implied.",
+  "[tailless_flywing] STABILITY (arithmetic): even using the concept's own numbers, SM = (NP-CG)/MAC = (38-35)/38 = 7.9% MAC, not the ~10% repeatedly claimed. The %-MAC figure was asserted, not computed.",
+  "[tailless_flywing] REYNOLDS verdict mislabeled: 'does-not-scale' is wrong for the design as a whole. The paper flat-plate airfoil genuinely does not scale to Re~183k (a sharp-edged plate is actively bad there), which the note explains correctly - but the borrowed PRINCIPLE (tailless + reflex + forward-CG stability) is Reynolds-independent and transfers cleanly, as the note itself admits. Verdict should be 'partially-scales': the geometry/stability logic scales, the specific airfoil does not.",
+  "[tailless_flywing] EFFICIENCY overclaim: 'cruise power drops 20-30% vs an equivalent tailed layout' is inflated. Removing tail+boom cuts ~15-20% of wetted area, but the tail is only a fraction of total drag and induced drag (the dominant component here, CDi~0.014 vs CD0~0.02-0.025) is unchanged. Realistic cruise-power saving vs a well-designed tailed peer is ~10-15%. The plate->reflex airfoil gain (L/D 4-5 -> 12-14) is a win over the PAPER, not over a real tailed RC wing that would also use a proper airfoil - conflating the two double-counts the benefit.",
+  "[tailless_flywing] L/D ceiling optimistic: computed L/D at CL=0.49, AR=6.5, e~0.85 is 12.6 (CD0=0.025) to 14.5 (CD0=0.020). The claimed '12-16' top end of 16 ignores the drag of two tilt nacelles and a windmilling/parked aft lift motor+prop sitting in the wing wake. Trim to ~11-14.",
+  "[tailless_flywing] MINOR: cruise CL is 0.49 (matches ~0.5, fine). Reflex sections cap CLmax around 0.9, so Vstall ~11.8 m/s and the 15 m/s transition is only 1.27*Vstall - acceptable but not generous; worth stating explicitly rather than implying comfortable margin.",
+  "[autorotation_recovery] STABILITY LOGIC ERROR (primary): The concept argues chordwise static margin using the diagram's y-axis (cg y=35 vs AC y=45). But in this top-view, y is the SPANWISE/radial axis (root->tip, range 8..97) and x is the CHORD (range 38..62). Chordwise CG-vs-AC must be shown on the x-axis. As drawn, every component sits at x~49-51, so the diagram encodes essentially ZERO chordwise margin information; the 'CG ahead of AC' claim is unsupported by the geometry. Fixed by offsetting the spar/battery/FC forward in x (toward the leading edge at low x) and the AC/flap aft in x, so CG_x < AC_x with a real ~8-12% margin.",
+  "[autorotation_recovery] LAYOUT CONTRADICTION: Text says motor+prop at the far TIP and battery inboard at the ROOT, but the diagram placed motor at y=12, battery at y=40, and the cyclic flap hinge at y=78 -- leaving the spin-axis/root end ambiguous and the radial mass split incoherent. Corrected so y=8 region is the tip (motor) and the root nacelle (battery/FC/servo/GPS) clusters near the opposite, inboard end, with the flap along the blade near the AC.",
+  "[autorotation_recovery] CG_POINT MISMATCH: Stated cg_point y=35 does not match the mass-weighted radial centroid of the placed components (~40). Also cg_x was 50 (no chordwise offset). Corrected to cg_point that reflects both a sane inboard radial position and a genuine forward chordwise offset relative to the 25%-chord AC.",
+  "[autorotation_recovery] SPAR DOUBLE-COUNT: The realization prose counts the carbon spar inside both the '~35 g blade (shell+spar)' and the '85 g nacelle/spar/structure' lines. Clarified so the spar is counted once (in the blade line) and the structure line is nacelle+shell-bond+hardware only; totals still ~250 g.",
+  "[autorotation_recovery] TIP MOTOR MASS OPTIMISTIC: 25 g for a motor+prop that must generate the full ~250 gf of thrust is on the light edge; a realistic 2204/2306-class motor + 5-6 in prop is ~30-40 g. Adjusted the motor allowance up and trimmed structure to keep AUW ~250 g.",
+  "[autorotation_recovery] EFFICIENCY FRAMING OPTIMISTIC (not headlined, but flagged): A naive induced+profile power of ~5 W implies unrealistically long (~50 min) hover endurance. Real single-blade Figure of Merit is low (tip losses, no second blade, hub/torque-reaction losses), plus ESC/motor (~60-70%) and once-per-rev cyclic-servo duty. The ~15-30% hover-power advantage over a same-weight quad is directionally correct (it follows sqrt of the ~7.6x lower disk loading) but the absolute power/endurance should be treated as best-case, not typical.",
+  "[autorotation_recovery] AUTOROTATION ROBUSTNESS CAVEAT: The momentum/energy balance for autorotation scales fine, but a SINGLE-blade monocopter has poorer autorotative attitude stability and modest stored rotational KE (~2.4 J), so the flare-arrested touchdown is marginal, not comfortable. Kept as a genuine safety feature but stated as marginal rather than guaranteed.",
+  "[energy_glide_profile] STABILITY (critical, internally contradictory): The concept claims CG at y=44 is '~8 box-units / ~10% MAC ahead of the AC at y=52'. But the wing occupies y=46 (LE) to y=56 (TE), so MAC is only ~10 box-units. 8 box-units is therefore ~80% MAC, not 10% \u2014 an absurd, unflyable static margin (massive trim download, collapsed L/D, sluggish pitch). The arithmetic '8 units = 10% MAC' is simply wrong.",
+  "[energy_glide_profile] STABILITY (AC mislocated): The aerodynamic center is the wing quarter-chord \u2248 y=48.5 (LE 46 + 0.25*10), not y=52 as claimed (y=52 is ~60% chord, aft of the AC). Using the correct AC and a sane 8-12% static margin, the CG should sit at y\u224847.5, not y=44. A component mass-moment sum of the actual layout naturally lands CG near y\u224845-47 (the rear boom motors at y=88 pull it aft), so the claimed forward CG of y=44 both contradicts the layout and would be over-stable.",
+  "[energy_glide_profile] EFFICIENCY (L/D overclaim): Best whole-aircraft L/D of 11.7 is optimistic. At Re~150k with a bluff PETG VTOL pod, four motor nacelles, two tail booms, and stopped/feathered props hanging in the airstream, realistic parasite+profile Cd0 \u2248 0.035 and e\u22480.75 give L/D_max \u2248 10. Hitting 11.7 would require Cd0\u22480.028 (near-clean sailplane), not achievable for a multirotor-capable airframe. Corrected to ~10.",
+  "[energy_glide_profile] EFFICIENCY (hover endurance self-inconsistent): The spec states 208 W hover and 59 Wh usable, but then claims ~24 min pure-hover endurance. 59 Wh / 208 W = ~17 min. The 24 min figure contradicts the concept's own power number; corrected to ~17 min.",
+  "[energy_glide_profile] EFFICIENCY (range knock-on): Range figures rest on L/D 11.7. At the corrected L/D~10, per-cycle glide is ~1.5 km (not 1.75 km) and total climb-glide range is ~21-23 km (not 24 km); the ~1.6x advantage over powered cruise still holds but is slightly overstated.",
+  "[energy_glide_profile] WEIGHT (minor): 450 g for a 4S 5000 mAh LiPo is optimistic \u2014 typical packs are ~480-560 g. Overall mass budget still sums to ~1.5-1.6 kg, so AUW is realistic, but the battery mass and 380 g total filament are both on the optimistic edge.",
+  "[energy_glide_profile] REGEN claim is directionally right but should stay conservative: prop-as-turbine efficiency at these Re is poor and an unfeathered disk usually costs more glide than it returns \u2014 kept as a marginal, steep-descent-only option.",
+  "[passive_stability] STABILITY (real bug): The diagram places cg_point at y=40, which is exactly on the wing leading edge (root chord runs y=40 LE to y=54 TE). That is 0% MAC = ~25% static margin, NOT the claimed 10%. Excessively nose-heavy: sluggish pitch response and high trim drag. CG must move aft to y=42.1 (15% MAC) to match the concept's own stated 10% static-margin target.",
+  "[passive_stability] STABILITY (coordinate error): The text claims '25% MAC falls at y=46.' False. With LE at y=40 and TE at y=54, y=46 is 42.9% MAC. The true 25%-MAC neutral point is at y=43.5. The weighted_components narrative and the diagram disagree with each other and with basic arithmetic.",
+  "[passive_stability] EFFICIENCY (overclaim): L/D 15-18 is quoted as if it applies at the 14 m/s cruise. At cruise CL=0.29 the actual L/D is only ~11-13 (induced drag is tiny there; you're flying well below best-glide CL). L/D 15-18 is the BEST-GLIDE value, which occurs at ~9-10 m/s (CL~0.6-0.7). Corrected to cruise L/D ~12, best-glide/loiter L/D ~15-16; 18 is optimistic and requires CD0<=0.02.",
+  "[passive_stability] STABILITY (minor): Payload/camera placed at y=39 and called 'right at the CG,' but the corrected CG is y=42.1. Payload should sit at y~42 so payload swaps don't shift balance.",
+  "[passive_stability] EFFICIENCY (soft claim, tempered not fatal): The 'avionics power drops 10-20%' control-energy saving is hand-wavy \u2014 servo holding current on a small survey plane is a few watts, a minor slice of total (mostly propulsion) power. Reframed as a gust-rejection/latency benefit with a small avionics saving rather than a headline efficiency number.",
+  "[passive_stability] CONFIG (contradiction): drone_type says '2-axis elevon OR rudder+elevator' but the diagram shows elevon servos and no horizontal tail. Resolved as a tailless/plank elevon layout (which is what justifies neutral-point ~= wing AC at 25% MAC); optional small vertical fin/rudder for Dutch-roll damping retained.",
+  "[snapfit_structure] HOVER ARCHITECTURE BROKEN (critical): the drone is defined as two tilting front nacelles + one FIXED pusher. A fixed pusher's thrust is horizontal and contributes ZERO lift in hover, so hover rests on only the 2 front rotors at y~30 -- both AHEAD of the CG (y~40). Two lift points forward of CG cannot trim pitch; the craft pitches nose-down uncontrollably with no aft lift point. The 'tri-motor VTOL, T/W 1.8' spec also double-counts the horizontal pusher (2 of 3 motors give T/W~1.2, not 1.8). Fixed by making the rear motor a TILTING rotor (true tri-tiltrotor) so it lifts in hover and, sitting aft of CG at y~88, provides pitch authority.",
+  "[snapfit_structure] STATIC MARGIN INCOHERENT / OVERSTATED: with no horizontal tail the neutral point ~= wing AC (~y48). The wing chord maps to only ~11 y-units, so CG@40 vs NP@48 = ~73% static margin, NOT the claimed 8-10% -- that is uncontrollably nose-heavy, the opposite of a trimmable cruiser. For a real ~9% SM the CG must sit ~y47. Fixed: CG moved to (50,47); battery/FC/GPS y-stations shifted aft; wording corrected so the aircraft is genuinely near ~8-10% MAC.",
+  "[snapfit_structure] EFFICIENCY OVERCLAIM: 'forward CG => 10-20% less cruise current' is unphysical. Static stability lowers pilot workload and gust sensitivity, not cruise power. Trim drag for a sane SM is only ~1-4% of cruise power, and a MORE forward CG INCREASES up-elevator trim drag (the opposite of a saving). Fixed: efficiency gain rewritten to credit the real structural mass savings plus an honest ~1-3% operational effect, removing the 'stability = free energy' framing.",
+  "[snapfit_structure] L/D OPTIMISTIC: drag buildup (CDi at AR~4.1, e~0.75, section CD0~0.022, plus fat PETG pod + two tilt nacelles + exposed carbon spar + snap-fit seam steps ~0.020) gives cruise L/D ~7.6, ~8.9 best-case -- not 9-11. Fixed: L/D revised to ~7-9 in principle, specs, and efficiency sections.",
+  "[snapfit_structure] MINOR: hover figure of merit and disk loading were never stated; added momentum-theory hover numbers. GEOMETRY otherwise sound -- top view is exactly symmetric about x=50, side profile is coherent nose-left, and internal spec self-consistency (AR 4.09, area 0.198, Re ~170k, CL 0.60, wing loading 48 g/dm2) all checks out.",
+  "[snapfit_structure] PRINTABILITY/WEIGHT: 0.95 kg AUW is tight but not fantasy. Honest bookkeeping (3 motors ~90g, ESCs ~40g, 3 servos ~30g, props ~15g, wiring ~30g, 6mm carbon spar ~35g, LiPo 200g, FC/GPS ~30g) leaves ~480g for the printed LW-PLA/PETG shell, which is achievable at 0.9 m span. Kept as-is but the tri-tilt now needs a third tilt servo, eating a little margin.",
+  "[blown_wing] REYNOLDS OVERCLAIM (verdict flipped scales -> partially-scales): The concept's own cited evidence undercuts its verdict. The largest quoted benefit \u2014 UIUC/Selig CLmax gains up to ~57% \u2014 occurs at Re 30,000-80,000 precisely because the turbulent slipstream suppresses the laminar-separation bubble. That bubble-suppression bonus IS a low-Re artifact: at the clean-wing cruise Re of ~200,000 the bubble is already weak, so that mechanism does not transfer to cruise. What DOES survive is the pure dynamic-pressure (powered-lift) q-boost, which is Reynolds-agnostic and helps in the slow transition corridor (~50k-120k). Net: partially-scales, not scales.",
+  "[blown_wing] STATIC MARGIN NUMBER CONTRADICTS THE DIAGRAM: The wing chord in the diagram's box units is ~7 (leading edge y=40 to trailing edge y=47). A CG-to-AC gap of (42-38)=4 box units is ~57% MAC of static margin, NOT the claimed +8%. That is a wildly over-stable, near-untrimmable craft as drawn. To actually achieve ~+8% MAC the gap must be ~0.5-0.6 box units, i.e. CG at y~41.3 with AC at y~41.9. The prose and the cg_point coordinate were incompatible; cg_point corrected to y=41.3.",
+  "[blown_wing] HOVER THRUST CENTROID AFT OF CG: Motors were placed at y=33,33,55,55 giving a rotor-thrust centroid at y=44, which is ~6 box units BEHIND the (original) CG at y=38. A quad hovers cleanly only when the thrust centroid sits on the CG; as drawn it develops a persistent nose-down pitch in hover that must be fought with differential thrust, wasting control authority. Fixed by moving the CG to y=41.3 (near mid) AND re-spacing the front rotors to y=36 and rear to ~47 so the thrust centroid straddles and coincides with the CG.",
+  "[blown_wing] CRUISE-DRAG EFFICIENCY CLAIM HAS THE WRONG SIGN: The claimed '5-8% cruise-drag reduction from the smaller wing' fails a drag audit. Shrinking area ~24% AND dropping aspect ratio 9->6 raises induced drag at cruise CL~0.38 enough that total wing drag goes from ~0.687 N (AR9 unblown baseline) to ~0.723 N (AR6 blown) \u2014 the small low-AR wing is actually slightly DRAGGIER in cruise, not less draggy. The parasite saving is real but is more than offset by the induced-drag penalty of low AR. Corrected to claim the honest, defensible gains: reduced wing mass/structure, stiffer easier-to-print wing, and lower transition power \u2014 with cruise drag roughly a wash (0 to +/-a couple percent), not a 5-8% win.",
+  "[blown_wing] BLOWING FRAMED AS A CRUISE LEVER WHEN IT IS A TRANSITION TOOL: Cruise CL is only ~0.38, far below stall, so essentially no blowing is needed in cruise. The blown-wing q-boost only matters in the slow hover-to-cruise transition corridor. Efficiency prose corrected to state this explicitly rather than implying a cruise-efficiency benefit from blowing.",
+  "[blown_wing] AUW IS OPTIMISTIC / BOOKKEEPING DOES NOT CLOSE: The listed components sum to 1.31 kg (0.35 battery + 0.36 motors/props + 0.25 wing/spar + 0.20 fuselage + 0.15 avionics/payload) which already exceeds the stated 1.30 kg AUW, leaving NEGATIVE mass for four servos, tilt gearboxes, yokes, wiring, connectors, and fasteners. Independent wing buildup gives ~270 g vs the claimed 250 g. Realistic AUW is ~1.45-1.5 kg once tilt hardware and wiring are counted. AUW corrected to ~1.45 kg and wing loading/CL/Re recomputed (loading ~85 N/m^2, cruise CL ~0.43 at 18 m/s \u2014 still safely sub-stall)."
+ ],
+ "missing": [
+  {
+   "name": "Adjustable trailing-edge trim tabs / bendable control surfaces (the 'bend the flaps up' lesson) \u2014 decoupling built-in geometry from in-field pitch trim",
+   "why": "The single most universal thing everyone does with a paper airplane is bend the back edge of the wing up or down to trim it \u2014 turning a nose-diving or stalling glider into a stable one without changing the airframe. None of the ten concepts embody field-adjustable/deformable trim: the powered craft rely on gyro/servo authority and the passive gliders (Polyhedra P1, and the glide modes of Albatross/Suzanne) bake pitch trim into fixed printed geometry. A 3D-printed drone concept built around compliant/bendable printed trailing edges or discrete trim tabs (leveraging TPU living hinges already used in Nakamura Locke) directly teaches that small trailing-edge deflection sets equilibrium AoA \u2014 the core paper-plane trimming principle \u2014 and de-risks the print-once-fly-once problem where a mis-estimated CG makes a fixed-geometry glider unflyable."
+  },
+  {
+   "name": "Wing camber and leading-edge shaping / airfoil from a flat plate (folded-nose leading edge, cambered wing) \u2014 the transition from zero-thickness plate to a real lifting section",
+   "why": "Paper airplanes teach a subtle but foundational aerodynamic lesson: a flat sheet flies poorly, but adding camber (the classic curved-wing 'glider' fold) or a thick folded leading edge dramatically improves lift and stall behavior at low Reynolds number. The entire concept set treats wings as planform/aspect-ratio problems (high-AR booms, box wings, plank) and as thrust-vectoring problems, but none is organized around exploiting the airfoil section itself \u2014 precisely the degree of freedom 3D printing unlocks that folded paper cannot (true 3D cambered/reflexed sections, tubercles, wing washout printed directly in). A concept centered on a printed cambered/reflexed airfoil (reflex being what actually makes a tailless plank like Polyhedra P1 trim without a tail) rounds out 'shape of the lifting surface,' which is currently a blind spot."
+  },
+  {
+   "name": "Flat-spin / deep-stall recovery and spin-resistant planform geometry (the 'nose-heavy plane that pancakes vs. the one that spins in') \u2014 graceful failure and stall departure behavior",
+   "why": "A recurring paper-flight lesson is departure behavior at the edge of the envelope: too little nose weight and the plane stalls, pitches up, and falls into a flat spin; the right CG and wing sweep/washout give a gentle mushing descent instead. The concept set covers controlled slow flight (DEP-1 blown-wing transition corridor) and intentional autorotation (Samara, Suzanne feathering), but no concept is designed around passive spin resistance / benign stall departure \u2014 geometric washout, wingtip stall delay, or CG-band sizing so the craft mushes rather than tumbles when it runs out of speed or loses power. This is the highest-consequence failure mode for the tailless/flying-wing and quadplane-in-transition designs here, and it is exactly the safety-through-geometry principle paper flight demonstrates most viscerally."
+  }
+ ]
+}

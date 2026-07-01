@@ -1,0 +1,2235 @@
+{
+ "specs": [
+  {
+   "name": "The Needle Dart",
+   "aka": "Basic Dart / Classic Dart / Suicide Dart",
+   "category": "fastest (highest airspeed, flattest straight-line trajectory)",
+   "origin": "Anonymous folk design; the canonical \"paper dart\" that predates modern named designs. Codified as the \"Basic Dart\" by Fold 'N Fly. Distinct from John Collins' record-setting glider \"Suzanne\" (thrown by Joe Ayoob in 2012 for the Guinness distance record of 226 ft 10 in), a variable-dihedral glider that broke the record previously held by a ballistic dart.",
+   "difficulty": "easy",
+   "paper": "US Letter (8.5x11) or A4, 70-90 gsm. Standard printer/copy paper is ideal; the design tolerates heavier stock, which raises wing loading and top speed.",
+   "why_best": "Speed comes from very high wing loading and a very low aspect ratio. Nearly all the paper's mass is stacked into layered folds along the deeply swept nose and keel, so weight is high while the exposed wing planform is tiny \u2014 the plane must fly fast to generate enough lift, giving a high stall speed and a fast, flat trajectory. The sharp swept-delta leading edge keeps flow attached and drag low at the low Reynolds numbers (~30,000-50,000) of a hand-thrown plane, and the deep centerline keel acts as a fixed vertical fin plus a nose ballast that pulls the CG well forward (~45-50% of length) for strong pitch stability. Stiff, small, low-camber wings resist deforming under a hard flat throw, so it converts arm speed directly into range rather than lift-induced climb-and-stall.",
+   "fun_fact": "Because so much paper piles up in the nose, the classic dart is essentially a lawn dart with wings \u2014 its center of gravity sits near the tip, which is exactly why it flies straight and fast but almost never floats: it trades glide time for pure velocity. It is also the most forgiving design to fold, tolerating asymmetric creases better than any glider.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with the sheet in portrait orientation. Fold it in half lengthwise (long edge to long edge) to create a sharp vertical center crease, then unfold flat. This centerline is your reference for everything that follows."
+    },
+    {
+     "n": 2,
+     "text": "Fold the top-left and top-right corners inward so each top corner's edge lies exactly along the center crease. You now have a symmetric point at the top and two diagonal edges meeting at the centerline."
+    },
+    {
+     "n": 3,
+     "text": "Fold the two new long slanted top edges into the center crease again. The nose gets narrower and sharper, and paper stacks up along the centerline \u2014 this is what adds nose weight and sweep."
+    },
+    {
+     "n": 4,
+     "text": "Optional (sharper needle): fold the slanted edges to the center a third time, or tuck the blunt nose tip down and refold, for an even finer, more swept point and more nose ballast."
+    },
+    {
+     "n": 5,
+     "text": "Fold the entire plane in half along the original center crease so the two decorated halves meet with the folded flaps tucked on the INSIDE, leaving a clean outer surface. The keel/spine is now the bottom edge."
+    },
+    {
+     "n": 6,
+     "text": "Fold down the first wing: bring the top slanted edge down to meet the bottom edge of the body (the keel), making a wing crease running from the nose back toward the tail. Keep the crease parallel to the body bottom."
+    },
+    {
+     "n": 7,
+     "text": "Flip the plane over and fold down the second wing identically, edge-to-edge with the first so both wings match exactly."
+    },
+    {
+     "n": 8,
+     "text": "Open the wings out flat so they sit level with only a slight upward dihedral (a shallow Y when viewed from the front). Pinch the keel below the CG as your throwing grip. Throw hard and flat, nose slightly down."
+    }
+   ],
+   "geometry": {
+    "wingspan": "~120 mm (folded) from an A4/Letter sheet \u2014 roughly half the sheet width; a deliberately small span",
+    "dihedral": "3-6 degrees, near-flat. Just enough for roll stability without adding drag or lift that would balloon the fast trajectory",
+    "aspect": "Very low, ~1.0-1.3 (short stubby wings). Low AR keeps induced-drag geometry compact and the wing stiff at speed",
+    "cg": "Forward, ~45-50% of body length back from the nose tip. Heavy layered nose + keel place mass ahead of the aerodynamic center for strong static pitch stability",
+    "notes": "High wing loading is the whole point: small planform + stacked nose layers = fast, flat, straight flight. Keel depth ~25-30 mm doubles as vertical fin for yaw stability. Low, near-flat camber; wings kept stiff and un-warped."
+   },
+   "flight": {
+    "throw": "Hard and flat, released at or just below horizontal with a fast, snappy overhand throw. Grip the keel just ahead of the CG. Aim level, not up.",
+    "speed": "Fast \u2014 the highest cruise speed of any common paper design; converts throw velocity directly into range.",
+    "glide": "Poor / short duration. Flat, mostly straight, gently descending parabolic path \u2014 built for speed and distance-per-second, not float time.",
+    "behavior": "Tracks arrow-straight with little wander. Very tolerant of asymmetric folds. If thrown too hard nose-up it will climb then stall/dive; keep the nose flat or slightly down for a clean fast run."
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 53,
+      "y": 55
+     },
+     {
+      "x": 95,
+      "y": 100
+     },
+     {
+      "x": 54,
+      "y": 100
+     },
+     {
+      "x": 52,
+      "y": 62
+     },
+     {
+      "x": 50,
+      "y": 100
+     },
+     {
+      "x": 48,
+      "y": 62
+     },
+     {
+      "x": 46,
+      "y": 100
+     },
+     {
+      "x": 5,
+      "y": 100
+     },
+     {
+      "x": 47,
+      "y": 55
+     },
+     {
+      "x": 50,
+      "y": 0
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 0,
+      "y2": 33,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 100,
+      "y2": 33,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 12,
+      "y2": 62,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 88,
+      "y2": 62,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 50,
+      "y1": 40,
+      "x2": 6,
+      "y2": 100,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 40,
+      "x2": 94,
+      "y2": 100,
+      "type": "valley"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 30
+     },
+     {
+      "x": 30,
+      "y": 42
+     },
+     {
+      "x": 70,
+      "y": 50
+     },
+     {
+      "x": 100,
+      "y": 55
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 72,
+      "y": 33
+     },
+     {
+      "x": 40,
+      "y": 20
+     },
+     {
+      "x": 12,
+      "y": 8
+     },
+     {
+      "x": 0,
+      "y": 22
+     },
+     {
+      "x": 0,
+      "y": 30
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 47
+    },
+    "features": [
+     "sharp swept needle nose (layered, nose-heavy)",
+     "very low aspect-ratio stubby wings",
+     "deep centerline keel = fin + nose ballast",
+     "near-flat 3-6 deg dihedral",
+     "forward CG at ~47% for pitch stability",
+     "high wing loading for fast flat flight"
+    ]
+   }
+  },
+  {
+   "name": "Suzanne (Collins/Ayoob distance glider)",
+   "aka": "The World Champion, \"Suzanne\"",
+   "category": "longest distance (glide+transition)",
+   "difficulty": "hard",
+   "origin": "Designed by John M. Collins (\"The Paper Airplane Guy\"), named after his wife Suzanne. Thrown by former quarterback Joe Ayoob to set the Guinness distance record of 226 ft 10 in (69.14 m) on Feb 26, 2012, in a hangar at McClellan (former Air Force Base), Sacramento CA. It was the first GLIDER (not a dart) ever to hold the distance record. NOTE: the record has since been broken twice \u2014 first to 252 ft 7 in (77.134 m) in Daegu, South Korea on Apr 16, 2022 (designed by Chee Yie Jian, thrown by Kim Kyu Tae), and then to the current Guinness mark of 289 ft 9 in (88.31 m) by Boeing engineers Dillon Ruble, Garrett Jensen & Nathaniel Erickson on Dec 2, 2022. Suzanne is the most famous former distance record holder, but it was NOT the record immediately preceding the Boeing flight.",
+   "paper": "A4 or US Letter, up to 100 gsm for record use (Collins used Conqueror CX22 Diamond White 100gsm A4). If using US Letter, trim ~19mm off one short side to match A4 proportions. Everyday practice: 80gsm A4. Portrait orientation, folded LONG-side down.",
+   "why_best": "Suzanne wins distance by being a two-phase flyer rather than a dart: a hard, up-angled launch turns muscle into altitude, then the forward CG and low-wing-loading planform convert that altitude into a long, flat, self-stabilizing glide, with the progressive dihedral keeping it stable across the whole launch-to-glide speed range.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with A4/Letter in PORTRAIT (trim ~19mm off a short side if using US Letter). Fold the top-right corner down-left so the top edge lies along the left edge, making a diagonal crease; unfold flat."
+    },
+    {
+     "n": 2,
+     "text": "Fold the top-left corner down-right so the top edge lies along the right edge, making the mirror diagonal crease; unfold. You now have an X of creases near the top and a horizontal reference where they cross."
+    },
+    {
+     "n": 3,
+     "text": "Fold the LEFT vertical edge inward so it lines up along the right-hand diagonal crease; unfold. Then fold the RIGHT vertical edge in to the left-hand diagonal crease; unfold. These four creases pre-set the nose-shaping folds."
+    },
+    {
+     "n": 4,
+     "text": "Fold the top of the sheet straight DOWN with a horizontal valley fold running through the point where the two diagonals cross; unfold. This is the reference line for blunting the nose."
+    },
+    {
+     "n": 5,
+     "text": "Re-fold the left and right top side edges IN along the diagonal creases from step 3 at the same time. The top corners swing inward and the upper edges meet along the vertical centerline, forming a solid layered point. NOTE: these are FLAT diagonal folds (a blunted-dart nose) \u2014 this is NOT a waterbomb/preliminary base; do not collapse the paper into an internal triangle."
+    },
+    {
+     "n": 6,
+     "text": "Fold the top two outer corners of that point DOWN to meet at the centerline so the top-layer creases line up exactly with the folds beneath them. This layers paper toward the nose to build mass and precision."
+    },
+    {
+     "n": 7,
+     "text": "BLUNT THE NOSE: fold the sharp nose tip back a short distance (about 20-25mm) so it becomes a small flat/blunt front. Keeping the nose blunt concentrates mass forward and prevents crumpling on a hard throw. Sharpen all creases with a bone folder or fingernail."
+    },
+    {
+     "n": 8,
+     "text": "Turn the plane over and fold it in half along the centerline so the layered nose folds sit on the OUTSIDE (keel on the bottom, wing flaps up). Make the crease crisp."
+    },
+    {
+     "n": 9,
+     "text": "With the keel crease on the BOTTOM and the two wing flaps pointing up, fold the first WING: bring the top folded wing edge down to lie along the center keel crease, starting the wing crease about 6mm (1/4 in) back from the nose; crease firmly. Flip and repeat for the second wing so both are symmetric."
+    },
+    {
+     "n": 10,
+     "text": "Open the wings to set DIHEDRAL. Set a gentle upsweep so the included angle is about 165 deg near the nose root and about 155 deg at mid-wing (tips slightly higher than mid-wing, mid-wing slightly higher than the nose root) \u2014 a subtle progressive dihedral, not a sharp V. A cardboard angle gauge helps."
+    },
+    {
+     "n": 11,
+     "text": "For a record-legal build, apply small pieces of tape (Guinness permits tape; Collins' competition build uses several ~30mm strips of varying width along the fuselage/belly, applied in sequence) to hold the layers; check the plane is perfectly symmetric with no warps. Optional: a tiny reflex (up) at the very trailing edge only if it dives."
+    },
+    {
+     "n": 12,
+     "text": "THROW: grip the thick fuselage just behind the nose. Aim about 40-45 deg up and throw hard but with smooth acceleration, keeping the wings LEVEL and a full follow-through (drop the elbow slightly to keep wings level). It should climb, level off near apex, and glide out the final third of the flight."
+    }
+   ],
+   "geometry": {
+    "wingspan": "~135-145 mm folded span (from a 210mm-wide A4 sheet); broad, deep wing",
+    "dihedral": "Progressive/variable: ~165 deg included angle near the nose root, ~155 deg at mid-wing (tips slightly up). Roughly 7-12 deg of net upsweep",
+    "aspect": "Low, ~1.6-2.0 (short, deep wing) \u2014 high area for low wing loading and float",
+    "cg": "Forward, ~28-32% of body length from the nose, set by the dense multi-layer blunt nose",
+    "notes": "Only ~8 primary folds yet Collins calls it his most technical plane. Blunt layered nose (not a dart point, and NOT a waterbomb base). Low wing loading + forward CG = the climb-then-glide transition that wins distance. Competition builds use several small tape strips (not a single strip) for structural reinforcement."
+   },
+   "flight": {
+    "throw": "Hard, up-angled overhand launch at ~40-45 deg, wings LEVEL, grip the thick nose/fuselage; smooth accelerating follow-through rather than a wild fling",
+    "speed": "Very fast on launch (ballistic climb) transitioning to a slow, floaty glide \u2014 deliberately dual-speed",
+    "glide": "Excellent once transitioned \u2014 long, flat, stable glide for the final third of flight; total airtime ~7-9 seconds",
+    "behavior": "Climbs on the throw, levels/transitions near apex, then settles into a straight self-correcting glide. Trim for straight tracking; forward CG resists stall. Do NOT throw flat \u2014 it needs the climb to build the glide."
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 56,
+      "y": 10
+     },
+     {
+      "x": 54,
+      "y": 30
+     },
+     {
+      "x": 92,
+      "y": 78
+     },
+     {
+      "x": 66,
+      "y": 80
+     },
+     {
+      "x": 58,
+      "y": 68
+     },
+     {
+      "x": 56,
+      "y": 98
+     },
+     {
+      "x": 44,
+      "y": 98
+     },
+     {
+      "x": 42,
+      "y": 68
+     },
+     {
+      "x": 34,
+      "y": 80
+     },
+     {
+      "x": 8,
+      "y": 78
+     },
+     {
+      "x": 46,
+      "y": 30
+     },
+     {
+      "x": 44,
+      "y": 10
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 10,
+      "y1": 8,
+      "x2": 90,
+      "y2": 42,
+      "type": "valley"
+     },
+     {
+      "x1": 90,
+      "y1": 8,
+      "x2": 10,
+      "y2": 42,
+      "type": "valley"
+     },
+     {
+      "x1": 10,
+      "y1": 8,
+      "x2": 50,
+      "y2": 33,
+      "type": "valley"
+     },
+     {
+      "x1": 90,
+      "y1": 8,
+      "x2": 50,
+      "y2": 33,
+      "type": "valley"
+     },
+     {
+      "x1": 10,
+      "y1": 25,
+      "x2": 90,
+      "y2": 25,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 33,
+      "x2": 30,
+      "y2": 20,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 33,
+      "x2": 70,
+      "y2": 20,
+      "type": "valley"
+     },
+     {
+      "x1": 42,
+      "y1": 8,
+      "x2": 58,
+      "y2": 8,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 18,
+      "y1": 100,
+      "x2": 50,
+      "y2": 33,
+      "type": "valley"
+     },
+     {
+      "x1": 82,
+      "y1": 100,
+      "x2": 50,
+      "y2": 33,
+      "type": "valley"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 18
+     },
+     {
+      "x": 10,
+      "y": 22
+     },
+     {
+      "x": 10,
+      "y": 30
+     },
+     {
+      "x": 22,
+      "y": 30
+     },
+     {
+      "x": 22,
+      "y": 26
+     },
+     {
+      "x": 100,
+      "y": 40
+     },
+     {
+      "x": 100,
+      "y": 30
+     },
+     {
+      "x": 24,
+      "y": 18
+     },
+     {
+      "x": 10,
+      "y": 14
+     },
+     {
+      "x": 0,
+      "y": 18
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 30
+    },
+    "features": [
+     "blunt weighted layered nose (mass forward, not a dart tip)",
+     "broad low-aspect wing (high area, low wing loading)",
+     "progressive dihedral: 165 deg nose / 155 deg mid-wing",
+     "deep multi-layer keel/fuselage",
+     "launched ~40-45 deg, climb-then-glide transition",
+     "several small legal tape strips reinforcing the belly/fuselage"
+    ]
+   },
+   "fun_fact": "Despite having only about eight folds, Collins calls Suzanne 'the most technical paper airplane I've ever made' \u2014 and it was the first GLIDER ever to hold the distance record, breaking a lineage of brute-force ballistic darts. It flew 226 ft 10 in, roughly three-quarters the length of a football field, and 'really flies' only in the last third of its flight as it transitions from a hard climbing launch into a long, flat glide."
+  },
+  {
+   "name": "Nakamura Lock",
+   "aka": "The Locked Nose Glider / Classic Cruiser",
+   "origin": "Eiji Nakamura, Japanese paper-airplane designer/author (popularized in his mid-20th-century books); a classic \"locking\" dart-derivative glider.",
+   "category": "Best cruiser / most stable slow floater (gentle long glides)",
+   "difficulty": "easy",
+   "paper": "A4 80gsm (US Letter 8.5x11 works equally well)",
+   "why_best": "The signature nose lock stacks and pins several paper layers at the front, concentrating mass forward so the CG sits well ahead of the wing's aerodynamic center \u2014 the strong static-stability margin that makes it self-correct instead of pitching or diving. That forward mass is paired with a broad, blunt, relatively low-loaded wing and a natural shallow dihedral (from folding-in-half then unfolding the wings to a Y), giving good roll stability and slow, floaty flight. At the low speeds and small chord of a paper plane (Reynolds number roughly 20,000-40,000) a plane that flies slowly and holds a steady low angle of attack simply glides farther; the Nakamura Lock's locked, non-crumpling nose keeps that CG and airfoil shape intact throw after throw, which is why it out-cruises flimsier dart designs.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with the sheet portrait (long edges vertical). Fold it in half lengthwise, left edge onto right edge, crease firmly, then unfold. You now have a vertical center crease."
+    },
+    {
+     "n": 2,
+     "text": "Fold the top-left and top-right corners inward so their top edges meet exactly along the center crease. This makes a symmetric point (triangle) at the top, like the start of a dart."
+    },
+    {
+     "n": 3,
+     "text": "Fold that whole pointed top down toward you. The tip should come down to roughly 3-4 cm above the bottom of the triangular flaps, leaving a flat horizontal fold across the top."
+    },
+    {
+     "n": 4,
+     "text": "Fold the new top-left and top-right corners in to the center crease again, forming two angled flaps. Stop them just short so a small triangle of the layer folded down in step 3 stays peeking out below where the two flaps meet."
+    },
+    {
+     "n": 5,
+     "text": "Take that small exposed triangle tip and fold it UP over the two angled flaps. This tab pins the flaps down \u2014 this is the Nakamura Lock. Press it flat."
+    },
+    {
+     "n": 6,
+     "text": "Flip the whole model over, keeping the locked nose intact."
+    },
+    {
+     "n": 7,
+     "text": "Fold the plane in half along the original center crease so the locked nose is on the OUTSIDE (the lock ends up on the underside/keel). The two halves should mirror exactly."
+    },
+    {
+     "n": 8,
+     "text": "Rotate so the blunt nose faces left and the fold (keel) is at the bottom. Fold the top wing down: bring its top edge down to meet the bottom keel edge, so the wing is roughly parallel to the keel. Crease the full length."
+    },
+    {
+     "n": 9,
+     "text": "Flip over and fold the second wing down to match the first exactly, so both wings are symmetric."
+    },
+    {
+     "n": 10,
+     "text": "Open the wings up to a flat, level position, then lift them slightly into a shallow Y (dihedral) \u2014 tips a little higher than the body. Check that the nose is blunt and locked, the keel straight, and both wings even. Throw level with a gentle, smooth push."
+    }
+   ],
+   "geometry": {
+    "wingspan": "approx 14 cm (about 66% of the A4 width, tip to tip with wings level)",
+    "dihedral": "shallow, about 8-12 degrees per wing (gentle Y) for roll stability without excess drag",
+    "aspect": "low-to-moderate, roughly 2.2 (broad chord, span ~14 cm, mean chord ~6.5 cm) \u2014 favors slow, stable, floaty glide over speed",
+    "cg": "well forward, about 28-32% of body length back from the blunt nose, held there by the stacked locked nose layers",
+    "notes": "Blunt flat nose (no sharp dart point) resists crumpling and keeps CG constant. Fuselage keel depth ~2 cm. Adjust with small up-elevator (bend both trailing edges up slightly) if it dives, down if it stalls."
+   },
+   "flight": {
+    "throw": "Level, smooth, gentle to medium \u2014 released flat at shoulder height, not thrown hard or upward",
+    "speed": "Slow to moderate",
+    "glide": "Long, gentle, floaty descent \u2014 its defining strength",
+    "behavior": "Very stable and self-correcting; tracks straight and settles into a smooth cruise. Prone to a gentle stall/float if over-thrown rather than a nose dive, thanks to the forward CG."
+   },
+   "fun_fact": "The little triangular tab you fold up in step 5 is the whole trick: Eiji Nakamura's 'lock' mechanically pins the nose layers together so the plane keeps its shape and forward balance flight after flight \u2014 many other classic folds rely only on friction and slowly unravel.",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 54,
+      "y": 4
+     },
+     {
+      "x": 55,
+      "y": 30
+     },
+     {
+      "x": 95,
+      "y": 62
+     },
+     {
+      "x": 95,
+      "y": 72
+     },
+     {
+      "x": 55,
+      "y": 60
+     },
+     {
+      "x": 55,
+      "y": 98
+     },
+     {
+      "x": 45,
+      "y": 98
+     },
+     {
+      "x": 45,
+      "y": 60
+     },
+     {
+      "x": 5,
+      "y": 72
+     },
+     {
+      "x": 5,
+      "y": 62
+     },
+     {
+      "x": 45,
+      "y": 30
+     },
+     {
+      "x": 46,
+      "y": 4
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 0,
+      "y2": 32,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 100,
+      "y2": 32,
+      "type": "valley"
+     },
+     {
+      "x1": 0,
+      "y1": 32,
+      "x2": 100,
+      "y2": 32,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 32,
+      "x2": 12,
+      "y2": 55,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 32,
+      "x2": 88,
+      "y2": 55,
+      "type": "valley"
+     },
+     {
+      "x1": 38,
+      "y1": 24,
+      "x2": 62,
+      "y2": 24,
+      "type": "mountain"
+     },
+     {
+      "x1": 20,
+      "y1": 60,
+      "x2": 20,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 80,
+      "y1": 60,
+      "x2": 80,
+      "y2": 100,
+      "type": "mountain"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 20
+     },
+     {
+      "x": 8,
+      "y": 26
+     },
+     {
+      "x": 12,
+      "y": 30
+     },
+     {
+      "x": 30,
+      "y": 31
+     },
+     {
+      "x": 100,
+      "y": 33
+     },
+     {
+      "x": 100,
+      "y": 20
+     },
+     {
+      "x": 30,
+      "y": 12
+     },
+     {
+      "x": 12,
+      "y": 10
+     },
+     {
+      "x": 6,
+      "y": 12
+     },
+     {
+      "x": 0,
+      "y": 20
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 30
+    },
+    "features": [
+     "blunt locked nose (no sharp point)",
+     "nose-lock tab pins front layers",
+     "forward CG for stability",
+     "broad low-loaded wings",
+     "shallow Y dihedral",
+     "straight keel fuselage"
+    ]
+   }
+  },
+  {
+   "name": "Sea Glider (High-Aspect-Ratio Paper Sailplane)",
+   "aka": "Seagull Glider / Diagonal Glider",
+   "category": "highest glide ratio (most aerodynamic / longest glide distance per height)",
+   "origin": "Classic folk design popularized as the \"Sea Glider\" (see Fold 'N Fly / DIY Magazine): a square folded on the diagonal with a weighted, folded leading edge and dihedral. Its aerodynamic lineage (weighted leading edge + high-aspect wings) is the same family as Edmond Hui's Paperang (1977), a hang-glider-derived paper sailplane that exceeds a 12:1 glide ratio. Note: the simple Sea Glider is a maneuverable, floaty glider; the record-class 12:1+ ratio belongs specifically to the more elaborate Paperang.",
+   "difficulty": "medium",
+   "paper": "A4 80gsm (US Letter also works). Lightweight 70-80gsm keeps wing loading low; a heavier stock only helps if you add nose weight.",
+   "why_best": "Glide ratio equals lift-to-drag ratio, and at gliding speed the dominant loss is induced (lift-related) drag, whose coefficient falls in proportion to aspect ratio at a given wing area. The Sea Glider's long, thin, near-triangular wings give a high aspect ratio and a large area for very little mass, so wing loading is low, sink rate is small, and the plane trims to a slow, flat, efficient glide. The rolled leading-edge hem does double duty: it moves the CG forward to roughly the wing's quarter-chord for pitch stability, and it stiffens the leading edge so the airfoil holds a clean shape. Slight dihedral plus upturned winglets add roll/yaw stability and cut wingtip vortex drag, keeping the glide straight instead of spiralling. (Purpose-built high-aspect paper gliders in this family, like the Paperang, reach 12:1+; the simple Sea Glider glides well but a bit short of that.)",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with A4 held portrait. Fold the sheet in half lengthwise (long left edge onto long right edge) to press a sharp center crease, then unfold. This will become the fuselage keel line."
+    },
+    {
+     "n": 2,
+     "text": "Fold the sheet corner-to-corner: bring the top-left corner down to the right edge so the top short edge lies exactly along the right long edge, forming a 45-degree diagonal. You now have a large triangle with a rectangular flap sticking out at the bottom. This diagonal fold is the triangle's line of symmetry and will be the fuselage keel."
+    },
+    {
+     "n": 3,
+     "text": "Trim (cut) off that one leftover bottom rectangle along the edge of the triangle so the sheet becomes a clean square folded into a double-layer right triangle. The long folded edge (the hypotenuse) is your wing leading edge. (Only this single rectangle is cut \u2014 do not cut any other edge.)"
+    },
+    {
+     "n": 4,
+     "text": "Roll the leading edge: fold the folded hypotenuse edge over about 2 cm and keep rolling it 3-4 times into a tight, firm hem all along the leading edge. This tube is the nose/ballast weight and stiffens the leading edge."
+    },
+    {
+     "n": 5,
+     "text": "Fold the whole triangle in half along its line of symmetry (the diagonal fold from Step 2, which is the fuselage keel), bringing the two wings together so the rolled edges stack. The rolled hem is now at the front (nose); the folded diagonal spine is the fuselage."
+    },
+    {
+     "n": 6,
+     "text": "Make the fuselage/keel: with the plane closed, fold each top layer down toward the belly a narrow strip (about 1.5-2 cm) parallel to the spine. This defines the keel depth and locks the rolled nose in place. Repeat identically on the other side so both sides match."
+    },
+    {
+     "n": 7,
+     "text": "Open the two wings outward from the keel so they sit flat and level (top view). Check that both wings are symmetric edge-to-edge and the nose weight is centered."
+    },
+    {
+     "n": 8,
+     "text": "Set dihedral: lift both wingtips slightly so the wings form a shallow Y (about 5-10 degrees up from horizontal) for roll stability."
+    },
+    {
+     "n": 9,
+     "text": "Fold up winglets: turn the outer 1.5-2 cm of each wingtip upward to a near-vertical 90 degrees. Keep them identical to cut tip-vortex drag and stabilize yaw."
+    },
+    {
+     "n": 10,
+     "text": "Trim and test: hold under the nose at the CG and launch gently, level, at low speed. If it dives, the nose is too heavy \u2014 reduce the rolled hem or add up-elevator by curling the trailing edges slightly; if it stalls/pitches up, add a small paper clip or one more roll at the nose."
+    }
+   ],
+   "geometry": {
+    "wingspan": "approx 26-27 cm effective tip-to-tip. (The A4-derived square is 210x210 mm, so its raw diagonal is ~29.7 cm; folding down the keel and folding up the outer ~2 cm winglets reduces the flat span to roughly 26 cm.)",
+    "dihedral": "5-10 degrees (shallow up-Y) plus near-vertical winglets on the outer ~2 cm",
+    "aspect": "high for a paper plane, effective span-squared/area roughly 4-5 (long thin swept planform); this is what drives the low induced drag",
+    "cg": "far forward, ~18-22% of body length back from the nose, set by the rolled leading-edge hem \u2014 near the wing's quarter-chord",
+    "notes": "Large wing area with a slim central keel gives very low wing loading; the swept, tapered (triangular) planform keeps the tips lightly loaded and delays tip stall for a slow, flat glide."
+   },
+   "flight": {
+    "throw": "Gentle, level, low-speed hand launch from as high as possible (a balcony or stairwell shows off the glide ratio). Do NOT throw hard \u2014 speed makes it balloon and stall.",
+    "speed": "Slow (roughly 2-4 m/s)",
+    "glide": "Long and flat with a low sink rate, covering a lot of horizontal distance for the height lost. Well-trimmed high-aspect paper gliders in this family reach ~10-12:1; the simple Sea Glider glides well but typically a bit below that.",
+    "behavior": "Smooth, floaty descent; very sensitive to trim, and maneuverable (the classic Sea Glider can turn quickly or even loop). Small trailing-edge curls or nose-weight tweaks turn a stall or dive into a clean level glide."
+   },
+   "fun_fact": "Doubling a wing's aspect ratio roughly halves its induced drag at a given lift \u2014 the same physics that gives real sailplanes their absurdly long, skinny wings. Edmond Hui, a former hang-gliding instructor, applied exactly this to paper in his 1977 \"Paperang,\" which glides better than 12:1.",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 54,
+      "y": 30
+     },
+     {
+      "x": 96,
+      "y": 92
+     },
+     {
+      "x": 70,
+      "y": 92
+     },
+     {
+      "x": 52,
+      "y": 55
+     },
+     {
+      "x": 52,
+      "y": 96
+     },
+     {
+      "x": 48,
+      "y": 96
+     },
+     {
+      "x": 48,
+      "y": 55
+     },
+     {
+      "x": 30,
+      "y": 92
+     },
+     {
+      "x": 4,
+      "y": 92
+     },
+     {
+      "x": 46,
+      "y": 30
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 0,
+      "y1": 0,
+      "x2": 100,
+      "y2": 100,
+      "type": "valley"
+     },
+     {
+      "x1": 0,
+      "y1": 100,
+      "x2": 100,
+      "y2": 100,
+      "type": "cut"
+     },
+     {
+      "x1": 6,
+      "y1": 6,
+      "x2": 94,
+      "y2": 94,
+      "type": "mountain"
+     },
+     {
+      "x1": 12,
+      "y1": 12,
+      "x2": 88,
+      "y2": 88,
+      "type": "mountain"
+     },
+     {
+      "x1": 46,
+      "y1": 40,
+      "x2": 46,
+      "y2": 100,
+      "type": "valley"
+     },
+     {
+      "x1": 54,
+      "y1": 40,
+      "x2": 54,
+      "y2": 100,
+      "type": "valley"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 22
+     },
+     {
+      "x": 6,
+      "y": 26
+     },
+     {
+      "x": 12,
+      "y": 24
+     },
+     {
+      "x": 30,
+      "y": 20
+     },
+     {
+      "x": 60,
+      "y": 16
+     },
+     {
+      "x": 100,
+      "y": 12
+     },
+     {
+      "x": 100,
+      "y": 6
+     },
+     {
+      "x": 55,
+      "y": 8
+     },
+     {
+      "x": 12,
+      "y": 12
+     },
+     {
+      "x": 4,
+      "y": 14
+     },
+     {
+      "x": 0,
+      "y": 22
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 22
+    },
+    "features": [
+     "rolled weighted leading edge (nose ballast, forward CG)",
+     "long thin swept high-aspect wings",
+     "slim central keel / fuselage",
+     "shallow dihedral (up-Y)",
+     "near-vertical winglets to cut tip-vortex drag",
+     "large wing area = very low wing loading"
+    ]
+   }
+  },
+  {
+   "name": "The Bulldog Dart",
+   "aka": "Snub-Nose Dart / Heavy-Nose Dart / \"World's Best Paper Airplane\"",
+   "category": "most durable / crash-proof distance dart",
+   "difficulty": "easy",
+   "origin": "Popularized as the \"Best Paper Airplane in the World (a.k.a. Bulldog Dart)\" on Instructables (user seamster) and in The Art of Manliness (Jeremy Andenberg, Sept 2014). A folk/traditional refinement of the classic dart in which the sharp point is folded down and tucked inside when the plane is folded in half, reinforcing the nose. No single named inventor.",
+   "paper": "US Letter (8.5x11 in) or A4, 80gsm office paper. Heavier 100gsm stock makes the reinforced nose even tougher.",
+   "why_best": "Folding the sharp point down and then folding the plane in on itself buries several paper layers into a short blunt nose, driving CG forward (roughly the front quarter to third of the body length, ahead of the aerodynamic center) for strong pitch stability. The layered blunt tip has no fragile point to crumple, so it spreads crash loads and survives head-on impacts. The heavy nose means it is a fast, penetrating flyer best given a gentle, level throw \u2014 thrown too hard it noses straight into the ground.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with the sheet in portrait (tall) orientation. Fold it in half lengthwise to make a vertical center crease, then unfold. This centerline is your reference for everything that follows."
+    },
+    {
+     "n": 2,
+     "text": "Fold the two top corners in to the center crease so their inner edges meet on the centerline. You now have a large arrow point at the top, like the start of a classic dart."
+    },
+    {
+     "n": 3,
+     "text": "Flip the whole sheet over, then fold the two top corners in to the center crease again on this second side. Doing the corner fold on both sides is what stacks the layers symmetrically (this is the real Bulldog sequence \u2014 do NOT just re-fold the slanted edges on the same side)."
+    },
+    {
+     "n": 4,
+     "text": "THE BULLDOG MOVE: fold the sharp nose point straight down so the tip meets the junction of the previous corner folds. This tuck creates the short blunt, reinforced multi-layer nose that names the plane and holds the weight forward. Crease it hard."
+    },
+    {
+     "n": 5,
+     "text": "Fold the whole plane in half along the original center crease, folding it IN ON ITSELF so the tucked nose is trapped on the INSIDE and locked in place (it cannot spring open). The keel (spine) is now on the bottom."
+    },
+    {
+     "n": 6,
+     "text": "Rotate so the nose points left and the spine faces down. Fold down the first wing: bring the top edge down to meet the bottom spine, running the wing crease from the nose in a straight line back to the tail (leave a finger-width of fuselage above the spine to grip)."
+    },
+    {
+     "n": 7,
+     "text": "Flip the plane over and fold the second wing down exactly to match the first, edge to edge and crease to crease, so both wings are symmetric."
+    },
+    {
+     "n": 8,
+     "text": "Open the wings out flat to a shallow Y (a few degrees of upward dihedral) and check that the nose fold is tight. (Optional: for a little pitch trim you can bend a small flap up on each wing's trailing inner corner, but this is a straight-flying distance dart, not an aerobatic plane.)"
+    },
+    {
+     "n": 9,
+     "text": "Throw it level with a smooth, MODERATE, gentle release \u2014 do not launch it hard or steeply upward. The heavy nose rewards a soft, flat throw; thrown too fast or lofted it will nose-dive into the ground."
+    }
+   ],
+   "geometry": {
+    "wingspan": "~14 cm span on Letter/A4 (each wing ~6 cm from spine); overall body length ~24 cm",
+    "dihedral": "shallow, ~5-8 deg upward Y for roll stability without sacrificing speed",
+    "aspect": "low, ~2.0-2.5 (short broad delta-ish wings) \u2014 rigid, crash-tolerant, forgiving at low Reynolds number",
+    "cg": "far forward, roughly the front quarter to third of body length back from the blunt nose (~25-30%), set by the tucked multi-layer nose",
+    "notes": "Wing loading is high due to the stacked nose layers; this is a fast, penetrating flyer, not a floater. Reynolds number ~30,000-60,000 at typical indoor throw speeds."
+   },
+   "flight": {
+    "throw": "Level, with a smooth, gentle, moderate release and a flat wrist; do not throw it hard or loft it upward.",
+    "speed": "Fast",
+    "glide": "Moderate, shallow \u2014 penetrates air well but sinks steadily; not a long-hang floater.",
+    "behavior": "Stable, straight, and punchy. The forward CG gives strong pitch stability and clean straight-line darts. The blunt reinforced nose shrugs off head-on crashes, so it survives repeated hard landings, but thrown too fast the heavy nose drives it into the ground \u2014 keep the throw gentle."
+   },
+   "fun_fact": "The Instructables version of this fold is literally titled \"Best Paper Airplane in the World\" and has been viewed millions of times; its whole reputation rests on one counter-intuitive move \u2014 making the plane fly better by folding the sharp nose blunt.",
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 54,
+      "y": 10
+     },
+     {
+      "x": 53,
+      "y": 30
+     },
+     {
+      "x": 95,
+      "y": 92
+     },
+     {
+      "x": 58,
+      "y": 86
+     },
+     {
+      "x": 54,
+      "y": 100
+     },
+     {
+      "x": 50,
+      "y": 97
+     },
+     {
+      "x": 46,
+      "y": 100
+     },
+     {
+      "x": 42,
+      "y": 86
+     },
+     {
+      "x": 5,
+      "y": 92
+     },
+     {
+      "x": 47,
+      "y": 30
+     },
+     {
+      "x": 46,
+      "y": 10
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 50,
+      "y1": 2,
+      "x2": 8,
+      "y2": 36,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 2,
+      "x2": 92,
+      "y2": 36,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 18,
+      "x2": 16,
+      "y2": 48,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 18,
+      "x2": 84,
+      "y2": 48,
+      "type": "valley"
+     },
+     {
+      "x1": 42,
+      "y1": 22,
+      "x2": 58,
+      "y2": 22,
+      "type": "mountain"
+     },
+     {
+      "x1": 42,
+      "y1": 30,
+      "x2": 42,
+      "y2": 86,
+      "type": "mountain"
+     },
+     {
+      "x1": 58,
+      "y1": 30,
+      "x2": 58,
+      "y2": 86,
+      "type": "mountain"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 30
+     },
+     {
+      "x": 10,
+      "y": 22
+     },
+     {
+      "x": 22,
+      "y": 30
+     },
+     {
+      "x": 100,
+      "y": 50
+     },
+     {
+      "x": 100,
+      "y": 56
+     },
+     {
+      "x": 22,
+      "y": 40
+     },
+     {
+      "x": 12,
+      "y": 42
+     },
+     {
+      "x": 0,
+      "y": 38
+     },
+     {
+      "x": 0,
+      "y": 30
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 28
+    },
+    "features": [
+     "blunt tucked reinforced nose (4-6 layers, tucked inside)",
+     "CG far forward at ~27% length",
+     "low-aspect delta-ish wings",
+     "shallow dihedral Y",
+     "deep keel/fuselage spine",
+     "gentle level throw (heavy-nose dart, not aerobatic)"
+    ]
+   }
+  },
+  {
+   "name": "The Ring-Wing Glider (Hollow Hoop / Tube Glider)",
+   "aka": "Annular-Wing Glider, Ring Wing Glider, \"the tube that flies\"",
+   "category": "most surprising / novelty flyer \u2014 the design that flies best with no flat wing at all (best stability-per-simplicity)",
+   "origin": "The single-sheet 'Ring Wing Glider' is popularized by NASA JPL Education as a STEM activity (one letter-size sheet folded and curled into one ring). The annular (closed) wing concept itself traces to early-1900s aeronautics \u2014 e.g. the Bl\u00e9riot III (1906) tandem annular wings and Cedric Lee's annular-wing aeroplanes (~1913) \u2014 and later NASA / Lockheed ring-wing and box-wing induced-drag studies. Note: this single-ring design is distinct from Science World's 'Hoopster', which uses two paper hoops on a straw.",
+   "difficulty": "easy",
+   "paper": "US Letter 8.5 x 11 in (or A4) 80gsm; a slightly heavier 100gsm sheet holds the ring shape better",
+   "why_best": "It flies because a hoop is a closed (annular) wing: the leading rim generates lift like a very short-chord wing bent into a full circle, and because the wing has no free tips, there is no distinct pair of trailing tip vortices \u2014 spanwise flow simply chases itself around the ring, which keeps induced losses tame at its tiny scale. The thick multi-fold band at the leading edge concentrates mass well ahead of the ring's aerodynamic center, so CG sits forward (~30-35% of body length) giving strong pitch stability \u2014 the nose-heavy rim keeps pointing into the airflow. The circular cross-section is inherently roll- and yaw-neutral (axisymmetric), so it self-stabilizes about its flight axis and resists tumbling; any slight spin off the fingers only reinforces gyroscopic axial stability. At the low Reynolds numbers of a hand-thrown toy (~2-4x10^4) a smooth low-camber ring avoids the leading-edge separation that stalls flat paper wings, so it settles into a steady, straight glide rather than diving or pitching.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Lay the sheet portrait (short edge toward you). Fold it in half diagonally, but DELIBERATELY OFFSET the corners so the two top points do NOT meet \u2014 they should stand apart like two mountain peaks about 2-3 cm apart. Make a firm crease along this diagonal fold; this folded edge becomes your heavy leading-edge band."
+    },
+    {
+     "n": 2,
+     "text": "Keep it folded on that diagonal (peaks offset). You now have a triangle-ish shape with a clean folded edge running corner-to-corner and the two crown points sticking up."
+    },
+    {
+     "n": 3,
+     "text": "Starting at the long folded edge, make a straight 1/2-inch (1.25 cm) fold, rolling the folded edge over onto itself. Crease hard \u2014 this begins the thick, heavy leading-edge band."
+    },
+    {
+     "n": 4,
+     "text": "Make a SECOND 1/2-inch (1.25 cm) fold along the same edge, in the same direction over the first fold. This gives the stiff, dense multi-thickness band along one edge \u2014 the weighted nose rim of the ring. (Two folds is the standard NASA JPL recipe.)"
+    },
+    {
+     "n": 5,
+     "text": "OPTIONAL: if using lighter paper, add one more 1/2-inch fold for extra nose weight; keep the band tight and even so the rim stays circular later. Skip this on 100gsm paper."
+    },
+    {
+     "n": 6,
+     "text": "Gently curve the whole sheet into a cylinder, bringing the two short ends around toward each other, with the heavy folded band forming the FRONT lip of the ring."
+    },
+    {
+     "n": 7,
+     "text": "Overlap the two ends and TUCK one end inside the fold/pocket of the other end so the band interlocks and holds \u2014 like clasping a paper napkin ring. Adjust until the ring is round and the leading band forms a clean circular front lip."
+    },
+    {
+     "n": 8,
+     "text": "Shape the ring so it is roughly cylindrical and truly circular. A very slight forward taper (front opening a couple of millimeters smaller than the rear) is optional and can help the nose lead, but is not required. Final ring is roughly 8-10 cm in diameter."
+    },
+    {
+     "n": 9,
+     "text": "Check the seam is tucked, not just overlapped, so it won't pop open. Squeeze the band gently to firm up its curvature and make the rim truly circular."
+    },
+    {
+     "n": 10,
+     "text": "To launch: pinch the ring at the 'V' between the two crown points (top of the band) with thumb and index finger, heavy band forward, and toss it level and straight ahead with a light, smooth push \u2014 do not whip it. It will glide flat, held true by the ring."
+    }
+   ],
+   "geometry": {
+    "wingspan": "Ring diameter ~9 cm (the 'span' is the full hoop circumference, ~28 cm)",
+    "dihedral": "0 deg \u2014 a closed axisymmetric ring has no dihedral; roll stability comes from circular symmetry, not wing angle",
+    "aspect": "Very low effective aspect ratio (~1, approximate); the closed loop caps the tips so it does not spawn the usual pair of strong trailing tip vortices",
+    "cg": "~30-35% of body length from the front rim; the double (optionally triple) 1/2-inch fold puts mass well ahead of the aerodynamic center",
+    "notes": "Body length (ring depth along flight axis) ~9-10 cm of rolled paper; leading band is 3+ paper thicknesses. Standard NASA JPL build uses two 1/2-inch folds and no taper; taper is optional."
+   },
+   "flight": {
+    "throw": "Level, smooth, medium-light forward push while pinching the crown 'V'; spin is NOT required \u2014 a straight, level toss glides fine, and a tiny amount of spin off the fingers only adds a little gyroscopic axial stability",
+    "speed": "Slow to moderate \u2014 roughly 3-5 m/s",
+    "glide": "Smooth, straight, remarkably stable level glide; flies farther and truer than beginners expect, typically 5-10 m indoors",
+    "behavior": "Self-stabilizing: the forward-CG heavy rim keeps the nose leading and the axisymmetric ring resists roll, yaw and tumble; resists stalling at low Reynolds number so it settles rather than dives"
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 36,
+      "y": 2
+     },
+     {
+      "x": 64,
+      "y": 2
+     },
+     {
+      "x": 66,
+      "y": 6
+     },
+     {
+      "x": 66,
+      "y": 88
+     },
+     {
+      "x": 64,
+      "y": 94
+     },
+     {
+      "x": 58,
+      "y": 98
+     },
+     {
+      "x": 50,
+      "y": 99
+     },
+     {
+      "x": 42,
+      "y": 98
+     },
+     {
+      "x": 36,
+      "y": 94
+     },
+     {
+      "x": 34,
+      "y": 88
+     },
+     {
+      "x": 34,
+      "y": 6
+     },
+     {
+      "x": 36,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 8,
+      "y1": 88,
+      "x2": 92,
+      "y2": 12,
+      "type": "valley"
+     },
+     {
+      "x1": 13,
+      "y1": 85,
+      "x2": 89,
+      "y2": 17,
+      "type": "mountain"
+     },
+     {
+      "x1": 18,
+      "y1": 82,
+      "x2": 86,
+      "y2": 22,
+      "type": "mountain"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 2,
+      "y": 18
+     },
+     {
+      "x": 10,
+      "y": 10
+     },
+     {
+      "x": 90,
+      "y": 10
+     },
+     {
+      "x": 98,
+      "y": 18
+     },
+     {
+      "x": 98,
+      "y": 82
+     },
+     {
+      "x": 90,
+      "y": 90
+     },
+     {
+      "x": 10,
+      "y": 90
+     },
+     {
+      "x": 2,
+      "y": 82
+     },
+     {
+      "x": 2,
+      "y": 18
+     }
+    ],
+    "cg_point": {
+     "x": 18,
+     "y": 50
+    },
+    "features": [
+     "heavy multi-fold leading rim at the nose (forward CG)",
+     "closed annular wing \u2014 no free wingtips, no distinct trailing tip vortex",
+     "axisymmetric ring: 0 dihedral, roll/yaw self-stable",
+     "seam tucked, not just overlapped",
+     "throw pinch point at crown 'V'",
+     "single ring from one folded sheet (not the two-hoop straw 'Hoopster')"
+    ]
+   },
+   "fun_fact": "A hoop has no wingtips, so it can't shed the two trailing tip vortices that make ordinary wings 'leak' lift at the ends \u2014 the same closed-wing idea NASA and aircraft designers have studied on full-size ring-wing and box-wing planes to cut induced drag. Your paper donut is a pocket-sized version of that research."
+  },
+  {
+   "name": "The Harrier (Aerobatic Loop Glider)",
+   "aka": "Harrier Stunt Dart / Looping Glider",
+   "category": "best aerobatic looper (adjustable elevons)",
+   "origin": "Popular modern folk design widely documented on Instructables, Paper Plane Depot and Fold'N'Fly; a dart/glider hybrid in the lineage of the classic \"Loop\" stunt plane (Fold'N'Fly hosts a cut-elevon 'Loop' plane, and credited relatives include Carmel Morris's 'Ninja Super Looper'). No single universally credited inventor for this generic folk variant.",
+   "difficulty": "medium",
+   "paper": "US Letter (8.5x11\") or A4, 70-90 gsm. Standard copy paper is ideal \u2014 light enough to loop, stiff enough to hold the reflexed elevons.",
+   "why_best": "Its looping ability comes from three things working together: a very forward CG (the nose is folded under itself two-to-three times, stacking mass ahead of the wing) which gives strong pitch stability and lets the tail carry a large up-trim without stalling; a low-aspect-ratio, moderately-loaded delta-ish wing that tolerates the high angle of attack of a loop without tip-stalling; and cut, adjustable trailing-edge elevons that add reflex (up-deflection) to create a nose-up pitching moment. Thrown hard and slightly up, the up-elevons plus forward CG convert that speed energy into a tight vertical loop; bend the elevons down and the same airframe reverts to a clean flat glide. The forward CG also keeps it recoverable \u2014 it noses back to level after the loop instead of tumbling.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with the sheet landscape (long edge at top). Fold in half left-to-right to crease the vertical centerline, then unfold flat. This centerline guides every later fold. (A landscape start is what gives the short, wide delta-dart planform; a portrait start would make a long narrow dart instead.)"
+    },
+    {
+     "n": 2,
+     "text": "Fold the two top corners down to the centerline so their inner edges meet, forming a large triangular point at the top (classic dart nose)."
+    },
+    {
+     "n": 3,
+     "text": "Fold that whole triangular tip straight down, so its point reaches to about 25 mm (1 in) above the bottom edge. This buries mass low and forward \u2014 the start of the heavy nose."
+    },
+    {
+     "n": 4,
+     "text": "Fold the new top corners down to the centerline again. Small triangles will overhang the flap you made in step 3 \u2014 this is the second nose layer."
+    },
+    {
+     "n": 5,
+     "text": "Fold the small triangular flap (from step 3) that now sticks out upward, up and over the corners of step 4. This is the built-in lock that traps all the nose layers together and keeps the folds from opening in flight."
+    },
+    {
+     "n": 6,
+     "text": "Turn the whole model over and fold it in half along the original centerline (mountain fold), so all the nose folds are on the outside and the keel is on the fold. The nose stack should be a tight, heavy wedge."
+    },
+    {
+     "n": 7,
+     "text": "Fold the first wing down: bring the top (spine) edge down to meet the bottom edge of the body, so the wing is horizontal. Crease firmly. The wing root fold sits about 15-20 mm up from the keel bottom."
+    },
+    {
+     "n": 8,
+     "text": "Flip and repeat step 7 on the other side so both wings match. Creases must be at exactly the same height for symmetry."
+    },
+    {
+     "n": 9,
+     "text": "Open the wings out flat and set a slight upward dihedral (wingtips ~10 mm higher than roots) for roll stability during the loop's inverted portion."
+    },
+    {
+     "n": 10,
+     "text": "Cut two short slits (~15 mm) into the trailing edge of each wing, one near the tip and one nearer the root, to free one elevon tab on each wing (two tabs total). Do not cut into the keel."
+    },
+    {
+     "n": 11,
+     "text": "Bend both elevon tabs UP about 20-30 degrees for looping. Equal deflection on both wings keeps loops vertical; add a touch more up on one side to spiral."
+    },
+    {
+     "n": 12,
+     "text": "Trim: throw hard and slightly nose-up. If it won't complete the loop, bend elevons further up; if the loop is too tight or it stalls/tumbles, bend them down. For a flat glide instead, flatten the elevons to near-neutral."
+    }
+   ],
+   "geometry": {
+    "wingspan": "~140 mm (folded from a Letter/A4 sheet started landscape); each wing ~60 mm semi-span from the keel",
+    "dihedral": "Slight positive, ~8-12 degrees (tips ~10 mm above roots) for roll recovery through the loop",
+    "aspect": "Low, ~2.0-2.5 (short, deep delta-dart wing) \u2014 resists tip stall at the high AoA a loop demands",
+    "cg": "Well forward: ~25-30% of body length from the nose, set by the multi-layer folded nose stack",
+    "notes": "Low aspect ratio + forward CG is the aerobatic recipe: high pitch stability plus tolerance of large up-elevon reflex without departing. Chord Reynolds number in flight is roughly 30,000-60,000, typical low-Re paper regime where thick, reflexed sections still make usable lift."
+   },
+   "flight": {
+    "throw": "Firm, fast throw angled 20-40 degrees nose-up for loops; level and gentle for a straight glide",
+    "speed": "Medium-to-fast \u2014 the loop is speed-driven, needs energy to pull the vertical circle",
+    "glide": "With elevons flattened, a clean moderate-distance glide (5-8 m indoors); heavy nose keeps it tracking level",
+    "behavior": "Elevons up + hard throw = one or more tight vertical loops that recover to level flight thanks to the forward CG; asymmetric elevon adds barrel/spiral; elevons neutral = stable dart glide"
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 2
+     },
+     {
+      "x": 54,
+      "y": 34
+     },
+     {
+      "x": 92,
+      "y": 88
+     },
+     {
+      "x": 74,
+      "y": 92
+     },
+     {
+      "x": 55,
+      "y": 78
+     },
+     {
+      "x": 55,
+      "y": 96
+     },
+     {
+      "x": 45,
+      "y": 96
+     },
+     {
+      "x": 45,
+      "y": 78
+     },
+     {
+      "x": 26,
+      "y": 92
+     },
+     {
+      "x": 8,
+      "y": 88
+     },
+     {
+      "x": 46,
+      "y": 34
+     },
+     {
+      "x": 50,
+      "y": 2
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 5,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 95,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 5,
+      "y1": 30,
+      "x2": 95,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 30,
+      "x2": 20,
+      "y2": 48,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 30,
+      "x2": 80,
+      "y2": 48,
+      "type": "valley"
+     },
+     {
+      "x1": 20,
+      "y1": 48,
+      "x2": 80,
+      "y2": 48,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 30,
+      "x2": 8,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 50,
+      "y1": 30,
+      "x2": 92,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 0,
+      "y1": 95,
+      "x2": 20,
+      "y2": 95,
+      "type": "cut"
+     },
+     {
+      "x1": 35,
+      "y1": 95,
+      "x2": 48,
+      "y2": 95,
+      "type": "cut"
+     },
+     {
+      "x1": 52,
+      "y1": 95,
+      "x2": 65,
+      "y2": 95,
+      "type": "cut"
+     },
+     {
+      "x1": 80,
+      "y1": 95,
+      "x2": 100,
+      "y2": 95,
+      "type": "cut"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 20
+     },
+     {
+      "x": 6,
+      "y": 8
+     },
+     {
+      "x": 18,
+      "y": 4
+     },
+     {
+      "x": 45,
+      "y": 20
+     },
+     {
+      "x": 75,
+      "y": 24
+     },
+     {
+      "x": 100,
+      "y": 26
+     },
+     {
+      "x": 100,
+      "y": 30
+     },
+     {
+      "x": 75,
+      "y": 28
+     },
+     {
+      "x": 45,
+      "y": 26
+     },
+     {
+      "x": 18,
+      "y": 24
+     },
+     {
+      "x": 6,
+      "y": 26
+     },
+     {
+      "x": 0,
+      "y": 20
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 30
+    },
+    "features": [
+     "heavy multi-layer folded nose (forward CG)",
+     "built-in nose lock tab",
+     "low-aspect delta-dart wing",
+     "slight upward dihedral",
+     "cut & up-bent elevons at trailing edge",
+     "reflex (up-elevon) for the loop"
+    ]
+   },
+   "fun_fact": "The Harrier's looping trick is the same physics a full-size aerobatic aircraft uses \u2014 you trade forward airspeed for a vertical circle. Because the folded nose puts the CG so far forward, the plane is over-stabilized in pitch, so it needs those exaggerated up-bent elevons just to rotate into the loop, and that same stability is what snaps it back to level flight on the way out instead of tumbling."
+  },
+  {
+   "name": "The Returning Boomerang Glider",
+   "aka": "Comeback Plane / Loop-Back Glider",
+   "category": "best returning flight (circles back to the thrower)",
+   "origin": "Folk/hobbyist design popularized by paper-plane sites (Fold 'N Fly, WonderHowTo). The \"returning glider\" trick \u2014 hard upward launch + upturned wingtips + up-elevator \u2014 is a widely taught schoolyard variant rather than a single named inventor's plane.",
+   "difficulty": "medium",
+   "paper": "A4 or US Letter, 15-20 lb / 70-80 gsm copy paper (light enough to curve; avoid cardstock)",
+   "why_best": "The return is a trimmed climbing loop, not real boomerang gyroscopics. A hard ~40-degree upward throw gives it enough kinetic energy to pull vertical; slight up-elevator (raised trailing edge) forces a continuous pitch-up so the flight path arcs over the top. Strong ~15-degree dihedral plus upturned wingtip winglets make it extremely roll-stable and add a touch of yaw damping, so instead of spiraling off it holds a tight, repeatable loop. CG sits ~25% back from the leading edge \u2014 far enough forward to be pitch-stable, far enough aft that modest elevator deflection commands the big pitch rate needed to close the loop. Low wing loading (light paper, broad wing) and the low-Reynolds regime (~30,000) mean it flies slowly enough that the loop diameter stays small (roughly 4-6 m), bringing it back to the thrower's hand.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with the sheet portrait (short edge at top). Fold in half lengthwise (left edge to right edge) to set the center crease, then unfold. This centerline is your fuselage reference."
+    },
+    {
+     "n": 2,
+     "text": "Fold the top-left and top-right corners down to meet the center crease, forming a symmetric triangular nose. Crease sharply."
+    },
+    {
+     "n": 3,
+     "text": "Fold the resulting triangular tip straight down along the horizontal line where the two folded flaps end, so the point lies flat on the body (this buries weight in the nose to set CG forward)."
+    },
+    {
+     "n": 4,
+     "text": "Fold the new top-left and top-right slanted edges in to the center crease again, making a slimmer, sharper nose. A small triangle of the tucked flap will stick out at the bottom of these folds \u2014 fold that little triangle up over them to lock the nose closed."
+    },
+    {
+     "n": 5,
+     "text": "Fold the whole plane in half along the original centerline, folded flaps facing OUT (valley-fold toward you), so the keel is on the underside and the nose points forward."
+    },
+    {
+     "n": 6,
+     "text": "Make the wings: fold the top layer down so the wing's leading edge runs parallel to the bottom keel, leaving a keel/fuselage about 2.5 cm (1 in) tall. Angle the fold so the rear of the wing sits slightly higher than the front. Flip over and fold the second wing to match exactly."
+    },
+    {
+     "n": 7,
+     "text": "Open the plane to a shallow Y. Set a positive dihedral: both wings angled up about 15 degrees from horizontal so the tips ride above the keel."
+    },
+    {
+     "n": 8,
+     "text": "Add winglets/stabilizers: at each wingtip fold up a vertical tab about 1-1.5 cm (0.5 in) tall along a line parallel to the fuselage. Keep the two tabs equal \u2014 these give directional stability and tighten the loop."
+    },
+    {
+     "n": 9,
+     "text": "Trim the elevators: at the rear inner edge of each wing bend a small tab (about 1 cm) gently UP. Equal on both sides \u2014 this up-elevator is what pulls the plane into its loop."
+    },
+    {
+     "n": 10,
+     "text": "Sight down the nose and confirm symmetry: wings level with equal dihedral, both winglets vertical, both elevators bent up the same amount, no warps or twists. Any asymmetry turns the clean loop into a lopsided spiral."
+    },
+    {
+     "n": 11,
+     "text": "Throw test: grip the keel under the CG, and launch firmly at about a 40-degree upward angle. If it loops too early, reduce elevator; if it never comes over the top, add a touch more elevator or throw harder."
+    }
+   ],
+   "geometry": {
+    "wingspan": "approx. 20 cm (each wing ~9 cm semi-span from a folded A4)",
+    "dihedral": "~15 degrees (strong, for roll stability and a controlled loop)",
+    "aspect": "low, ~4:1 (broad wing, short span typical of a folded dart-glider hybrid)",
+    "cg": "~25% of wing chord back from the leading edge, held forward by the multi-layer folded nose",
+    "notes": "Vertical winglets ~1-1.5 cm tall at each tip act as end-plate stabilizers; keel/fuselage ~2.5 cm deep gives yaw stability. Up-elevator ~1 cm on each wing trailing edge sets the pitch-up needed to close the loop."
+   },
+   "flight": {
+    "throw": "Firm, at roughly a 40-degree upward angle, released from below the CG with a slight wrist flick; more energy than a normal glider throw",
+    "speed": "Moderate-to-fast on launch, bleeding to slow at the top of the loop",
+    "glide": "Not a straight glider \u2014 it climbs, arcs over the top, and descends back toward the thrower; loop diameter roughly 4-6 m (15-20 ft)",
+    "behavior": "Climbs steeply, pitches up into a vertical loop, comes over the top and returns to land near or in the thrower's hand. Tune with elevator and throw strength; add tiny asymmetric elevator to bias the return left or right into your catching hand."
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 50,
+      "y": 0
+     },
+     {
+      "x": 54,
+      "y": 22
+     },
+     {
+      "x": 95,
+      "y": 52
+     },
+     {
+      "x": 95,
+      "y": 60
+     },
+     {
+      "x": 56,
+      "y": 58
+     },
+     {
+      "x": 56,
+      "y": 98
+     },
+     {
+      "x": 44,
+      "y": 98
+     },
+     {
+      "x": 44,
+      "y": 58
+     },
+     {
+      "x": 5,
+      "y": 60
+     },
+     {
+      "x": 5,
+      "y": 52
+     },
+     {
+      "x": 46,
+      "y": 22
+     },
+     {
+      "x": 50,
+      "y": 0
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "centerline"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 8,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 92,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 8,
+      "y1": 30,
+      "x2": 92,
+      "y2": 30,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 16,
+      "x2": 22,
+      "y2": 36,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 16,
+      "x2": 78,
+      "y2": 36,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 0,
+      "x2": 50,
+      "y2": 100,
+      "type": "mountain"
+     },
+     {
+      "x1": 50,
+      "y1": 40,
+      "x2": 10,
+      "y2": 58,
+      "type": "valley"
+     },
+     {
+      "x1": 50,
+      "y1": 40,
+      "x2": 90,
+      "y2": 58,
+      "type": "valley"
+     },
+     {
+      "x1": 8,
+      "y1": 52,
+      "x2": 8,
+      "y2": 74,
+      "type": "valley"
+     },
+     {
+      "x1": 92,
+      "y1": 52,
+      "x2": 92,
+      "y2": 74,
+      "type": "valley"
+     },
+     {
+      "x1": 30,
+      "y1": 92,
+      "x2": 42,
+      "y2": 92,
+      "type": "valley"
+     },
+     {
+      "x1": 58,
+      "y1": 92,
+      "x2": 70,
+      "y2": 92,
+      "type": "valley"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 22
+     },
+     {
+      "x": 18,
+      "y": 30
+     },
+     {
+      "x": 30,
+      "y": 33
+     },
+     {
+      "x": 55,
+      "y": 34
+     },
+     {
+      "x": 88,
+      "y": 35
+     },
+     {
+      "x": 100,
+      "y": 42
+     },
+     {
+      "x": 100,
+      "y": 18
+     },
+     {
+      "x": 72,
+      "y": 14
+     },
+     {
+      "x": 40,
+      "y": 12
+     },
+     {
+      "x": 16,
+      "y": 13
+     },
+     {
+      "x": 0,
+      "y": 22
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 34
+    },
+    "features": [
+     "upturned wingtip winglets (end-plate stabilizers)",
+     "strong ~15\u00b0 dihedral",
+     "raised trailing-edge elevators (up-trim for the loop)",
+     "heavy multi-layer folded nose (CG forward)",
+     "deep keel for yaw stability"
+    ]
+   },
+   "fun_fact": "This plane isn't a true boomerang \u2014 real boomerangs return via gyroscopic precession of a spinning airfoil. The paper 'boomerang glider' cheats: it's simply a very roll-stable glider trimmed with up-elevator and thrown hard enough vertically that its natural loop happens to end right back where you're standing."
+  },
+  {
+   "name": "The Tumblewing (Walkalong Glider)",
+   "aka": "Tumbling Wing, Rotor Wing, Air Surfer, John Collins' Tumblewing",
+   "category": "most imaginative / hovers on ridge lift (walkalong sustained flight)",
+   "origin": "Paper version designed by John Collins (\"The Paper Airplane Guy\"), published in his 2004 book Fantastic Flight (Ten Speed Press); popularized as a walkalong glider by Slater Harrison (ScienceToyMaker.org). The walkalong-glider concept dates to Joseph E. Grant's patent, US 2,718,092, granted 1955.",
+   "difficulty": "easy",
+   "paper": "Lightest paper you can find: phonebook paper, newsprint, or florist tissue (approx 10-20 gsm). Cut a strip ~4 cm x 16 cm (aspect ratio roughly 1:4). Standard 80 gsm A4 is too heavy - it will not float.",
+   "why_best": "The tumblewing wins the \"imaginative\" category because it does not glide at all - it autorotates. Cut low across the wind, the wing continuously spins about its long (spanwise) axis, alternately flying and stalling each half-turn so that lift is generated Flettner/Magnus-style like a spinning rotor rather than by a fixed airfoil. Because it carries zero ballast, its wing loading is extraordinarily low (its flight is \"more akin to confetti\"), so a gentle updraft can support it. That is what makes it a walkalong glider: the pilot walks behind it holding a paddle tilted ~30 degrees, and the ridge lift (deflected updraft) off the moving board sustains the tumbling wing indefinitely. The tiny chord and slow speed put it at very low Reynolds number where the alternating-stall rotor mechanism, not smooth attached flow, is what keeps it aloft. Upturned winglets at each end kill spanwise drift and lock the spin axis straight so it tumbles in place instead of veering off.",
+   "fun_fact": "Unlike every other paper airplane, a tumblewing is meant to NEVER touch the ground once launched - a skilled pilot can walk it across an entire room, up staircases, and even loop it around their own body, all powered by nothing but the sheet of cardboard they wave behind it.",
+   "fold_steps": [
+    {
+     "n": 1,
+     "text": "Start with a lightweight paper strip about 4 cm wide and 16 cm long, laid flat in landscape (long edges top and bottom, short ends left and right)."
+    },
+    {
+     "n": 2,
+     "text": "Fold up the left short end: bring the left edge up about 1 cm from the end, making a small vertical winglet. Crease sharply."
+    },
+    {
+     "n": 3,
+     "text": "Fold up the right short end the same way, 1 cm in, so both ends now have matching winglets standing straight up at 90 degrees. These are your stabilizing fins."
+    },
+    {
+     "n": 4,
+     "text": "Lay the strip flat again (winglets pointing up). Take the FRONT long edge (the leading edge that will move into the wind) and fold a thin ~5 mm hem DOWNWARD (mountain fold, away from you) along its full length."
+    },
+    {
+     "n": 5,
+     "text": "Take the BACK long edge (trailing edge) and fold a thin ~5 mm hem UPWARD (valley fold, toward you) along its full length. Front-down / back-up is the key to setting the tumbling rotation."
+    },
+    {
+     "n": 6,
+     "text": "Optional: gently curve the whole strip into a very slight spanwise arc so the middle bows a hair - this helps keep the spin axis straight. Do not crush the curve; it should relax back nearly flat."
+    },
+    {
+     "n": 7,
+     "text": "Check symmetry: hold it by the two winglets and sight down the span. The front (down) hem and back (up) hem must be even along the whole length, with no twist."
+    },
+    {
+     "n": 8,
+     "text": "Launch: hold the wing by its BACK (up-bent) trailing edge, winglets pointing up and the front-down hem facing away from you, then simply let go so it falls forward and away, tumbling leading-edge-over immediately."
+    },
+    {
+     "n": 9,
+     "text": "Fly it: hold a stiff cardboard paddle upright, tilted forward ~30 degrees, positioned just below and behind the tumbling wing. Walk forward at a steady pace so the ridge lift off the paddle carries the wing on a cushion of air in front of you."
+    }
+   ],
+   "geometry": {
+    "wingspan": "16 cm span (the long dimension) x 4 cm chord (the short dimension); winglets ~1 cm tall at each tip",
+    "dihedral": "none in the fixed sense - a very slight spanwise arc (a few degrees) to keep the spin axis straight; the wing rotates continuously about its spanwise axis",
+    "aspect": "planform aspect ratio roughly 1:4 (span:chord ~4). This is a rotor wing, so effective aspect ratio is not the operative parameter - spin rate and wing loading are",
+    "cg": "CG sits on the centerline at the geometric center of the strip; there is deliberately NO nose ballast, giving near-zero wing loading",
+    "notes": "Total mass a fraction of a gram; flies at walking pace (~0.5-1 m/s) at very low Reynolds number. Lift comes from Magnus/Flettner-type autorotation (alternate fly-and-stall each half turn) about the spanwise axis, not a fixed airfoil. Front long (leading) edge folds DOWN, rear long (trailing) edge folds UP; both tip winglets point UP."
+   },
+   "flight": {
+    "throw": "No throw. Hold it by the back up-bent edge and release with the leading (front-down) edge facing away so it begins tumbling forward immediately, then bring the paddle in behind it.",
+    "speed": "Very slow - walking pace, roughly 0.5 to 1 m/s. The pilot's walking speed sets the airspeed.",
+    "glide": "Effectively infinite when piloted: it does not glide down but hovers/climbs on the paddle's ridge lift and can stay aloft as long as the pilot keeps walking. Unpowered, it tumbles gently to the floor in a few seconds.",
+    "behavior": "Continuous forward tumbling (rotation about the spanwise axis, leading edge tucking down and under) that translates the wing horizontally into the wind. On a paddle's updraft it floats level or climbs; steer by tilting and moving the paddle left/right. Extremely sensitive to drafts and paper weight."
+   },
+   "diagram": {
+    "top_view_outline": [
+     {
+      "x": 12,
+      "y": 42
+     },
+     {
+      "x": 88,
+      "y": 42
+     },
+     {
+      "x": 88,
+      "y": 40
+     },
+     {
+      "x": 92,
+      "y": 40
+     },
+     {
+      "x": 92,
+      "y": 60
+     },
+     {
+      "x": 88,
+      "y": 60
+     },
+     {
+      "x": 88,
+      "y": 58
+     },
+     {
+      "x": 12,
+      "y": 58
+     },
+     {
+      "x": 12,
+      "y": 60
+     },
+     {
+      "x": 8,
+      "y": 60
+     },
+     {
+      "x": 8,
+      "y": 40
+     },
+     {
+      "x": 12,
+      "y": 40
+     },
+     {
+      "x": 12,
+      "y": 42
+     }
+    ],
+    "crease_lines": [
+     {
+      "x1": 50,
+      "y1": 40,
+      "x2": 50,
+      "y2": 60,
+      "type": "centerline"
+     },
+     {
+      "x1": 12,
+      "y1": 40,
+      "x2": 12,
+      "y2": 60,
+      "type": "valley"
+     },
+     {
+      "x1": 88,
+      "y1": 40,
+      "x2": 88,
+      "y2": 60,
+      "type": "valley"
+     },
+     {
+      "x1": 12,
+      "y1": 43,
+      "x2": 88,
+      "y2": 43,
+      "type": "mountain"
+     },
+     {
+      "x1": 12,
+      "y1": 57,
+      "x2": 88,
+      "y2": 57,
+      "type": "valley"
+     }
+    ],
+    "side_profile": [
+     {
+      "x": 0,
+      "y": 42
+     },
+     {
+      "x": 8,
+      "y": 50
+     },
+     {
+      "x": 20,
+      "y": 54
+     },
+     {
+      "x": 50,
+      "y": 56
+     },
+     {
+      "x": 80,
+      "y": 54
+     },
+     {
+      "x": 92,
+      "y": 50
+     },
+     {
+      "x": 100,
+      "y": 58
+     },
+     {
+      "x": 100,
+      "y": 46
+     },
+     {
+      "x": 92,
+      "y": 40
+     },
+     {
+      "x": 50,
+      "y": 44
+     },
+     {
+      "x": 8,
+      "y": 40
+     },
+     {
+      "x": 0,
+      "y": 42
+     }
+    ],
+    "cg_point": {
+     "x": 50,
+     "y": 50
+    },
+    "features": [
+     "front (leading) long edge folded DOWN",
+     "rear (trailing) long edge folded UP",
+     "upright winglets at both tips",
+     "no nose ballast - near-zero wing loading",
+     "tumbles/spins about spanwise axis",
+     "flown on paddle ridge lift"
+    ]
+   }
+  }
+ ],
+ "issues": [
+  "[dart] FACT (verified correct): John Collins' record plane 'Suzanne', 226 ft 10 in, thrown by Joe Ayoob in 2012, first glider to hold the distance record, first to use variable dihedral. All accurate.",
+  "[dart] FACT (verified correct): Fold 'N Fly attribution of the 'Basic Dart' is accurate (easy difficulty, Letter/A4, fast straight flight, forgiving of asymmetric folds, stiff wings).",
+  "[dart] FACT (minor imprecision, corrected wording): The spec called Suzanne a 'dart-category glider'. Suzanne is a glider that BROKE a ballistic-dart record holder's record (the old 207'4\" dart flew ~3s; Suzanne glided ~9s). It is a glider, not dart-category. Tightened the origin text.",
+  "[dart] FOLD (minor variant, corrected wording): Step 5 said the folded flaps end on the OUTSIDE. The canonical Fold 'N Fly Basic Dart tucks the layered flaps on the INSIDE (clean exterior surface). Since the spec explicitly cites the Basic Dart, reworded step 5 to the standard inside-tuck. Aerodynamically symmetric either way, so not fatal.",
+  "[dart] FOLD (pass): The 8 steps correctly expand the canonical dart sequence (centerline, corners-to-center, edges-to-center, optional third fold, fold-in-half, both wings down, open with dihedral). Complete, correctly ordered, and yields the symmetric dart planform in top_view_outline.",
+  "[dart] GEOMETRY (pass, no coordinate fixes): top_view_outline is perfectly symmetric about x=50, nose at y=0 (up), tail at y=100. All crease_lines are symmetric. side_profile is nose-left with the deepest keel near the nose (correct for a nose-heavy dart). cg_point (50,47) is on-axis and 47% back, matching the stated 45-50%.",
+  "[dart] GEOMETRY (non-issue clarified): The wide wingtips at x=5/95 in the normalized 0-100 top-view box do NOT contradict the 'small span / very low aspect ratio' real-world geometry; the box is normalized to the plane's own bounding box.",
+  "[record_glider] FACT (record chain): The origin note implies Suzanne's 226 ft 10 in record was directly surpassed by the 2022 Boeing throw. This skips an intermediate record: 252 ft 7 in (77.134 m) set in Daegu, South Korea on 16 April 2022 (designed by Chee Yie Jian, folded by Shin Moo Joon, thrown by Kim Kyu Tae). The Boeing team (289 ft 9 in / 88.31 m, 2 Dec 2022) beat the Korean record, not Suzanne directly. Corrected the note. All other facts verified correct: Collins designed it, named after wife Suzanne, thrown by former QB Joe Ayoob, 226 ft 10 in (69.14 m) on 26 Feb 2012 at McClellan (former AFB), Sacramento CA; first glider (not dart) to hold the record.",
+  "[record_glider] TAPE (fact): Spec claims Guinness 'allows a single ~30mm strip' and describes one tape strip at the belly. The actual competition Suzanne uses MULTIPLE 30mm tape strips (Collins' own build uses several strips of ~1.5-2.25mm width applied in a numbered sequence for structural reinforcement). The 'single strip' is a widespread misconception. Corrected steps 11, feature list, and geometry note.",
+  "[record_glider] FOLD (step 5): The spec calls the nose fold a 'water-bomb/preliminary base'. Suzanne does NOT use a waterbomb or preliminary base \u2014 it uses flat diagonal folds that bring the top side edges in to meet at the centerline, forming a solid layered point (a blunt-dart-style nose), with no collapsed internal triangle. Calling it a waterbomb base would mislead a folder into collapsing the paper incorrectly. Reworded step 5.",
+  "[record_glider] THROW angle (minor, kept with clarification): Collins' published Make: guide advises keeping the launch relatively level with smooth acceleration, while most other sources (and the physics of the climb-then-glide design) describe a high-angle 30-45deg launch. The spec's ~45deg is at the upper end of the real range; kept but softened to ~40-45deg and noted that wings must stay level and the throw must be smooth-but-fast (Ayoob dropped his elbow to level the wings).",
+  "[record_glider] GEOMETRY (verified, no coordinate fixes): Top-view outline is perfectly symmetric about x=50 with nose at top (y=2) and tail at bottom (y=98); side profile is correctly nose-left/tail-right; CG at (50,30) is centered and ~29% back from the nose (matches the forward-CG claim and lands inside the planform); all crease lines are mirror-symmetric about x=50 and map coherently to the fold operations. The centerline and mountain crease share identical coordinates, which is correct (fold-in-half is a mountain fold on the centerline). Side profile has a small internal notch near x=22 but reads acceptably as a thick-nose/keel glider schematic \u2014 left as-is.",
+  "[nakamura_cruiser] No substantive errors found. Designer (Eiji Nakamura), the lock mechanism (fold the exposed triangular tip up to pin the front layers), and the fold-in-half-with-lock-on-the-OUTSIDE detail (step 7) all match multiple real-world sources (CSIRO Double Helix, origamiway, Instructables).",
+  "[nakamura_cruiser] Record-claim check PASSED: the spec correctly makes NO distance-record claim. It frames the plane as a stable slow cruiser/glider, which is accurate. The real paper-airplane distance record (69.14 m, 2012) belongs to a John Collins design thrown by Joe Ayoob, not the Nakamura Lock \u2014 so there is nothing false to correct here.",
+  "[nakamura_cruiser] Fold order and completeness: the 10 steps are in the correct sequence and complete (half-fold/unfold \u2192 corners to center \u2192 point down \u2192 corners to center leaving a peeking triangle \u2192 fold that triangle UP = the lock \u2192 flip \u2192 fold in half lock-outside \u2192 wings down \u2192 dihedral). They plausibly yield the depicted blunt-nosed dart-glider planform.",
+  "[nakamura_cruiser] Top-view outline is perfectly symmetric about x=50, nose-up (min y\u22482), tail at y=98 \u2014 coherent orientation.",
+  "[nakamura_cruiser] Crease lines mirror correctly in pairs; the y=32 horizontal valley is the nose fold-down and the x=38\u201362 mountain at y=24 is the lock tab \u2014 consistent with the fold steps.",
+  "[nakamura_cruiser] Side profile is nose-left (x\u22480\u201312) and the nose end is deeper/thicker than the tail, correctly depicting the stacked/layered locked nose.",
+  "[nakamura_cruiser] CG at (50,30) lies on the centerline and \u224829% back from the nose, matching the stated 28\u201332% and giving the described forward static-stability margin.",
+  "[nakamura_cruiser] Numeric claims are internally consistent: aspect ratio 14/6.5\u22482.15 (stated ~2.2), wingspan ~66% of 21 cm A4 \u2248 13.9 cm (stated ~14 cm).",
+  "[nakamura_cruiser] Minor, non-blocking note (left unchanged): diagram wingtips reach x=5/95 (90% of frame width) while the physical span is ~66% of the paper \u2014 this is normal schematic exaggeration, not a contradiction, since the diagram is not to paper scale.",
+  "[sailplane] FOLD Step 5 inconsistency: it says to fold the triangle in half along the 'original center crease' from Step 1. That Step-1 crease runs lengthwise (parallel to the long A4 edges); after Steps 2-3 make a square and cut it to a right triangle, that lengthwise crease no longer bisects the triangle symmetrically. The correct fold is along the triangle's own line of symmetry (the perpendicular bisector of the hypotenuse / the diagonal fold from Step 2), which becomes the fuselage keel. Reworded.",
+  "[sailplane] GEOMETRY crease_lines: the cut line (100,100)->(100,0) trims the ENTIRE right edge of the sheet, which is spurious. The Sea Glider trims only one leftover rectangle (Step 3), represented by the bottom-edge cut (0,100)->(100,100). Removed the bogus right-edge cut.",
+  "[sailplane] GEOMETRY crease_lines: the keel valley creases were at x=40 and x=60, but the top-view keel/fuselage sits at x=48-52. Moved them to x=46 and x=54 to match the planform.",
+  "[sailplane] GEOMETRY wingspan wording: the spec says wingspan ~26-27cm is 'the full width of the folded square's diagonal.' The A4-derived square (210x210mm) has a diagonal of ~29.7cm, NOT 26-27cm. The ~26cm figure is the EFFECTIVE tip-to-tip span AFTER folding down the keel and folding up the outer ~2cm winglets. Corrected the note to say this.",
+  "[sailplane] CHARACTERIZATION embellishment: the canonical folk 'Sea Glider' (Fold 'N Fly / DIY Magazine) is a maneuverable, seagull-like glider that turns quickly and can loop, not primarily a max-glide-ratio distance sailplane. The 12:1+ glide ratio belongs specifically to Edmond Hui's Paperang, not to the Sea Glider. Softened origin/why_best/glide claims so the record-class ratio is attributed to the Paperang lineage and the Sea Glider is presented as a simpler design in that aerodynamic family.",
+  "[sailplane] FACTS all verified and correct: Edmond Hui designed the Paperang in 1977; it is hang-glider-derived, exceeds a 12:1 glide ratio, and Hui was a former hang-gliding instructor (book 'Amazing Paper Planes,' 1987). Physics claims verified: glide ratio equals L/D; induced-drag coefficient is inversely proportional to aspect ratio at fixed area; doubling aspect ratio roughly halves induced drag.",
+  "[sailplane] GEOMETRY confirmed sound: top-view is perfectly symmetric about x=50 with nose up (y=2) and tail down (y~96); side profile has nose at left (x=0), thicker at the nose from the rolled ballast, tapering to the tail; CG at (50,22) sits ~21% aft of the nose, consistent with the stated 18-22% quarter-chord. No changes needed to these.",
+  "[bulldog] FOLD ORDER WRONG (step 3): The spec's step 3 ('fold the slanted top edges to the center crease AGAIN') describes a classic sharp dart, not the Bulldog Dart. The real Bulldog Dart FLIPS THE PAPER OVER after the first corner-to-center fold and folds the corners to center again on the back side. This is what symmetrically stacks the layers. Corrected.",
+  "[bulldog] FOLD DIRECTION BACKWARDS (step 5): Spec says fold in half 'with the tucked nose on the OUTSIDE.' The real Bulldog Dart folds in half 'in on itself' with the folds/nose-tuck on the INSIDE (valley along the original centerline). The spec's outside fold would leave the tuck exposed and springing open. Corrected.",
+  "[bulldog] The confirmed authoritative sequence (Art of Manliness, Jeremy Andenberg, 2014; Instructables 'seamster') is: (1) center crease, (2) corners to center, (3) FLIP, corners to center again, (4) fold nose point down, (5) fold plane in half in on itself, (6) fold wings down. The spec's 9 steps padded this out and altered steps 3 and 5.",
+  "[bulldog] OVERSTATED CATEGORY / FLIGHT PROFILE: The primary source explicitly says the heavy nose means 'this flies better when thrown at LOWER speeds... give it a softer throw' and warns a hard throw 'will just fly it into the ground.' The spec's framing as a fast, throw-it-hard 'stunt / loop / roll' plane thrown level-or-down at firm speed directly contradicts the source. It is a beginner distance/straight-flight dart, not a stunt/aerobatic plane. The 'most durable/crash-proof STUNT plane' category and the loop/roll/up-elevon claims are not supported. Softened flight text and category.",
+  "[bulldog] UNSUPPORTED AEROBATIC ADD-ONS: The optional 'up-elevon flaps for loops and rolls' (fold steps 8-9, features, behavior) are the spec author's invention, not part of the documented design. Kept only as a clearly-optional tweak, removed the 'loops and rolls reliably' claim.",
+  "[bulldog] CG NUMBER slightly generous: A forward CG is real, but '~25-30% of length' is an unsourced precise figure. The forward-CG claim is directionally correct and consistent with the diagram cg_point (y=28 ~ 27% back), so kept but flagged as approximate.",
+  "[bulldog] DIAGRAM crease_lines had a contradictory duplicate: two identical full-width lines from (0,58) to (100,58), one tagged 'valley' and one 'mountain' \u2014 a single crease cannot be both. Also a lone horizontal mountain crease at y=44 and a horizontal fold-in-half line are geometrically wrong for a nose-up top view (the fold-in-half spine should run VERTICALLY along the centerline x=50). Replaced with a coherent set: vertical centerline spine, four nose-to-side valley corner folds, a horizontal nose-tuck mountain fold near the nose, and two symmetric wing (mountain) fold lines.",
+  "[bulldog] DIAGRAM side_profile had jittery backtracking around the nose (x 16->10->18); simplified to a clean nose-left keel silhouette with a tall blunt built-up nose tapering to a thin tail. Still nose-left, coherent.",
+  "[bulldog] top_view_outline and cg_point were fine: outline is nose-up and symmetric about x=50, CG on centerline at ~27% back. Left essentially unchanged.",
+  "[bulldog] Minor: origin credited both 'seamster' (Instructables) and Art of Manliness/Jeremy Andenberg (2014) \u2014 both are correct and confirmed; kept. Title 'Best Paper Airplane in the World (a.k.a. Bulldog Dart)' confirmed verbatim.",
+  "[ring_tube] FACT/AKA CONFLATION: The 'aka' and origin conflate two DIFFERENT designs. The NASA JPL 'Ring Wing Glider' verified here is a SINGLE ring made from one folded 8.5x11 sheet (diagonal offset fold + two 1/2-inch folds, then curled and tucked). The 'Hoopster' (Science World) is a distinct build: TWO paper hoops of different diameters taped to a drinking straw fuselage. Calling this design the 'Hoopster' is inaccurate. Removed 'Hoopster' from aka; kept 'Annular-Wing Glider / tube that flies'.",
+  "[ring_tube] FOLD COUNT vs NASA: The canonical NASA JPL instructions specify exactly TWO 1/2-inch folds along the diagonal edge, not three. Step 5's 'third fold' is an embellishment; kept only as a clearly optional tip for lighter paper (as written) since it is harmless, but flagged that the reference design uses two.",
+  "[ring_tube] OVER-SPECIFICATION (taper/inner-facing band): Steps 6 and 8 assert a deliberate forward cone/taper and that the band must face the INSIDE of the hoop. The reference design is simply a cylinder; the taper and band-orientation are not part of the verified instructions and are not required for flight. Softened to 'roughly cylindrical; a very slight forward taper is optional' rather than a load-bearing requirement.",
+  "[ring_tube] GEOMETRY - DEGENERATE CREASE: crease_lines contained a zero-length 'cut' segment from (8,88) to (8,88). The Ring Wing Glider involves NO cuts at all. Removed the degenerate/spurious cut line entirely.",
+  "[ring_tube] GEOMETRY - INCOHERENT SIDE PROFILE: The side_profile was two disconnected point clusters (a small lens at x=0-6 and a scattered, non-monotonic set at x=97-100) that do not read as a nose-left tube silhouette. Replaced with a coherent side view of the rolled tube: nose/heavy rim at left (x~0), tail at right (x~100), drawn as a closed rounded-rectangle outline representing the cylinder seen edge-on, with the thicker leading rim indicated at the nose.",
+  "[ring_tube] MINOR - ASPECT/AR wording: The 'aspect ratio ~1' for a closed annular wing is a rough hand-wave (effective AR of a ring depends on chord/diameter). Left as an approximation since it is presented as 'very low effective aspect ratio (~1)', but it is not a precise figure.",
+  "[ring_tube] NO FALSE RECORD (good): The spec makes NO distance-record claim, which is correct \u2014 there is no recognized distance record for this novelty toy, and the Guinness paper-airplane distance record belongs to a conventional folded dart-style plane, not a ring glider. Category is honestly framed as 'novelty flyer', so no correction needed there.",
+  "[harrier] STARTING ORIENTATION WRONG (step 1): The spec cites the Fold'N'Fly 'Loop' as its lineage, but that design starts LANDSCAPE (fold in half left-to-right), not portrait. More damning is the internal contradiction: the spec's own geometry describes a wide, low-aspect delta (wingspan ~140 mm from a Letter sheet, aspect ~2.0-2.5). A portrait start yields a LONG, NARROW dart, not a short wide delta. Only a landscape start produces the stated planform. Corrected step 1 to landscape.",
+  "[harrier] ELEVON TAB COUNT CONTRADICTION: Step 10 cuts 'two short slits ... to free an elevon tab on EACH side' = 2 tabs total, and the diagram's four cut segments bracket exactly one tab per wing (2 tabs). But step 11 says 'Bend all FOUR elevon tabs UP.' There are two tabs, not four. Corrected step 11 (and the flight/why_best language) to 'both elevons'.",
+  "[harrier] SIDE PROFILE INVERTED FRONT-TO-BACK: The design's whole thesis is a heavy multi-layer nose wedge giving a very forward CG, so the keel should be DEEPEST at the nose (left/low x) and taper to a thin tail. The submitted side_profile is thin at the nose (height ~8 at x=0) and TALLEST at the tail (max y=34 at x=100) \u2014 the opposite of a heavy-nose dart. Rebuilt the side profile nose-left with the deep keel wedge at the nose tapering to a thin trailing edge.",
+  "[harrier] CG DIAGRAM vs TEXT MISMATCH (minor): Text says CG at ~25-30% of body length from the nose; the diagram cg_point at y=34 is ~34% down the body (nose y=2, tail y=96). Nudged cg_point.y to 30 to match the stated forward CG.",
+  "[harrier] ORIGIN CLAIM (acceptable, not corrected): 'No single credited inventor' is defensible for the generic looping folk plane, though credited looping designs exist (e.g., Carmel Morris's 'Ninja Super Looper' from The Best Advanced Paper Aircraft, and John Collins's stunt planes). The named sources (Fold'N'Fly, Instructables, Paper Plane Depot) do host such designs, so the attribution stands. Left as-is.",
+  "[boomerang] FOLD CHECK \u2014 PASS (with minor looseness): Steps 1-9 describe a buildable, real returning-glider sequence: corner-to-center nose folds + tip-down weight-burial + second corner folds + tuck-lock (a Nakamura-lock-style nose), fold in half, fold down wings leaving a keel, then add dihedral, winglets, and up-elevator. This matches every tutorial found (WonderHowTo, Fold 'N Fly). Step 4's description of the tucked triangle is a little loose but recognizable and not impossible. Sequence order is correct.",
+  "[boomerang] GEOMETRY \u2014 WINGLET CREASE LINES MISPLACED (fixed): the top_view wingtips are at x=5 and x=95, but the winglet fold lines were drawn inboard at x=16 and x=84 (~11 units off the tips). Winglets/end-plates must fold at the actual tips. Moved to x=8 and x=92.",
+  "[boomerang] GEOMETRY \u2014 REDUNDANT CENTER CREASE (left as-is, noted): crease_lines contains two identical x=50, y=0\u2192100 lines, one 'centerline' and one 'mountain'. This is defensible (the centerline reference from step 1 becomes the mountain fold-in-half in step 5), so both are retained, but they overplot.",
+  "[boomerang] GEOMETRY \u2014 REST PASSES: top_view_outline is symmetric about x=50, nose at y=0, tail at y=98, coherent swept planform with fuselage/keel and trailing-edge notch. side_profile is nose-left (pointed tip at x=0, tall keel+trailing edge at x=100) as required. cg_point (50,34) is on the centerline and in the forward portion of the wing chord, consistent with the stated forward '~25% back' CG.",
+  "[boomerang] FACT CHECK \u2014 CONFIRMED: The 'returning glider' as a trimmed climbing loop (up-elevator + upturned wingtips + hard upward launch) is exactly as taught by WonderHowTo and Fold 'N Fly; no single named inventor \u2014 correctly framed as a folk/schoolyard variant. Launch angle (~30-45deg up, wrist flick, catch mid-flight) and the tuning rules (more bank/elevator if it won't loop, less if too tight) match sources verbatim.",
+  "[boomerang] FACT CHECK \u2014 DISTANCE/RETURN CLAIM CORRECT: loop diameter 'roughly 4-6 m (15-20 ft), returns to thrower' matches Fold 'N Fly's boomerang page ('fly about 15-20 feet away then swoop back toward you'). This is a RETURN claim, not a distance-record claim, so there is no world-record figure to mis-state.",
+  "[boomerang] FACT CHECK \u2014 PHYSICS CORRECT: the fun_fact/why_best correctly distinguish this from a true boomerang (real boomerangs return via gyroscopic precession of a spinning airfoil; this is just a roll-stable up-trimmed glider). Reynolds ~30,000 is a defensible figure for a ~9 cm chord at a few m/s, squarely in the low-Re regime studied in the literature.",
+  "[tumblewing] GEOMETRY (fixed): The two horizontal hem crease lines were placed at y=20 (mountain) and y=80 (valley), which fall entirely OUTSIDE the wing planform (the outline's chord runs y=40 to y=60). Long-edge hems must sit just inside the leading/trailing edges. Corrected to y=43 (front/leading, mountain=down) and y=57 (back/trailing, valley=up), inside the wing.",
+  "[tumblewing] GEOMETRY (fixed): The two vertical winglet crease lines were at x=8 and x=92, sitting on the very outer edge of the tab protrusions rather than at the actual fold line. Moved to x=12 and x=88, where the winglet tabs actually hinge up (the tabs protrude from x=12->8 and x=88->92 in the outline).",
+  "[tumblewing] FOLD (minor, tightened): Launch step 8 said to hold the wing 'by the middle of the long edges.' The canonical ScienceToyMaker/ExplorationStation method is to hold it by the BACK (up-bent) trailing edge with winglets up and release so it falls forward. Reworded for accuracy.",
+  "[tumblewing] PHYSICS (verified, not an error): The spec's simultaneous claims that the wing 'spins about its long (spanwise) axis' AND tumbles 'nose-over-tail' initially look contradictory, but they are consistent: for a tumblewing the 'nose' is the leading long edge and the 'tail' the trailing long edge, and it pitches forward (leading edge tucking down/under) ABOUT the spanwise axis. This matches the literature (Wikipedia: rotates 'about an axis transverse to the apparent wind'; JFM: 'autorotation of a flat plate about its spanwise axis'). No change needed.",
+  "[tumblewing] FACT CHECK (all confirmed): John Collins ('The Paper Airplane Guy') invented the paper tumbling-wing; it appears in his 2004 book Fantastic Flight (Ten Speed Press). Slater Harrison / ScienceToyMaker popularized the walkalong version. The walkalong glider was patented by Joseph E. Grant, US Patent 2,718,092, granted 1955. No distance-record claim is made (correct \u2014 this is a hovering/'imaginative' craft, not a distance flier), so no false record facts.",
+  "[tumblewing] FOLD (minor note, kept): Step 6 (curving the strip into a very slight spanwise arc) is an optional embellishment not present in the most basic ScienceToyMaker instructions, but it is harmless and consistent with some variants that add a slight bow for spin-axis stability. Retained."
+ ],
+ "missing": [
+  {
+   "name": "Maximum time-aloft floater (vertical-throw hang-time / Guinness discipline)",
+   "category": "Flight duration / descent-rate optimization",
+   "reason": "The competitive 'longest time aloft' record (Takuo Toda's ~29s) is its own discipline: thrown near-vertically at high speed, then optimized purely for slowest sink rate on the way down. It is physically distinct from #2 distance (horizontal range), #3 cruiser (gentle hand-launched glide), and #4 glide ratio (horizontal distance per height). A definitive field guide should include the airplane engineered to stay up the longest, not go the farthest."
+  },
+  {
+   "name": "Catapult / rubber-band-launched glider (stored-energy launch)",
+   "category": "Powered / assisted launch",
+   "reason": "Every one of the 9 designs is hand-thrown. A whole iconic class uses an external energy source \u2014 a rubber-band hook and slingshot, or a launch stick/catapult \u2014 to reach launch speeds and altitudes impossible by arm alone, then transitions to a long glide. This is orthogonal to all existing axes (it changes the launch method, not just the airframe) and is a staple of contest and hobby flying."
+  },
+  {
+   "name": "Autorotating helicopter / maple-seed spinner (whirlybird)",
+   "category": "Non-gliding descent / rotary flight",
+   "reason": "The ring-wing novelty (#6) still generates lift by moving forward through air. A paper autorotator (dropped 'helicopter' or maple-seed samara design) uses none of that \u2014 it spins on descent, converting gravity into rotation for a controlled slow fall with zero forward flight. It is the one genuinely distinct flight regime (rotary autorotation) not represented anywhere in the current field, and its 'best' variant would round out coverage of how paper can stay airborne."
+  }
+ ]
+}
