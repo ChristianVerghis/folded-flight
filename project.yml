@@ -11,3 +11,6 @@ actions:
   build: ./build.sh
   verify-reproducible: ./build.sh && git diff --exit-code
 tags: [aerodynamics, drones, vtol, 3d-printing, field-guide]
+showcase:
+  kind: file
+  path: guides/paper-airplanes.html
