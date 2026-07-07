@@ -1,12 +1,13 @@
 # project.yml — dashboard manifest (auto-read by ~/dev/dashboard)
 name: folded-flight
 kind: docs
-status: active
-description: From paper airplanes to 3D-printed drones — a two-volume aerodynamics field guide of verified designs, with a ranked efficiency study for tiltrotor VTOLs.
+status: archived   # complete artifact — content finished 2026-06-30; rebuild is byte-identical
+description: From paper airplanes to 3D-printed drones — a two-volume aerodynamics field guide of verified designs (9 paper planes, 9 drone concepts, 13 ranked tiltrotor-VTOL efficiency levers).
 start: ./build.sh
 links:
-  - { label: "Paper airplanes guide →", href: "file:///Users/christianverghis/dev/folded-flight/guides/paper-airplanes.html", primary: true }
-  - { label: "Drones guide →", href: "file:///Users/christianverghis/dev/folded-flight/guides/drones.html" }
+  - { label: "Vol I — paper airplanes →", href: "/files/folded-flight/guides/paper-airplanes.html", primary: true }
+  - { label: "Vol II — drones →", href: "/files/folded-flight/guides/drones.html" }
 actions:
   build: ./build.sh
+  verify-reproducible: ./build.sh && git diff --exit-code
 tags: [aerodynamics, drones, vtol, 3d-printing, field-guide]
