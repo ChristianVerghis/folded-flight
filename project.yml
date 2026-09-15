@@ -1,4 +1,4 @@
-# project.yml — dashboard manifest (auto-read by ~/dev/dashboard)
+# project.yml — project manifest (metadata for a local project dashboard; not needed to build or read the guides)
 name: folded-flight
 kind: docs
 status: archived   # complete artifact — content finished 2026-06-30; rebuild is byte-identical
